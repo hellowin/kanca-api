@@ -15,6 +15,10 @@ object Graph {
   private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
     val resString: String = req.asString.body
     val rawJson: JsValue = Json.parse(resString)
+
+    // handle error
+    if (FBExeption.isException(rawJson)) throw FBExeption.parseExeption(rawJson)
+
     val data: List[JsObject] = (rawJson \ "data").validate[JsArray].getOrElse(Json.arr()).as[List[JsObject]]
     val next: Option[String] = (rawJson \ "paging" \ "next").validate[String].asOpt
 

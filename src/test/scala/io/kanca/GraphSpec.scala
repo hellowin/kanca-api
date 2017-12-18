@@ -1,7 +1,7 @@
 package io.kanca
 
 import org.scalatest._
-import io.kanca.fbgraph.{Graph, GroupFeed}
+import io.kanca.fbgraph.{FBOAuthException, Graph, GroupFeed}
 
 class GraphSpec extends FlatSpec with Matchers {
 
@@ -23,6 +23,14 @@ class GraphSpec extends FlatSpec with Matchers {
     feeds.map(_.id).toSet should have size 2 * DEFAULT_REQUEST_LIMIT
     feeds.map(_.id).toSet.size shouldEqual feeds.size
     feeds.map{ feed => feed.isInstanceOf[GroupFeed] shouldEqual true}
+  }
+
+  it should "able handle wrong token" in {
+    an [FBOAuthException] should be thrownBy Graph.getGroupFeeds("any_token", GROUP_ID)
+  }
+
+  it should "able handle wrong group id" in {
+    an [FBOAuthException] should be thrownBy Graph.getGroupFeeds(USER_TOKEN, "any_id")
   }
 
 }
