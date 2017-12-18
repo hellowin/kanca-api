@@ -17,7 +17,7 @@ object Graph {
     val rawJson: JsValue = Json.parse(resString)
 
     // handle error
-    if (FBExeption.isException(rawJson)) throw FBExeption.parseExeption(rawJson)
+    FBExeption.checkException(rawJson)
 
     val data: List[JsObject] = (rawJson \ "data").validate[JsArray].getOrElse(Json.arr()).as[List[JsObject]]
     val next: Option[String] = (rawJson \ "paging" \ "next").validate[String].asOpt

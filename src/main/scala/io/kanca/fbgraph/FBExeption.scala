@@ -9,7 +9,7 @@ class FBExeption extends Exception
 
 object FBExeption extends Exception {
 
-  def parseExeption(json: JsValue): FBExeption = {
+  private def parseExeption(json: JsValue): FBExeption = {
     val jsError: JsObject = (json \ "error").validate[JsObject].getOrElse(Json.obj())
     val typ: String = (jsError \ "type").validate[String].getOrElse("")
     val message: String = (jsError \ "message").validate[String].getOrElse("")
@@ -22,12 +22,16 @@ object FBExeption extends Exception {
     }
   }
 
-  def isException(json: JsValue): Boolean = {
+  private def isException(json: JsValue): Boolean = {
     val error: JsResult[JsObject] = (json \ "error").validate[JsObject]
     error match {
       case s: JsSuccess[JsObject] => true
       case e: JsError => false
     }
+  }
+
+  def checkException(json: JsValue): Unit = {
+    if (isException(json)) throw FBExeption.parseExeption(json)
   }
 
 }
