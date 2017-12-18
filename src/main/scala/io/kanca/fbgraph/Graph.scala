@@ -32,6 +32,7 @@ object Graph {
     getListResult[T](nextReq, token, parser, pageLimit - 1, newResults)
   }
 
+  @throws(classOf[FBExeption])
   def getGroupFeeds(token: String, groupId: String, pageLimit: Int = DEFAULT_PAGE_LIMIT): List[GroupFeed] = {
     val req: HttpRequest = Http(s"$FB_URL/$groupId/feed")
       .params(Seq(
