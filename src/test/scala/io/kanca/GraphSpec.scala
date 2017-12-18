@@ -10,15 +10,19 @@ class GraphSpec extends FlatSpec with Matchers {
   val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
   val DEFAULT_REQUEST_LIMIT: Int = sys.env("DEFAULT_REQUEST_LIMIT").toInt
 
-  "Group fetcher" should "able to get feeds by default arguments" in {
+  s"Group feeds fetcher with page limit $DEFAULT_PAGE_LIMIT and request limit $DEFAULT_REQUEST_LIMIT" should "able to get feeds by default arguments" in {
     val feeds: List[GroupFeed] = Graph.getGroupFeeds(USER_TOKEN, GROUP_ID)
-    feeds.size should be <= DEFAULT_PAGE_LIMIT * DEFAULT_REQUEST_LIMIT
-    feeds.size should be > 1 * DEFAULT_REQUEST_LIMIT
+    feeds.map(_.id).toSeq.size should be <= DEFAULT_PAGE_LIMIT * DEFAULT_REQUEST_LIMIT
+    feeds.map(_.id).toSeq.size should be > 1 * DEFAULT_REQUEST_LIMIT
+    feeds.map(_.id).toSeq.size shouldEqual feeds.size
+    feeds.map{ feed => feed.isInstanceOf[GroupFeed] shouldEqual true}
   }
 
   it should "able to get feeds by page limit arguments" in {
     val feeds: List[GroupFeed] = Graph.getGroupFeeds(USER_TOKEN, GROUP_ID, 2)
-    feeds should have size 2 * DEFAULT_REQUEST_LIMIT
+    feeds.map(_.id).toSeq should have size 2 * DEFAULT_REQUEST_LIMIT
+    feeds.map(_.id).toSeq.size shouldEqual feeds.size
+    feeds.map{ feed => feed.isInstanceOf[GroupFeed] shouldEqual true}
   }
 
 }
