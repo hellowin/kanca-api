@@ -1,4 +1,5 @@
 <code_scheme name="Default" version="173">
+  <option name="LINE_SEPARATOR" value="&#xA;" />
   <ScalaCodeStyleSettings>
     <option name="NOT_CONTINUATION_INDENT_FOR_PARAMS" value="true" />
   </ScalaCodeStyleSettings>
