@@ -6,7 +6,7 @@ import scalaj.http._
 
 case class FBListResult(data: List[JsObject], next: Option[String])
 
-object Graph {
+object Graph extends FBExeption {
 
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
@@ -17,7 +17,7 @@ object Graph {
     val rawJson: JsValue = Json.parse(resString)
 
     // handle error
-    FBExeption.checkException(rawJson)
+    checkException(rawJson)
 
     val data: List[JsObject] = (rawJson \ "data").validate[JsArray].getOrElse(Json.arr()).as[List[JsObject]]
     val next: Option[String] = (rawJson \ "paging" \ "next").validate[String].asOpt
