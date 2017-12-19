@@ -27,7 +27,7 @@ object Graph {
     if (next.orNull == null || pageLimit - 1 <= 0) return newResults
 
     // rebuild request if request is post, token and method params are vanished
-    val nextReq: HttpRequest = Http(next.get).params(Seq("method" -> "GET", "access_token" -> token))
+    val nextReq: HttpRequest = Http(next.get).params(Seq("method" -> "GET", "access_token" -> token)).postForm
 
     getListResult[T](nextReq, token, parser, pageLimit - 1, newResults)
   }
