@@ -6,7 +6,7 @@ import scalaj.http._
 
 case class FBListResult(data: List[JsObject], next: Option[String])
 
-object Graph {
+object Graph extends FBExeption {
 
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
@@ -17,7 +17,7 @@ object Graph {
     val rawJson: JsValue = Json.parse(resString)
 
     // handle error
-    FBExeption.checkException(rawJson)
+    checkException(rawJson)
 
     val data: List[JsObject] = (rawJson \ "data").validate[JsArray].getOrElse(Json.arr()).as[List[JsObject]]
     val next: Option[String] = (rawJson \ "paging" \ "next").validate[String].asOpt
@@ -27,10 +27,39 @@ object Graph {
     if (next.orNull == null || pageLimit - 1 <= 0) return newResults
 
     // rebuild request if request is post, token and method params are vanished
-    val nextReq: HttpRequest = Http(next.get).params(Seq("method" -> "GET", "access_token" -> token))
+    val nextReq: HttpRequest = Http(next.get).params(Seq("method" -> "GET", "access_token" -> token)).postForm
 
     getListResult[T](nextReq, token, parser, pageLimit - 1, newResults)
   }
+
+  private def groupFeedParser(rawFeed: JsObject): GroupFeed = GroupFeed(
+    (rawFeed \ "id").validate[String].get,
+    (rawFeed \ "caption").validate[String].asOpt,
+    (rawFeed \ "created_time").validate[String].get,
+    (rawFeed \ "description").validate[String].asOpt,
+    From(
+      (rawFeed \ "from" \ "name").validate[String].get,
+      (rawFeed \ "from" \ "id").validate[String].get
+    ),
+    (rawFeed \ "link").validate[String].asOpt,
+    (rawFeed \ "message").validate[String].asOpt,
+    (rawFeed \ "message_tags").validate[List[JsObject]].getOrElse(List()).map { obj =>
+      MessageTag(
+        (obj \ "id").validate[String].get,
+        (obj \ "name").validate[String].get,
+        (obj \ "type").validate[String].get,
+        (obj \ "offset").validate[Int].get,
+        (obj \ "length").validate[Int].get
+      )
+    },
+    (rawFeed \ "name").validate[String].asOpt,
+    (rawFeed \ "permalink_url").validate[String].get,
+    (rawFeed \ "picture").validate[String].asOpt,
+    (rawFeed \ "status_type").validate[String].asOpt,
+    (rawFeed \ "story").validate[String].asOpt,
+    (rawFeed \ "type").validate[String].get,
+    (rawFeed \ "updated_time").validate[String].get
+  )
 
   @throws(classOf[FBExeption])
   def getGroupFeeds(token: String, groupId: String, pageLimit: Int = DEFAULT_PAGE_LIMIT): List[GroupFeed] = {
@@ -42,36 +71,7 @@ object Graph {
         "access_token" -> token
       )).postForm
 
-    def parser(rawFeed: JsObject): GroupFeed = GroupFeed(
-      (rawFeed \ "id").validate[String].get,
-      (rawFeed \ "caption").validate[String].asOpt,
-      (rawFeed \ "created_time").validate[String].get,
-      (rawFeed \ "description").validate[String].asOpt,
-      From(
-        (rawFeed \ "from" \ "name").validate[String].get,
-        (rawFeed \ "from" \ "id").validate[String].get
-      ),
-      (rawFeed \ "link").validate[String].asOpt,
-      (rawFeed \ "message").validate[String].asOpt,
-      (rawFeed \ "message_tags").validate[List[JsObject]].getOrElse(List()).map { obj =>
-        MessageTag(
-          (obj \ "id").validate[String].get,
-          (obj \ "name").validate[String].get,
-          (obj \ "type").validate[String].get,
-          (obj \ "offset").validate[Int].get,
-          (obj \ "length").validate[Int].get
-        )
-      },
-      (rawFeed \ "name").validate[String].asOpt,
-      (rawFeed \ "permalink_url").validate[String].get,
-      (rawFeed \ "picture").validate[String].asOpt,
-      (rawFeed \ "status_type").validate[String].asOpt,
-      (rawFeed \ "story").validate[String].asOpt,
-      (rawFeed \ "type").validate[String].get,
-      (rawFeed \ "updated_time").validate[String].get
-    )
-
-    getListResult[GroupFeed](req, token, parser, pageLimit)
+    getListResult[GroupFeed](req, token, groupFeedParser, pageLimit)
   }
 
 }
