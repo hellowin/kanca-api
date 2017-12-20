@@ -4,11 +4,13 @@ import java.sql.{Connection, DriverManager}
 
 object MySQL {
 
+  val MYSQL_HOST = sys.env("MYSQL_HOST")
+  val MYSQL_PORT = sys.env("MYSQL_PORT")
   val MYSQL_DB = sys.env("MYSQL_DB")
   val MYSQL_USERNAME = sys.env("MYSQL_USERNAME")
   val MYSQL_PASSWORD = sys.env("MYSQL_PASSWORD")
   val DRIVER = "com.mysql.cj.jdbc.Driver"
-  val URL = "jdbc:mysql://localhost"
+  val URL = s"jdbc:mysql://$MYSQL_HOST:$MYSQL_PORT"
 
   @throws[Exception]
   def getConnection: Connection = {
