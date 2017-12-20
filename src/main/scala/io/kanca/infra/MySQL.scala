@@ -33,4 +33,34 @@ object MySQL {
     connection
   }
 
+  @throws[Exception]
+  def setupTables(connection: Connection): Boolean = {
+    val statement = connection.createStatement()
+
+    statement.execute(
+      s"""
+         |create table if not exists group_feed (
+         |	id varchar(255) primary key,
+         |    caption varchar(255),
+         |	created_time datetime,
+         |	description longtext,
+         |	from_name varchar(255),
+         |	from_id varchar(255),
+         |	link varchar(255),
+         |	message longtext,
+         |	message_tags json,
+         |	`name` varchar(255),
+         |	permalink_url varchar(255),
+         |	picture varchar(255),
+         |	status_type varchar(255),
+         |	story longtext,
+         |	`type` varchar(255),
+         |	updated_time datetime
+         |)
+      """.stripMargin
+    )
+
+    true
+  }
+
 }
