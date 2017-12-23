@@ -33,4 +33,9 @@ class MySQLSpec extends FlatSpec with Matchers {
     groupFeeds.size shouldEqual READ_LIMIT
   }
 
+  it should "able to read group feeds with pagination" in {
+    val groupFeeds: List[GroupFeed] = GroupFeedRepo.read(connection, 2)
+    groupFeeds.size should be > 1
+  }
+
 }

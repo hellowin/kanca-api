@@ -11,7 +11,7 @@ import scala.collection.mutable.ListBuffer
 
 object GroupFeedRepo {
 
-  val READ_LIMIT = sys.env("READ_LIMIT")
+  val READ_LIMIT = sys.env("READ_LIMIT").toInt
 
   def insert(connection: Connection, groupFeeds: List[GroupFeed]): Boolean = {
     val sql: String =
@@ -73,11 +73,12 @@ object GroupFeedRepo {
     true
   }
 
-  def read(connection: Connection): List[GroupFeed] = {
+  def read(connection: Connection, page: Int = 1): List[GroupFeed] = {
+    val offset = READ_LIMIT * (page - 1)
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
       s"""
-        |select * from group_feed limit $READ_LIMIT;
+        |select * from group_feed limit $READ_LIMIT offset $offset
       """.stripMargin)
     val groupFeeds: ListBuffer[GroupFeed] = ListBuffer()
     while (rs.next()) {
