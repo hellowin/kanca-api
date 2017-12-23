@@ -2,7 +2,8 @@ package io.kanca.controller
 
 import com.twitter.finagle.http.Request
 import com.twitter.finatra.http.Controller
-import io.kanca.fbgraph.Graph
+import io.kanca.infra.MySQL
+import io.kanca.repository.GroupFeedRepo
 
 case class GroupRequest(groupId: String, token: String)
 
@@ -13,7 +14,9 @@ class CoreController extends Controller {
   }
 
   get("/group-feeds") { req: Request =>
-    Graph.getGroupFeeds(req.getParam("token"), req.getParam("group_id"))
+    val groupId = req.getParam("group_id")
+
+    GroupFeedRepo.read(MySQL.getConnection)
   }
 
 }
