@@ -1,16 +1,22 @@
 package io.kanca.repository
 
-import java.sql.{Connection, PreparedStatement}
+import java.sql.{Connection, PreparedStatement, ResultSet}
+import java.time.{LocalDateTime, ZoneId}
 import java.time.format.DateTimeFormatter
 
-import io.kanca.fbgraph.GroupFeed
-import play.api.libs.json.Json
+import io.kanca.fbgraph.{From, GroupFeed, MessageTag}
+import play.api.libs.json.{JsArray, JsObject, Json}
+
+import scala.collection.mutable.ListBuffer
 
 object GroupFeedRepo {
 
-  def insertGroupFeeds(connection: Connection, groupFeeds: List[GroupFeed]): Boolean = {
+  val READ_LIMIT = sys.env("READ_LIMIT")
+
+  def insert(connection: Connection, groupFeeds: List[GroupFeed]): Boolean = {
     val sql: String =
-      """insert into group_feed (
+      """
+        |insert into group_feed (
         |	id,
         | caption,
         |	created_time,
@@ -65,6 +71,48 @@ object GroupFeedRepo {
     preparedStatement.close()
 
     true
+  }
+
+  def read(connection: Connection): List[GroupFeed] = {
+    val statement = connection.createStatement()
+    val rs: ResultSet = statement.executeQuery(
+      s"""
+        |select * from group_feed limit $READ_LIMIT;
+      """.stripMargin)
+    val groupFeeds: ListBuffer[GroupFeed] = ListBuffer()
+    while (rs.next()) {
+      val groupFeed = GroupFeed(
+        rs.getString("id"),
+        Option(rs.getString("caption")),
+        LocalDateTime.ofInstant(rs.getTimestamp("created_time").toInstant, ZoneId.of("UTC")),
+        Option(rs.getString("description")),
+        From(
+          rs.getString("from_name"),
+          rs.getString("from_id")
+        ),
+        Option(rs.getString("link")),
+        Option(rs.getString("message")),
+        Json.parse(rs.getString("message_tags")).validate[List[JsObject]].getOrElse(List()).map(obj => {
+          MessageTag(
+            (obj \ "id").validate[String].get,
+            (obj \ "name").validate[String].get,
+            (obj \ "type").validate[String].get,
+            (obj \ "length").validate[Int].get,
+            (obj \ "offset").validate[Int].get
+          )
+        }),
+        Option(rs.getString("name")),
+        rs.getString("permalink_url"),
+        Option(rs.getString("picture")),
+        Option(rs.getString("status_type")),
+        Option(rs.getString("story")),
+        rs.getString("type"),
+        LocalDateTime.ofInstant(rs.getTimestamp("updated_time").toInstant, ZoneId.of("UTC"))
+      )
+      groupFeeds += groupFeed
+    }
+
+    groupFeeds.toList
   }
 
 }
