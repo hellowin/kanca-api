@@ -1,5 +1,8 @@
 package io.kanca.fbgraph
 
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 import play.api.libs.json._
 
 import scalaj.http._
@@ -11,6 +14,7 @@ object Graph extends FBExeption {
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
   private val DEFAULT_REQUEST_LIMIT = sys.env("DEFAULT_REQUEST_LIMIT")
+  private val TIME_FORMATTER = "yyyy-MM-dd'T'HH:mm:ssZ"
 
   private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
     val resString: String = req.asString.body
@@ -35,7 +39,7 @@ object Graph extends FBExeption {
   private def groupFeedParser(rawFeed: JsObject): GroupFeed = GroupFeed(
     (rawFeed \ "id").validate[String].get,
     (rawFeed \ "caption").validate[String].asOpt,
-    (rawFeed \ "created_time").validate[String].get,
+    LocalDateTime.parse((rawFeed \ "created_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
     (rawFeed \ "description").validate[String].asOpt,
     From(
       (rawFeed \ "from" \ "name").validate[String].get,
@@ -58,7 +62,7 @@ object Graph extends FBExeption {
     (rawFeed \ "status_type").validate[String].asOpt,
     (rawFeed \ "story").validate[String].asOpt,
     (rawFeed \ "type").validate[String].get,
-    (rawFeed \ "updated_time").validate[String].get
+    LocalDateTime.parse((rawFeed \ "updated_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
   )
 
   @throws(classOf[FBExeption])

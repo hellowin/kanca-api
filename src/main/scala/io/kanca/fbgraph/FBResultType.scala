@@ -1,5 +1,9 @@
 package io.kanca.fbgraph
 
+import java.time.LocalDateTime
+
+import play.api.libs.json.{JsObject, Json}
+
 case class From(name: String, id: String)
 
 case class MessageTag(
@@ -13,7 +17,7 @@ case class MessageTag(
 case class GroupFeed(
   id: String,
   caption: Option[String],
-  createdTime: String,
+  createdTime: LocalDateTime,
   description: Option[String],
   from: From,
   link: Option[String],
@@ -25,5 +29,5 @@ case class GroupFeed(
   statusType: Option[String],
   story: Option[String],
   typ: String,
-  updatedTime: String,
+  updatedTime: LocalDateTime,
 )

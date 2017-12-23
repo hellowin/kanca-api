@@ -41,7 +41,7 @@ object MySQL {
       s"""
          |create table if not exists group_feed (
          |	id varchar(255) primary key,
-         |    caption varchar(255),
+         |  caption varchar(255),
          |	created_time datetime,
          |	description longtext,
          |	from_name varchar(255),
