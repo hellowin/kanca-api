@@ -14,6 +14,9 @@ lazy val root = (project in file(".")).
       "org.scalaj" %% "scalaj-http" % "2.3.0",
       "com.typesafe.play" %% "play-json" % "2.6.8",
       "com.twitter" %% "finatra-http" % "17.12.0",
+      "com.twitter" %% "finatra-http" % "17.12.0" % "test" classifier "tests",
+      "com.twitter" %% "inject-app" % "17.12.0" % "test" classifier "tests",
+      "com.twitter" %% "inject-core" % "17.12.0" % "test" classifier "tests",
       "ch.qos.logback" % "logback-classic" % "1.2.3",
       "mysql" % "mysql-connector-java" % "6.0.6"
     )

@@ -2,29 +2,40 @@ package io.kanca
 
 import java.sql.Connection
 
+import com.twitter.inject.IntegrationTest
+import com.twitter.inject.app.TestInjector
 import io.kanca.fbgraph.{Graph, GroupFeed}
 import io.kanca.infra.MySQL
 import io.kanca.repository.GroupFeedRepo
-import org.scalatest.{FlatSpec, Matchers}
 
-class MySQLSpec extends FlatSpec with Matchers {
+class MySQLSpec extends IntegrationTest {
+
+  override val injector =
+    TestInjector(
+      flags =
+        Map("foo.flag" -> "meaningfulValue"),
+      modules =
+        Seq(GraphModule))
+      .create
+
+  val graph = injector.instance[Graph]
 
   val USER_TOKEN = sys.env("USER_TOKEN")
   val GROUP_ID = sys.env("GROUP_ID")
   val READ_LIMIT = sys.env("READ_LIMIT").toInt
   val connection = MySQL.getConnection
 
-  "MySQL Spec" should "able to get connection" in {
+  test("MySQL Spec should able to get connection") {
     connection.isInstanceOf[Connection] shouldEqual true
   }
 
-  it should "able to setup tables, multiple times" in {
+  test("able to setup tables, multiple times") {
     MySQL.setupTables(connection) shouldEqual true
     MySQL.setupTables(connection) shouldEqual true
   }
 
-  "GroupFeedRepo" should "able to insert group feeds batch, multiple times" in {
-    val groupFeeds: List[GroupFeed] = Graph.getGroupFeeds(USER_TOKEN, GROUP_ID)
+  test("GroupFeedRepo should able to insert group feeds batch, multiple times") {
+    val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID)
     val res: Boolean = GroupFeedRepo.insert(connection, groupFeeds)
     res shouldEqual true
 
@@ -32,7 +43,7 @@ class MySQLSpec extends FlatSpec with Matchers {
     res2 shouldEqual true
   }
 
-  it should "able to read group feeds" in {
+  test("able to read group feeds") {
     val groupFeeds: List[GroupFeed] = GroupFeedRepo.read(connection, GROUP_ID)
     groupFeeds.size shouldEqual READ_LIMIT
 
