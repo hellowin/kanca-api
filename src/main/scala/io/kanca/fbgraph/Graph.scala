@@ -1,8 +1,5 @@
 package io.kanca.fbgraph
 
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-
 import com.twitter.inject.Logging
 import play.api.libs.json._
 
@@ -15,7 +12,6 @@ object Graph extends FBExeption with Logging {
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
   private val DEFAULT_REQUEST_LIMIT = sys.env("DEFAULT_REQUEST_LIMIT")
-  private val TIME_FORMATTER = "yyyy-MM-dd'T'HH:mm:ssZ"
 
   private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
     val resString: String = req.asString.body
@@ -37,35 +33,6 @@ object Graph extends FBExeption with Logging {
     getListResult[T](nextReq, token, parser, pageLimit - 1, newResults)
   }
 
-  private def groupFeedParser(rawFeed: JsObject): GroupFeed = GroupFeed(
-    (rawFeed \ "id").validate[String].get,
-    (rawFeed \ "caption").validate[String].asOpt,
-    LocalDateTime.parse((rawFeed \ "created_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
-    (rawFeed \ "description").validate[String].asOpt,
-    From(
-      (rawFeed \ "from" \ "name").validate[String].get,
-      (rawFeed \ "from" \ "id").validate[String].get
-    ),
-    (rawFeed \ "link").validate[String].asOpt,
-    (rawFeed \ "message").validate[String].asOpt,
-    (rawFeed \ "message_tags").validate[List[JsObject]].getOrElse(List()).map { obj =>
-      MessageTag(
-        (obj \ "id").validate[String].get,
-        (obj \ "name").validate[String].get,
-        (obj \ "type").validate[String].get,
-        (obj \ "offset").validate[Int].get,
-        (obj \ "length").validate[Int].get
-      )
-    },
-    (rawFeed \ "name").validate[String].asOpt,
-    (rawFeed \ "permalink_url").validate[String].get,
-    (rawFeed \ "picture").validate[String].asOpt,
-    (rawFeed \ "status_type").validate[String].asOpt,
-    (rawFeed \ "story").validate[String].asOpt,
-    (rawFeed \ "type").validate[String].get,
-    LocalDateTime.parse((rawFeed \ "updated_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
-  )
-
   @throws(classOf[FBExeption])
   def getGroupFeeds(token: String, groupId: String, pageLimit: Int = DEFAULT_PAGE_LIMIT): List[GroupFeed] = {
     val req: HttpRequest = Http(s"$FB_URL/$groupId/feed")
@@ -76,9 +43,9 @@ object Graph extends FBExeption with Logging {
         "access_token" -> token
       )).postForm
 
-    debug(s"get group feeds url = ${req.url} params = ${req.params.map{ case (key: String, value: String) => s"$key = $value"} }")
+    debug(s"get group feeds url = ${req.url} params = ${req.params.map { case (key: String, value: String) => s"$key = $value" }}")
 
-    getListResult[GroupFeed](req, token, groupFeedParser, pageLimit)
+    getListResult[GroupFeed](req, token, GroupFeed.parse, pageLimit)
   }
 
 }
