@@ -17,7 +17,7 @@ class CoreController extends Controller {
     val groupId = req.getParam("group_id")
     val page = if (req.getIntParam("page") > 0) req.getIntParam("page") else 1
 
-    GroupFeedRepo.read(MySQL.getConnection, page)
+    GroupFeedRepo.read(MySQL.getConnection, groupId, page)
   }
 
 }

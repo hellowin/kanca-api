@@ -1,11 +1,9 @@
 package io.kanca.repository
 
-import java.sql.{Connection, PreparedStatement, ResultSet}
-import java.time.{LocalDateTime, ZoneId}
-import java.time.format.DateTimeFormatter
+import java.sql.{Connection, PreparedStatement, ResultSet, Timestamp}
 
 import io.kanca.fbgraph.{From, GroupFeed, MessageTag}
-import play.api.libs.json.{JsArray, JsObject, Json}
+import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
 
@@ -18,6 +16,7 @@ object GroupFeedRepo {
       """
         |insert into group_feed (
         |	id,
+        | group_id,
         | caption,
         |	created_time,
         |	description,
@@ -33,7 +32,7 @@ object GroupFeedRepo {
         |	story,
         |	`type`,
         |	updated_time
-        |) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        |) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         |ON DUPLICATE KEY UPDATE
         | caption = values(caption),
         | description = values(description)
@@ -42,14 +41,15 @@ object GroupFeedRepo {
 
     groupFeeds.foreach(feed => {
       preparedStatement.setString(1, feed.id)
-      preparedStatement.setString(2, feed.caption.orNull)
-      preparedStatement.setString(3, feed.createdTime.format(DateTimeFormatter.ISO_LOCAL_DATE) + " " + feed.createdTime.format(DateTimeFormatter.ISO_LOCAL_TIME))
-      preparedStatement.setString(4, feed.description.orNull)
-      preparedStatement.setString(5, feed.from.name)
-      preparedStatement.setString(6, feed.from.id)
-      preparedStatement.setString(7, feed.link.orNull)
-      preparedStatement.setString(8, feed.message.orNull)
-      preparedStatement.setString(9, Json.toJson(feed.messageTags.map { tag =>
+      preparedStatement.setString(2, feed.id.split("_")(0))
+      preparedStatement.setString(3, feed.caption.orNull)
+      preparedStatement.setTimestamp(4, Timestamp.valueOf(feed.createdTime))
+      preparedStatement.setString(5, feed.description.orNull)
+      preparedStatement.setString(6, feed.from.name)
+      preparedStatement.setString(7, feed.from.id)
+      preparedStatement.setString(8, feed.link.orNull)
+      preparedStatement.setString(9, feed.message.orNull)
+      preparedStatement.setString(10, Json.toJson(feed.messageTags.map { tag =>
         Json.obj(
           "id" -> tag.id,
           "name" -> tag.name,
@@ -58,34 +58,34 @@ object GroupFeedRepo {
           "length" -> tag.length
         )
       }).toString())
-      preparedStatement.setString(10, feed.name.orNull)
-      preparedStatement.setString(11, feed.permalinkUrl)
-      preparedStatement.setString(12, feed.picture.orNull)
-      preparedStatement.setString(13, feed.statusType.orNull)
-      preparedStatement.setString(14, feed.story.orNull)
-      preparedStatement.setString(15, feed.typ)
-      preparedStatement.setString(16, feed.updatedTime.format(DateTimeFormatter.ISO_LOCAL_DATE) + " " + feed.updatedTime.format(DateTimeFormatter.ISO_LOCAL_TIME))
+      preparedStatement.setString(11, feed.name.orNull)
+      preparedStatement.setString(12, feed.permalinkUrl)
+      preparedStatement.setString(13, feed.picture.orNull)
+      preparedStatement.setString(14, feed.statusType.orNull)
+      preparedStatement.setString(15, feed.story.orNull)
+      preparedStatement.setString(16, feed.typ)
+      preparedStatement.setTimestamp(17, Timestamp.valueOf(feed.updatedTime))
       preparedStatement.addBatch()
     })
-    preparedStatement.execute()
+    preparedStatement.executeBatch()
     preparedStatement.close()
 
     true
   }
 
-  def read(connection: Connection, page: Int = 1): List[GroupFeed] = {
+  def read(connection: Connection, groupId: String, page: Int = 1): List[GroupFeed] = {
     val offset = READ_LIMIT * (page - 1)
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
       s"""
-        |select * from group_feed limit $READ_LIMIT offset $offset
+         |select * from group_feed where group_id = "$groupId" limit $READ_LIMIT offset $offset
       """.stripMargin)
     val groupFeeds: ListBuffer[GroupFeed] = ListBuffer()
     while (rs.next()) {
       val groupFeed = GroupFeed(
         rs.getString("id"),
         Option(rs.getString("caption")),
-        LocalDateTime.ofInstant(rs.getTimestamp("created_time").toInstant, ZoneId.of("UTC")),
+        rs.getTimestamp("created_time").toLocalDateTime,
         Option(rs.getString("description")),
         From(
           rs.getString("from_name"),
@@ -108,7 +108,7 @@ object GroupFeedRepo {
         Option(rs.getString("status_type")),
         Option(rs.getString("story")),
         rs.getString("type"),
-        LocalDateTime.ofInstant(rs.getTimestamp("updated_time").toInstant, ZoneId.of("UTC"))
+        rs.getTimestamp("updated_time").toLocalDateTime
       )
       groupFeeds += groupFeed
     }

@@ -41,6 +41,7 @@ object MySQL {
       s"""
          |create table if not exists group_feed (
          |	id varchar(255) primary key,
+         |  group_id varchar(255) not null,
          |  caption varchar(255),
          |	created_time datetime,
          |	description longtext,
@@ -51,12 +52,18 @@ object MySQL {
          |	message_tags json,
          |	`name` varchar(255),
          |	permalink_url varchar(255),
-         |	picture varchar(255),
+         |	picture longtext,
          |	status_type varchar(255),
          |	story longtext,
          |	`type` varchar(255),
          |	updated_time datetime
          |)
+      """.stripMargin
+    )
+
+    statement.execute(
+      """
+        |ALTER TABLE group_feed ADD INDEX (group_id asc)
       """.stripMargin
     )
 

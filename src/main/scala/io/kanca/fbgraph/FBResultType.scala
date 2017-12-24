@@ -2,8 +2,6 @@ package io.kanca.fbgraph
 
 import java.time.LocalDateTime
 
-import play.api.libs.json.{JsObject, Json}
-
 case class From(name: String, id: String)
 
 case class MessageTag(
