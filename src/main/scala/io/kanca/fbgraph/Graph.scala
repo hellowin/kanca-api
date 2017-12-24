@@ -1,14 +1,13 @@
 package io.kanca.fbgraph
 
-import com.google.inject.Inject
-import com.twitter.inject.{Logging, TwitterModule}
+import com.twitter.inject.Logging
 import play.api.libs.json._
 
 import scalaj.http._
 
 case class FBListResult(data: List[JsObject], next: Option[String])
 
-class Graph @Inject() () extends Logging {
+class Graph extends FBExeption with Logging {
 
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
@@ -17,6 +16,9 @@ class Graph @Inject() () extends Logging {
   private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
     val resString: String = req.asString.body
     val rawJson: JsValue = Json.parse(resString)
+
+    // handle error
+    checkException(rawJson)
 
     val data: List[JsObject] = (rawJson \ "data").validate[JsArray].getOrElse(Json.arr()).as[List[JsObject]]
     val next: Option[String] = (rawJson \ "paging" \ "next").validate[String].asOpt

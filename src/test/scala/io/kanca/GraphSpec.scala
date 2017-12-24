@@ -6,12 +6,10 @@ import io.kanca.fbgraph.{FBOAuthException, Graph, GroupFeed}
 
 class GraphSpec extends IntegrationTest {
 
-  override val injector =
+  def injector =
     TestInjector(
-      flags =
-        Map("foo.flag" -> "meaningfulValue"),
       modules =
-        Seq(GraphModule))
+        Seq(GraphTestModule))
       .create
 
   val graph: Graph = injector.instance[Graph]

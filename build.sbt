@@ -17,6 +17,8 @@ lazy val root = (project in file(".")).
       "com.twitter" %% "finatra-http" % "17.12.0" % "test" classifier "tests",
       "com.twitter" %% "inject-app" % "17.12.0" % "test" classifier "tests",
       "com.twitter" %% "inject-core" % "17.12.0" % "test" classifier "tests",
+      "com.twitter" %% "inject-modules" % "17.12.0" % "test" classifier "tests",
+      "com.twitter" %% "inject-server" % "17.12.0" % "test" classifier "tests",
       "ch.qos.logback" % "logback-classic" % "1.2.3",
       "mysql" % "mysql-connector-java" % "6.0.6"
     )
