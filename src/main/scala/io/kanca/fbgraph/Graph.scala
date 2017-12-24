@@ -3,13 +3,14 @@ package io.kanca.fbgraph
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+import com.twitter.inject.Logging
 import play.api.libs.json._
 
 import scalaj.http._
 
 case class FBListResult(data: List[JsObject], next: Option[String])
 
-object Graph extends FBExeption {
+object Graph extends FBExeption with Logging {
 
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
@@ -74,6 +75,8 @@ object Graph extends FBExeption {
         "limit" -> DEFAULT_REQUEST_LIMIT,
         "access_token" -> token
       )).postForm
+
+    debug(s"get group feeds url = ${req.url} params = ${req.params.map{ case (key: String, value: String) => s"$key = $value"} }")
 
     getListResult[GroupFeed](req, token, groupFeedParser, pageLimit)
   }
