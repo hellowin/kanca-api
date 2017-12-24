@@ -18,29 +18,26 @@ class MySQLSpec extends FlatSpec with Matchers {
     connection.isInstanceOf[Connection] shouldEqual true
   }
 
-  it should "able to setup tables" in {
-    MySQL.setupTables(connection) shouldEqual true
-  }
-
-  it should "able to handle setup tables multiple times" in {
+  it should "able to setup tables, multiple times" in {
     MySQL.setupTables(connection) shouldEqual true
     MySQL.setupTables(connection) shouldEqual true
   }
 
-  "GroupFeedRepo" should "able to insert group feeds batch" in {
+  "GroupFeedRepo" should "able to insert group feeds batch, multiple times" in {
     val groupFeeds: List[GroupFeed] = Graph.getGroupFeeds(USER_TOKEN, GROUP_ID)
     val res: Boolean = GroupFeedRepo.insert(connection, groupFeeds)
     res shouldEqual true
+
+    val res2: Boolean = GroupFeedRepo.insert(connection, groupFeeds)
+    res2 shouldEqual true
   }
 
-  it should "able to read group feeds with default arguments" in {
+  it should "able to read group feeds" in {
     val groupFeeds: List[GroupFeed] = GroupFeedRepo.read(connection, GROUP_ID)
     groupFeeds.size shouldEqual READ_LIMIT
-  }
 
-  it should "able to read group feeds with pagination" in {
-    val groupFeeds: List[GroupFeed] = GroupFeedRepo.read(connection, GROUP_ID, 2)
-    groupFeeds.size should be > 1
+    val groupFeedsPage2: List[GroupFeed] = GroupFeedRepo.read(connection, GROUP_ID, 2)
+    groupFeedsPage2.size should be > 1
   }
 
 }
