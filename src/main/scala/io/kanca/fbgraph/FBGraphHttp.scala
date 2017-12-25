@@ -5,10 +5,15 @@ import play.api.libs.json._
 
 import scalaj.http._
 
-class FBGraphHttp extends FBGraph with FBException with Logging {
+class FBGraphHttp(
+  version: String,
+  defaultPageLimit: Int,
+  defaultRequestLimit: String,
+) extends FBGraph(defaultPageLimit) with FBException with Logging {
 
-  private val FB_URL = sys.env("FB_URL")
-  private val DEFAULT_REQUEST_LIMIT = sys.env("DEFAULT_REQUEST_LIMIT")
+  private val FB_URL: String = s"https://graph.facebook.com/v$version"
+
+  debug(s"Initiated FB Graph API with base URL: $FB_URL")
 
   private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
     val resString: String = req.asString.body
@@ -31,12 +36,12 @@ class FBGraphHttp extends FBGraph with FBException with Logging {
   }
 
   @throws(classOf[Exception])
-  def getGroupFeeds(token: String, groupId: String, pageLimit: Int = DEFAULT_PAGE_LIMIT): List[GroupFeed] = {
+  def getGroupFeeds(token: String, groupId: String, pageLimit: Int = defaultPageLimit): List[GroupFeed] = {
     val req: HttpRequest = Http(s"$FB_URL/$groupId/feed")
       .params(Seq(
         "method" -> "GET",
         "fields" -> "created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags",
-        "limit" -> DEFAULT_REQUEST_LIMIT,
+        "limit" -> defaultRequestLimit,
         "access_token" -> token
       )).postForm
 
