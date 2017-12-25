@@ -2,19 +2,18 @@ package io.kanca
 
 import java.sql.Connection
 
-import com.twitter.inject.IntegrationTest
 import com.twitter.inject.app.TestInjector
-import io.kanca.fbgraph.{Graph, GroupFeed}
+import com.twitter.inject.{IntegrationTest, Mockito}
+import io.kanca.fbgraph.GroupFeed
 import io.kanca.infra.MySQL
 import io.kanca.repository.GroupFeedRepo
 
-class MySQLSpec extends IntegrationTest {
+class MySQLSpec extends IntegrationTest with Mockito {
 
   def injector =
     TestInjector(
-      modules =
-        Seq(GraphTestModule))
-      .create
+      GraphModule
+    ).create
 
   val graph = injector.instance[Graph]
 

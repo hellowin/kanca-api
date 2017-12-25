@@ -1,13 +1,15 @@
 package io.kanca.fbgraph
 
-import com.twitter.inject.Logging
+import com.google.inject.Singleton
+import io.kanca.Graph
 import play.api.libs.json._
 
 import scalaj.http._
 
 case class FBListResult(data: List[JsObject], next: Option[String])
 
-class Graph extends FBExeption with Logging {
+@Singleton
+class FacebookGraph extends Graph {
 
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt

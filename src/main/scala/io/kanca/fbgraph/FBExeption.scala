@@ -5,7 +5,7 @@ import play.api.libs.json._
 case class FBUnhandledException(message: String, code: String, traceId: String, typ: String) extends FBExeption
 case class FBOAuthException(message: String, code: String, traceId: String) extends FBExeption
 
-class FBExeption extends Exception {
+trait FBExeption extends Exception {
 
   private def parseExeption(json: JsValue): FBExeption = {
     val jsError: JsObject = (json \ "error").validate[JsObject].getOrElse(Json.obj())
