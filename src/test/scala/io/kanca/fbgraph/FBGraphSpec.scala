@@ -1,8 +1,7 @@
-package io.kanca
+package io.kanca.fbgraph
 
-import com.twitter.inject.{Injector, IntegrationTest}
 import com.twitter.inject.app.TestInjector
-import io.kanca.fbgraph.{FBGraph, FBGraphModule, FBOAuthException, GroupFeed}
+import com.twitter.inject.{Injector, IntegrationTest}
 
 class FBGraphSpec extends IntegrationTest {
 
