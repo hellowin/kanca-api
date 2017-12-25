@@ -14,6 +14,7 @@ object RepoModuleMySQL extends TwitterModule {
   flag[String](name = "repo.mysql.username", help = "MySQL Username.")
   flag[String](name = "repo.mysql.password", help = "MySQL Password.")
   flag(name = "repo.mysql.driver", default = "com.mysql.cj.jdbc.Driver", help = "MySQL Driver.")
+  flag[Int](name = "repo.readLimit", default = 100, help = "Read limit per page.")
 
   @Singleton
   @Provides
@@ -30,7 +31,8 @@ object RepoModuleMySQL extends TwitterModule {
   @Provides
   def providesRepository(
     @Inject connection: Connection,
-  ): Repository = new RepositoryMySQL(connection)
+    @Flag("repo.readLimit") readLimit: Int,
+  ): Repository = new RepositoryMySQL(connection, readLimit)
 
   override def singletonStartup(injector: Injector) {
     val connection: Connection = injector.instance[Connection]

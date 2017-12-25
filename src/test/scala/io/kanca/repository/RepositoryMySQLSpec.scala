@@ -2,8 +2,8 @@ package io.kanca.repository
 
 import java.sql.Connection
 
-import com.twitter.inject.IntegrationTest
 import com.twitter.inject.app.TestInjector
+import com.twitter.inject.{Injector, IntegrationTest}
 import io.kanca.fbgraph.{FBGraph, FBGraphModule, GroupFeed}
 
 class RepositoryMySQLSpec extends IntegrationTest {
@@ -24,7 +24,7 @@ class RepositoryMySQLSpec extends IntegrationTest {
   private val DEFAULT_PAGE_LIMIT: Int = sys.env.getOrElse("DEFAULT_PAGE_LIMIT", "10").toInt
   private val DEFAULT_REQUEST_LIMIT: Int = sys.env.getOrElse("DEFAULT_REQUEST_LIMIT", "100").toInt
 
-  def injector = TestInjector(
+  def injector: Injector = TestInjector(
     flags = Map(
       "repo.mysql.host" -> MYSQL_HOST,
       "repo.mysql.port" -> MYSQL_PORT,
@@ -32,6 +32,7 @@ class RepositoryMySQLSpec extends IntegrationTest {
       "repo.mysql.username" -> MYSQL_USERNAME,
       "repo.mysql.password" -> MYSQL_PASSWORD,
       "repo.mysql.driver" -> MYSQL_DRIVER,
+      "repo.readLimit" -> READ_LIMIT.toString,
       "fbgraph.version" -> FB_GRAPH_VERSION,
       "fbgraph.defaultPageLimit" -> DEFAULT_PAGE_LIMIT.toString,
       "fbgraph.defaultRequestLimit" -> DEFAULT_REQUEST_LIMIT.toString,
@@ -42,7 +43,8 @@ class RepositoryMySQLSpec extends IntegrationTest {
     ),
   ).create
 
-  val graph = injector.instance[FBGraph]
+  private val graph = injector.instance[FBGraph]
+  private val repo = injector.instance[Repository]
 
   test("MySQL Spec should able to get connection") {
     connection.isInstanceOf[Connection] shouldEqual true
@@ -55,18 +57,18 @@ class RepositoryMySQLSpec extends IntegrationTest {
 
   test("GroupFeedRepo should able to insert group feeds batch, multiple times") {
     val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID)
-    val res: Boolean = GroupFeedRepo.insert(connection, groupFeeds)
+    val res: Boolean = repo.insertGroupFeed(groupFeeds)
     res shouldEqual true
 
-    val res2: Boolean = GroupFeedRepo.insert(connection, groupFeeds)
+    val res2: Boolean = repo.insertGroupFeed(groupFeeds)
     res2 shouldEqual true
   }
 
   test("able to read group feeds") {
-    val groupFeeds: List[GroupFeed] = GroupFeedRepo.read(connection, GROUP_ID)
+    val groupFeeds: List[GroupFeed] = repo.readGroupFeed(GROUP_ID)
     groupFeeds.size shouldEqual READ_LIMIT
 
-    val groupFeedsPage2: List[GroupFeed] = GroupFeedRepo.read(connection, GROUP_ID, 2)
+    val groupFeedsPage2: List[GroupFeed] = repo.readGroupFeed(GROUP_ID, 2)
     groupFeedsPage2.size should be > 1
   }
 

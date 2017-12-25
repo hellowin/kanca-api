@@ -6,9 +6,12 @@ import io.kanca.fbgraph.GroupFeed
 
 class RepositoryMySQL(
   connection: Connection,
+  readLimit: Int,
 ) extends Repository {
 
-  override def insertGroupFeed(groupFeeds: List[GroupFeed]): Boolean = GroupFeedRepo.insert(connection, groupFeeds)
+  def insertGroupFeed(groupFeeds: List[GroupFeed]): Boolean = GroupFeedMySQL.insert(connection, groupFeeds)
+
+  def readGroupFeed(groupId: String, page: Int): List[GroupFeed] = GroupFeedMySQL.read(connection, readLimit, groupId, page)
 
 }
 

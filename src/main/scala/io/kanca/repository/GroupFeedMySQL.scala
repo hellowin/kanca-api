@@ -7,9 +7,7 @@ import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
 
-object GroupFeedRepo {
-
-  private val READ_LIMIT = sys.env("READ_LIMIT").toInt
+object GroupFeedMySQL {
 
   def insert(connection: Connection, groupFeeds: List[GroupFeed]): Boolean = {
     val sql: String =
@@ -73,12 +71,12 @@ object GroupFeedRepo {
     true
   }
 
-  def read(connection: Connection, groupId: String, page: Int = 1): List[GroupFeed] = {
-    val offset = READ_LIMIT * (page - 1)
+  def read(connection: Connection, readLimit:Int, groupId: String, page: Int = 1): List[GroupFeed] = {
+    val offset = readLimit * (page - 1)
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
       s"""
-         |select * from group_feed where group_id = "$groupId" limit $READ_LIMIT offset $offset
+         |select * from group_feed where group_id = "$groupId" limit $readLimit offset $offset
       """.stripMargin)
     val groupFeeds: ListBuffer[GroupFeed] = ListBuffer()
     while (rs.next()) {
