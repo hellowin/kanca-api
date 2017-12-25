@@ -1,5 +1,6 @@
 package io.kanca.fbgraph
 
+import com.twitter.inject.Logging
 import io.kanca.Graph
 import play.api.libs.json._
 
@@ -7,7 +8,7 @@ import scalaj.http._
 
 case class FBListResult(data: List[JsObject], next: Option[String])
 
-class FBGraph extends Graph {
+class FBGraph extends Graph with FBException with Logging {
 
   private val FB_URL = sys.env("FB_URL")
   private val DEFAULT_PAGE_LIMIT: Int = sys.env("DEFAULT_PAGE_LIMIT").toInt
@@ -33,7 +34,7 @@ class FBGraph extends Graph {
     getListResult[T](nextReq, token, parser, pageLimit - 1, newResults)
   }
 
-  @throws(classOf[FBExeption])
+  @throws(classOf[Exception])
   def getGroupFeeds(token: String, groupId: String, pageLimit: Int = DEFAULT_PAGE_LIMIT): List[GroupFeed] = {
     val req: HttpRequest = Http(s"$FB_URL/$groupId/feed")
       .params(Seq(

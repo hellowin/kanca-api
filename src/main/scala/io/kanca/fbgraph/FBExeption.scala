@@ -2,12 +2,12 @@ package io.kanca.fbgraph
 
 import play.api.libs.json._
 
-case class FBUnhandledException(message: String, code: String, traceId: String, typ: String) extends FBExeption
-case class FBOAuthException(message: String, code: String, traceId: String) extends FBExeption
+case class FBUnhandledException(message: String, code: String, traceId: String, typ: String) extends Exception
+case class FBOAuthException(message: String, code: String, traceId: String) extends Exception
 
-trait FBExeption extends Exception {
+trait FBException {
 
-  private def parseExeption(json: JsValue): FBExeption = {
+  private def parseExeption(json: JsValue): Exception = {
     val jsError: JsObject = (json \ "error").validate[JsObject].getOrElse(Json.obj())
     val typ: String = (jsError \ "type").validate[String].getOrElse("")
     val message: String = (jsError \ "message").validate[String].getOrElse("")
