@@ -4,17 +4,17 @@ import java.sql.Connection
 
 import com.twitter.inject.IntegrationTest
 import com.twitter.inject.app.TestInjector
-import io.kanca.fbgraph.GroupFeed
+import io.kanca.fbgraph.{FBGraph, FBGraphModule, GroupFeed}
 import io.kanca.infra.MySQL
 import io.kanca.repository.GroupFeedRepo
 
 class MySQLSpec extends IntegrationTest {
 
   def injector = TestInjector(
-    GraphModule
+    FBGraphModule
   ).create
 
-  val graph = injector.instance[Graph]
+  val graph = injector.instance[FBGraph]
 
   val USER_TOKEN = sys.env("USER_TOKEN")
   val GROUP_ID = sys.env("GROUP_ID")
