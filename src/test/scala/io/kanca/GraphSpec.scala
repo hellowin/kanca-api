@@ -1,16 +1,14 @@
 package io.kanca
 
+import com.twitter.inject.IntegrationTest
 import com.twitter.inject.app.TestInjector
-import com.twitter.inject.{IntegrationTest, Mockito}
 import io.kanca.fbgraph.{FBOAuthException, GroupFeed}
 
-class GraphSpec extends IntegrationTest with Mockito {
+class GraphSpec extends IntegrationTest {
 
-  def injector =
-    TestInjector(
-      modules =
-        Seq(GraphModule))
-      .create
+  def injector = TestInjector(
+    GraphModule
+  ).create
 
   val graph: Graph = injector.instance[Graph]
 
