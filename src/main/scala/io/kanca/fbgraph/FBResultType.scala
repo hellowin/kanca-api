@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter
 
 import play.api.libs.json.JsObject
 
-class FBGraph {
+class FBGraphResult {
   val TIME_FORMATTER = "yyyy-MM-dd'T'HH:mm:ssZ"
 }
 
@@ -37,7 +37,7 @@ case class GroupFeed(
   updatedTime: LocalDateTime,
 )
 
-object GroupFeed extends FBGraph {
+object GroupFeed extends FBGraphResult {
 
   def parse(rawFeed: JsObject): GroupFeed = GroupFeed(
     (rawFeed \ "id").validate[String].get,
