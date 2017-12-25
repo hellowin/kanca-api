@@ -9,7 +9,7 @@ import scala.collection.mutable.ListBuffer
 
 object GroupFeedRepo {
 
-  val READ_LIMIT = sys.env("READ_LIMIT").toInt
+  private val READ_LIMIT = sys.env("READ_LIMIT").toInt
 
   def insert(connection: Connection, groupFeeds: List[GroupFeed]): Boolean = {
     val sql: String =

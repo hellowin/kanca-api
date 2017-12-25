@@ -1,34 +1,46 @@
-package io.kanca.infra
+package io.kanca.repository
 
 import java.sql.{Connection, DriverManager}
 
-object MySQL {
+import io.kanca.fbgraph.GroupFeed
 
-  val MYSQL_HOST = sys.env("MYSQL_HOST")
-  val MYSQL_PORT = sys.env("MYSQL_PORT")
-  val MYSQL_DB = sys.env("MYSQL_DB")
-  val MYSQL_USERNAME = sys.env("MYSQL_USERNAME")
-  val MYSQL_PASSWORD = sys.env("MYSQL_PASSWORD")
-  val DRIVER = "com.mysql.cj.jdbc.Driver"
-  val URL = s"jdbc:mysql://$MYSQL_HOST:$MYSQL_PORT"
+class RepositoryMySQL(
+  connection: Connection,
+) extends Repository {
+
+  override def insertGroupFeed(groupFeeds: List[GroupFeed]): Boolean = GroupFeedRepo.insert(connection, groupFeeds)
+
+}
+
+object RepositoryMySQL {
 
   @throws[Exception]
-  def getConnection: Connection = {
+  def getConnection(
+    host: String,
+    port: String,
+    database: String,
+    username: String,
+    password: String,
+    driver: String,
+  ): Connection = {
+    val URL = s"jdbc:mysql://$host:$port"
+
     // make the connection
-    Class.forName(DRIVER)
-    val connection = DriverManager.getConnection(URL, MYSQL_USERNAME, MYSQL_PASSWORD)
+    Class.forName(driver)
+    val connection = DriverManager.getConnection(URL, username, password)
 
     // create the statement, and run the select query
     val statement = connection.createStatement()
+    // utf8mb4 is necessary because existence of emotikon on some post's message
     statement.execute(
       s"""
-         |CREATE DATABASE IF NOT EXISTS $MYSQL_DB
+         |CREATE DATABASE IF NOT EXISTS $database
          |  CHARACTER SET utf8mb4
          |  COLLATE utf8mb4_unicode_ci
       """.stripMargin
     )
 
-    connection.setCatalog(MYSQL_DB)
+    connection.setCatalog(database)
 
     connection
   }
