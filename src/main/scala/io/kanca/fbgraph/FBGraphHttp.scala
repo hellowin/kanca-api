@@ -23,20 +23,32 @@ class FBGraphHttp(
     if (next.orNull == null || pageLimit - 1 <= 0) return newResults
 
     // rebuild request if request is post, token and method params are vanished
-    val nextReq: HttpRequest = Http(next.get).params(Seq("method" -> "GET", "access_token" -> token)).postForm
+    val nextReq: HttpRequest = getHttpRequest(token, next.get)
 
     getListResult[T](nextReq, token, parser, pageLimit - 1, newResults)
   }
 
+  private def getHttpRequest(token: String, node: String, fields: String = null, limit: String = defaultRequestLimit): HttpRequest = {
+    var params = Seq(
+      "method" -> "GET",
+      "limit" -> limit.toString,
+      "access_token" -> token
+    )
+    var url = s"$FB_URL/$node"
+    if (fields != null) {
+      params = params :+ ("fields" -> fields)
+    } else {
+      url = node
+    }
+    Http(url).params(params).postForm
+  }
+
   @throws(classOf[Exception])
   def getGroupFeeds(token: String, groupId: String, pageLimit: Int = defaultPageLimit): List[GroupFeed] = {
-    val req: HttpRequest = Http(s"$FB_URL/$groupId/feed")
-      .params(Seq(
-        "method" -> "GET",
-        "fields" -> "created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags",
-        "limit" -> defaultRequestLimit,
-        "access_token" -> token
-      )).postForm
+    val req: HttpRequest = getHttpRequest(
+      token, s"$groupId/feed",
+      "created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags"
+    )
 
     debug(s"get group feeds url = ${req.url} params = ${req.params.map { case (key: String, value: String) => s"$key = $value" }}")
 
