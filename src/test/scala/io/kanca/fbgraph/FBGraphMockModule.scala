@@ -2,11 +2,16 @@ package io.kanca.fbgraph
 
 import com.google.inject.{Provides, Singleton}
 import com.twitter.inject.TwitterModule
+import com.twitter.inject.annotations.Flag
 
 object FBGraphMockModule extends TwitterModule {
 
+  flag[Int](name = "fbgraph.defaultPageLimit", default = 10, help = "Default page limit when fetching Graph API pagination.")
+
   @Singleton
   @Provides
-  def providesGraph: FBGraph = new FBGraphMock
+  def providesGraph(
+    @Flag("fbgraph.defaultPageLimit") defaultPageLimit: Int,
+  ): FBGraph = new FBGraphMock(defaultPageLimit)
 
 }

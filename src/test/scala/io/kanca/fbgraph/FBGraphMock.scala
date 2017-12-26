@@ -6,11 +6,12 @@ import play.api.libs.json.JsObject
 
 import scala.io.{Codec, Source}
 
-class FBGraphMock extends FBGraph(10) {
+class FBGraphMock(defaultPageLimit: Int) extends FBGraph(defaultPageLimit) {
 
   private def getResultArrayFromFile[T](filePrefix: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
     try {
       val path = s"/fixture/${filePrefix}_$pageLimit.json"
+      debug(s"Getting mock JSON from file $path")
       val resource: URL = getClass.getResource(path)
       val jsonString: String = Source.fromURL(resource)(Codec.UTF8).mkString
       val (result, next) = parseStringResultArray[T](jsonString, parser)

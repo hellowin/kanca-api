@@ -33,6 +33,7 @@ class RepositoryMySQLSpec extends IntegrationTest {
       "repo.mysql.password" -> MYSQL_PASSWORD,
       "repo.mysql.driver" -> MYSQL_DRIVER,
       "repo.readLimit" -> READ_LIMIT.toString,
+      "fbgraph.defaultPageLimit" -> DEFAULT_PAGE_LIMIT.toString,
     ),
     modules = Seq(
       RepoModuleMySQL,
