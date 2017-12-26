@@ -43,6 +43,16 @@ class FBGraphHttp(
     Http(url).params(params).postForm
   }
 
+  private def getDeepListResult[T](listResult: FBListResult[T], token: String, parser: JsObject => T): FBListResult[T] = {
+    if (listResult.next.orNull == null) {
+      listResult
+    } else {
+      val newListResult: FBListResult[T] = getListResult[T](getHttpRequest(token, listResult.next.get), token, parser)
+      val data: List[T] = listResult.data ::: newListResult.data
+      FBListResult(data, newListResult.next)
+    }
+  }
+
   @throws(classOf[Exception])
   def getGroupFeeds(token: String, groupId: String, pageLimit: Int = defaultPageLimit): FBListResult[GroupFeed] = {
     val req: HttpRequest = getHttpRequest(
@@ -56,16 +66,8 @@ class FBGraphHttp(
 
     // iterate reactions
     val feeds: List[GroupFeed] = feedResult.data.map(feed => {
-      val rea = feed.reactions
-
-      if (feed.reactions.next.orNull == null) {
-        feed
-      } else {
-        val newReactions: List[Reaction] = rea.data ::: getListResult[Reaction](getHttpRequest(token, rea.next.get), token, Reaction.parse).data
-        feed.reactions = FBListResult(newReactions, None)
-        feed
-      }
-
+      feed.reactions = getDeepListResult[Reaction](feed.reactions, token, Reaction.parse)
+      feed
     })
 
     FBListResult(feeds, feedResult.next)
