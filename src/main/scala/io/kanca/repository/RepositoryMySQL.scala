@@ -71,7 +71,9 @@ object RepositoryMySQL {
          |	status_type varchar(255),
          |	story longtext,
          |	`type` varchar(255),
-         |	updated_time datetime
+         |	updated_time datetime,
+         |  reactions json,
+         |  reactions_summary json
          |)
       """.stripMargin
     )

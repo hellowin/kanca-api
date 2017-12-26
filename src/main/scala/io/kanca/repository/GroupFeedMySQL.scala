@@ -2,7 +2,7 @@ package io.kanca.repository
 
 import java.sql.{Connection, PreparedStatement, ResultSet, Timestamp}
 
-import io.kanca.fbgraph.{From, GroupFeed, MessageTag}
+import io.kanca.fbgraph._
 import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
@@ -29,11 +29,15 @@ object GroupFeedMySQL {
         |	status_type,
         |	story,
         |	`type`,
-        |	updated_time
-        |) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        |	updated_time,
+        | reactions,
+        | reactions_summary
+        |) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         |ON DUPLICATE KEY UPDATE
         | caption = values(caption),
-        | description = values(description)
+        | description = values(description),
+        | reactions = values(reactions),
+        | reactions_summary = values(reactions_summary)
         |""".stripMargin
     val preparedStatement: PreparedStatement = connection.prepareStatement(sql)
 
@@ -63,6 +67,19 @@ object GroupFeedMySQL {
       preparedStatement.setString(15, feed.story.orNull)
       preparedStatement.setString(16, feed.typ)
       preparedStatement.setTimestamp(17, Timestamp.valueOf(feed.updatedTime))
+      preparedStatement.setString(18, Json.toJson(feed.reactions.data.map { rea =>
+        Json.obj(
+          "id" -> rea.id,
+          "name" -> rea.name,
+          "type" -> rea.typ
+        )
+      }).toString())
+      preparedStatement.setString(19, Json.toJson(feed.reactions.data.groupBy(_.typ).map { case (key, list) => {
+        Json.obj(
+          "type" -> key,
+          "count" -> list.size
+        )
+      }}).toString())
       preparedStatement.addBatch()
     })
     preparedStatement.executeBatch()
@@ -106,7 +123,14 @@ object GroupFeedMySQL {
         Option(rs.getString("status_type")),
         Option(rs.getString("story")),
         rs.getString("type"),
-        rs.getTimestamp("updated_time").toLocalDateTime
+        rs.getTimestamp("updated_time").toLocalDateTime,
+        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(obj => {
+          Reaction(
+            (obj \ "id").validate[String].get,
+            (obj \ "name").validate[String].get,
+            (obj \ "type").validate[String].get
+          )
+        }), None)
       )
       groupFeeds += groupFeed
     }

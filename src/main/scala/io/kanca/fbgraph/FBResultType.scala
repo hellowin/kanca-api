@@ -61,6 +61,7 @@ case class GroupFeed(
   story: Option[String],
   typ: String,
   updatedTime: LocalDateTime,
+  reactions: FBListResult[Reaction],
 )
 
 object GroupFeed extends FBGraphUtils {
@@ -92,6 +93,7 @@ object GroupFeed extends FBGraphUtils {
     (rawFeed \ "story").validate[String].asOpt,
     (rawFeed \ "type").validate[String].get,
     LocalDateTime.parse((rawFeed \ "updated_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
+    FBListResult.parse[Reaction]((rawFeed \ "reactions").validate[JsValue].getOrElse(Json.obj()), Reaction.parse _),
   )
 
 }
