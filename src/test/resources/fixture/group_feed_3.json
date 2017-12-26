@@ -1,0 +1,2432 @@
+{
+  "data": [
+    {
+      "created_time": "2017-11-30T05:54:36+0000",
+      "id": "228321510706889_691919544347081",
+      "message": "Hi everyone, I create a react starter kit for weekend projects. (Webpack, babel, ESLint and Sass installed. Will add Mobx and Redux options.)\n",
+      "updated_time": "2017-11-30T16:47:26+0000",
+      "caption": "github.com",
+      "story": "Hamza Erbay shared a link to the group: ReactJS.",
+      "description": "react-starter-kit - Starter kit for react experiments",
+      "from": {
+        "name": "Hamza Erbay",
+        "id": "10156199325779589"
+      },
+      "link": "https://github.com/hamzaerbay/react-starter-kit",
+      "name": "hamzaerbay/react-starter-kit",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691919544347081/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T16:15:30+0000",
+      "id": "228321510706889_692092537663115",
+      "message": "Want to learn mobile app development for FREE while living for FREE in a beautiful Lake Tahoe? https://buff.ly/2isnnWm world-class instructors Samer Buna and Azat Mardan will be teaching you!",
+      "updated_time": "2017-11-30T16:15:30+0000",
+      "caption": "medium.com",
+      "story": "Azat Mardan shared a link to the group: ReactJS.",
+      "description": "Free Learning. Free Housing. Free Food. No Kidding.",
+      "from": {
+        "name": "Azat Mardan",
+        "id": "10211451977408686"
+      },
+      "link": "https://buff.ly/2isnnWm",
+      "name": "How about a FREE immersive coding bootcamp? – Samer Buna – Medium",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBuNYFThL88ZmQG&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2AvMWvoZfZCS6wk8ZVsQXkAw.png&cfs=1&_nc_hash=AQD1uPJoixvANTf_",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/692092537663115/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T15:56:10+0000",
+      "id": "228321510706889_692081300997572",
+      "message": "Ogundipe wrote up a really easy to understand guide to using Typescript with React. Check it out. ",
+      "updated_time": "2017-11-30T15:56:10+0000",
+      "caption": "blog.logrocket.com",
+      "story": "Brian Neville-O'Neill shared a link to the group: ReactJS.",
+      "description": "TypeScript is a free, open-source programming language developed and maintained by Microsoft. It is a strict superset of JavaScript and…",
+      "from": {
+        "name": "Brian Neville-O'Neill",
+        "id": "1715392958492997"
+      },
+      "link": "https://blog.logrocket.com/how-why-a-guide-to-using-typescript-with-react-fffb76c61614",
+      "name": "How & why: A guide to using Typescript with React: – LogRocket",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQAoAji5U-01ekBx&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2ATKLBirbHS-fJfpJTv5qi0Q.png&cfs=1&_nc_hash=AQDwctwMRbNN1piM",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 5
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/692081300997572/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T05:26:51+0000",
+      "id": "228321510706889_690853257787043",
+      "message": "Help me: how to create a function in reactjs that set css: display:block for a element?",
+      "updated_time": "2017-11-30T15:00:35+0000",
+      "from": {
+        "name": "Phan Thắng",
+        "id": "608708646187223"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690853257787043/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T14:30:13+0000",
+      "id": "228321510706889_692052567667112",
+      "message": "Everyone interested in online educatiom should follow this.",
+      "updated_time": "2017-11-30T14:30:14+0000",
+      "story": "Linas Jusys shared BitDegree's live video to the group: ReactJS.",
+      "description": "Q&A session with BitDegree Co-founders Andrius and Danielius has started! If you have a question, leave it in the comments section down below",
+      "from": {
+        "name": "Linas Jusys",
+        "id": "10210862620736217"
+      },
+      "link": "https://www.facebook.com/bitdegree.org/videos/176131926304400/",
+      "name": "BitDegree",
+      "picture": "https://scontent.xx.fbcdn.net/v/t15.0-10/s130x130/24134642_176139649636961_2411769190634487808_n.jpg?oh=17d04d490c445ab758f8ec0279ca22e9&oe=5AC2A0E1",
+      "type": "video",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/692052567667112/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T11:04:18+0000",
+      "id": "228321510706889_691987987673570",
+      "message": "Well I converted from VueJS to React for my current project and the whole process was very smooth. I don't understand why all the fuss. I was a little bit prejudiced about JSX but it didn't even touch me (JSX with emmet is just like HTML with emmet). Also writing in JSX it feels more javascript. I learned React from a known video tutor in a day, and the whole basic port took about 2 days. Now its time to discover redux too and compare it to Vuex.\n\nYeah I know, I learned from the opposite order Vue->React. But I think the reason that I grasped so easily React, was that I had already understood the whole concept.",
+      "updated_time": "2017-11-30T14:12:22+0000",
+      "from": {
+        "name": "Charalampos Poulikidis",
+        "id": "10204440195081288"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691987987673570/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T13:20:52+0000",
+      "id": "228321510706889_692029631002739",
+      "message": "Dope! 16.2 added the Fragment syntax (and <> sugar). \nUsing arrays for parentless components wasn't really good an experience.",
+      "updated_time": "2017-11-30T13:51:07+0000",
+      "from": {
+        "name": "Elton Jain",
+        "id": "10212028492565126"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=10213864260938188&set=gm.692029631002739&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/24300889_10213864260938188_5806455965115184905_n.jpg?oh=aafa22bedbda2da164f4829d35b00b0e&oe=5AB91E9D",
+      "status_type": "added_photos",
+      "type": "photo",
+      "shares": {
+        "count": 3
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/692029631002739/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T13:02:12+0000",
+      "id": "228321510706889_692025111003191",
+      "message": "Hey, I've just published new article about well-crafted components. Recently, I've seen quite a lot of code, that's more focused on immediate results than long-term maintainability and I wanted to share my thoughts. I'm discussing single responsibility principle & separation of concerns with some examples. Please take a look & let me know what do you think 😃 ",
+      "updated_time": "2017-11-30T13:02:13+0000",
+      "caption": "reallifeprogramming.com",
+      "story": "Bartek Witczak shared a link to the group: ReactJS.",
+      "description": "We value code that is easy to maintain over code that is easy to write",
+      "from": {
+        "name": "Bartek Witczak",
+        "id": "1982898398654292"
+      },
+      "link": "https://reallifeprogramming.com/why-well-crafted-components-matter-b46d6d709e55",
+      "name": "Why well-crafted components matter? – Real Life Programming",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQC-nhGU0RfU45fP&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2A8_EYrtu7ziDrf_ATuPxQdQ.jpeg&cfs=1&_nc_hash=AQA5XiTdSPn_4Ecz",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/692025111003191/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T12:22:43+0000",
+      "id": "228321510706889_691600934378942",
+      "message": "Hi guys, what is the most SEO friendly way of doing 404 redirections which depence on ajax call? Should I use \"Redirect\" from react-router-dom?",
+      "updated_time": "2017-11-30T12:54:31+0000",
+      "from": {
+        "name": "Tomas Michalica",
+        "id": "1987377164612695"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691600934378942/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T12:12:32+0000",
+      "id": "228321510706889_692007767671592",
+      "message": "Just want to say I love this group. Kudos the the mods, one of the better groups I've been a part of.",
+      "updated_time": "2017-11-30T12:12:33+0000",
+      "from": {
+        "name": "KL Justice",
+        "id": "10103678110479518"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/692007767671592/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T05:39:08+0000",
+      "id": "228321510706889_691328164406219",
+      "message": "Hi Friends,😀\n\nRead Top 7 Editors For #React Native Mobile #App #Development- ",
+      "updated_time": "2017-11-30T11:44:54+0000",
+      "caption": "evontech.com",
+      "story": "Ragini Malhotra shared a link to the group: ReactJS.",
+      "description": "React Native, a JavaScript framework and product of Facebook, is widely used by developers to build quality, native and powerful mobile applications for iOS and Android. The framework quickly rose to fame after Facebook open sourced it in 2015.As React Native has become the current trend for buildin...",
+      "from": {
+        "name": "Ragini Malhotra",
+        "id": "291648937953165"
+      },
+      "link": "http://www.evontech.com/what-we-are-saying/entry/top-7-editors-for-react-native-mobile-app-development1.html",
+      "name": "Top 7 Editors For React Native Mobile App Development",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQDYz4EfLZ60m7NZ&w=130&h=130&url=https%3A%2F%2Flh4.googleusercontent.com%2F4sYg4nCKj0VoYTIibRJJWUzy-kRKkO7NhzDoHhnwk-dPEChEPAH0Pvo2k_4Cjb11C9a5zIvmuebquO0shJHitU13QMVLSctrTFZoKORPHQm7QlnGczwZSsSEW8R4RP3ZHc8jOHtj&cfs=1&_nc_hash=AQD1PWtsSuEokgyo",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691328164406219/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T10:53:42+0000",
+      "id": "228321510706889_691985471007155",
+      "message": "Anyone available for a quick help on a small react 16 express ssr app.I am facing some issues serving static files via express.",
+      "updated_time": "2017-11-30T10:53:43+0000",
+      "from": {
+        "name": "Vivek Nayyar",
+        "id": "1624005447640303"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691985471007155/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T13:55:58+0000",
+      "id": "228321510706889_691632697709099",
+      "message": "Interested in Blockchain as a React developer?\n\n",
+      "updated_time": "2017-11-30T08:40:38+0000",
+      "caption": "vijayt.com",
+      "story": "Vijay Thirugnanam shared a link to the group: ReactJS.",
+      "description": "Web development using Blockchain technologies is pretty new. Ethereum has good development tools such as Web3, TestRPC, Truffle for JavaScript developers.",
+      "from": {
+        "name": "Vijay Thirugnanam",
+        "id": "10156208539429625"
+      },
+      "link": "https://vijayt.com/post/blockchain-and-ethereum-for-javascript-and-react-developers/",
+      "name": "Blockchain and Ethereum for JavaScript and React developers - Vijay T",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQDDcDlgoxxrJtRv&w=130&h=130&url=https%3A%2F%2Fvijayt.com%2Fwp-content%2Fuploads%2F2017%2F11%2FScreen-Shot-2017-11-29-at-12.15.07-PM.png&cfs=1&_nc_hash=AQB0dx5U8ZzxYEr4",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 6
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691632697709099/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T01:37:30+0000",
+      "id": "228321510706889_691851851020517",
+      "message": "i have a syntax:\n const handlerRemove = props.handleRemove.bind(null, props.id)\nbut i don't understand value 'null' in bind(null, props.id) although i know bind method",
+      "updated_time": "2017-11-30T08:05:28+0000",
+      "from": {
+        "name": "Phan Thắng",
+        "id": "608708646187223"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691851851020517/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T02:58:01+0000",
+      "id": "228321510706889_691873151018387",
+      "message": "Conditional rendering in react and redux ....any suggestive link??",
+      "updated_time": "2017-11-30T06:41:18+0000",
+      "from": {
+        "name": "Arpan Srivastava",
+        "id": "1766976390008942"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691873151018387/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-30T04:26:24+0000",
+      "id": "228321510706889_691894354349600",
+      "message": "Brief explanation of State",
+      "updated_time": "2017-11-30T04:26:28+0000",
+      "story": "Chandra Kishore Bakshi uploaded a file in the group: ReactJS.",
+      "from": {
+        "name": "Chandra Kishore Bakshi",
+        "id": "1452888714790362"
+      },
+      "type": "status",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/691894354349600/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-03-03T16:58:08+0000",
+      "id": "228321510706889_578569362348767",
+      "message": "Welcome to the ReactJS group. Please take a moment to read the following rules to keep this community more friendly.\n1. Please keep links relative to React development\n2. Don't promote paid content in the group\n3. Job posting is allowed, but it should be related to React/React Native\n4. Please write post in English",
+      "updated_time": "2017-11-30T04:02:15+0000",
+      "from": {
+        "name": "Mitch Chen",
+        "id": "10212983594009091"
+      },
+      "type": "status",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/578569362348767/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T21:35:10+0000",
+      "id": "228321510706889_691794861026216",
+      "message": "Hello, everyone. I've been programming for many years but am brand new to React. Hopefully, we can learn from one another. :)",
+      "updated_time": "2017-11-29T22:56:40+0000",
+      "from": {
+        "name": "David Wellsted",
+        "id": "383296772093667"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691794861026216/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T05:37:20+0000",
+      "id": "228321510706889_691327781072924",
+      "message": "What wrong??? 1688.com",
+      "updated_time": "2017-11-29T22:06:27+0000",
+      "from": {
+        "name": "John Ngoc Pham",
+        "id": "1927048734206746"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=2024383867806565&set=gm.691327781072924&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/24176796_2024383867806565_5325228201359116818_n.jpg?oh=ae0b5677a0f3d12291184421d1ba51af&oe=5ACBEDA8",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691327781072924/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T07:32:46+0000",
+      "id": "228321510706889_691371804401855",
+      "message": "We are a VC funded startup building UBER FOR WORK where any work can be executed any time in any part of the country with the student workforce available everywhere.\n\nDrop me an email at praveen@awign.com.\n\n",
+      "updated_time": "2017-11-29T18:02:54+0000",
+      "caption": "angel.co",
+      "story": "Praveen Sah shared a link to the group: ReactJS.",
+      "description": "Apply now for Senior UI Developer (ReactJS) Job at Awign in Bengaluru - Awign is a VC funded startup based out of HSR layout Bangalore. We are PAN India outsourcing solution, driving business development and research of growing businesses through a unique concept of ‘Crowdsourcing in Outsourcing?...",
+      "from": {
+        "name": "Praveen Sah",
+        "id": "1884339518250507"
+      },
+      "link": "https://angel.co/awign/jobs/224395-senior-ui-developer-reactjs",
+      "name": "Senior UI Developer (ReactJS) - Awign Jobs on AngelList",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQAhY8I-NyXi_xvg&w=130&h=130&url=https%3A%2F%2Fd1qb2nb5cznatu.cloudfront.net%2Fstartups%2Fi%2F3275769-303fa764049fdbafe3c465bf4fa5f1f5-medium_jpg.jpg%3Fbuster%3D1511940677&cfs=1&_nc_hash=AQCkn7hW8aL3deXr",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691371804401855/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T09:11:32+0000",
+      "id": "228321510706889_690904221115280",
+      "message": "Hi people , i have an error when i am fetching request (axios.post) to the api https://github.com/login/oauth/access_token . Erron in screenshot \nP.S. with POSTMAN all works fine. I need to enable CORS to all origins in create-react-app.",
+      "updated_time": "2017-11-29T15:47:55+0000",
+      "from": {
+        "name": "Mirali Rafiyev",
+        "id": "1593149374052930"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=1760998030601396&set=gm.690904221115280&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/q92/s130x130/23905448_1760998030601396_6802777112296816825_n.jpg?oh=9da7a50b496c1c2c1e58a5f8ea00d3a5&oe=5AF76DD5",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690904221115280/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T09:44:39+0000",
+      "id": "228321510706889_691526177719751",
+      "message": "The development of a customer feedback collection platform. Of API and data harvesting tools. Let's decide which one is the better method to gather customer reviews and manage online reputation (+ code inside)",
+      "updated_time": "2017-11-29T09:44:40+0000",
+      "caption": "medium.com",
+      "story": "Zoriana Senkovska shared a link to the group: ReactJS.",
+      "description": "The possible methods to collect customer reviews and manage online reputation more effectively",
+      "from": {
+        "name": "Zoriana Senkovska",
+        "id": "1418695274895779"
+      },
+      "link": "https://goo.gl/etLjb2",
+      "name": "Customer Feedback Collection Platform Development: Of API And Data Harvesting Tools",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQCZz0epP8oWip5H&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2AHKBFb23pRElcA6zH5bYPsQ.jpeg&cfs=1&_nc_hash=AQBcqZPaqikIieKr",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691526177719751/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T08:10:02+0000",
+      "id": "228321510706889_691381564400879",
+      "message": "Hey all! Any recommendations for React components that display the output of a command line process? My goal was to find a simple component that could run a predefined terminal command (one that runs continuously) and display the output, but I didn't find anything that would be a fairly seamless drop. I looked at react-bash and one or two other components, but it didn't seem like they offered examples that would let you run/spawn a true command line process. Any ideas? If not no biggie; I'll just run it separately for now and wait until I get my Redux stuff integrated :)",
+      "updated_time": "2017-11-29T08:28:15+0000",
+      "from": {
+        "name": "Rob Brennan",
+        "id": "10212830271100767"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691381564400879/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-29T03:52:46+0000",
+      "id": "228321510706889_691299117742457",
+      "message": "The best view in Istanbul, it is good to see that :):):)",
+      "updated_time": "2017-11-29T06:20:19+0000",
+      "story": "Peter Chang shared Waheng chang's post to the group: ReactJS.",
+      "description": "The best view in Istanbul, it is good to see that :):):)\n\n#js #node #nodejs #javascript #programming #funny #joke #unit #test #coverage #istanbul",
+      "from": {
+        "name": "Peter Chang",
+        "id": "10155495285138478"
+      },
+      "link": "https://www.facebook.com/1595937827294375/photos/a.1601287260092765.1073741830.1595937827294375/1967453296809491/?type=3",
+      "name": "Waheng chang",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/24174684_1967453296809491_6304945368719365584_n.jpg?oh=81bd506708d1bb8bdad210c7480601b2&oe=5ABE679B",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691299117742457/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T11:23:49+0000",
+      "id": "228321510706889_690940281111674",
+      "message": "Is there anyone using GraphQL? I need some advise on the development stack. \n\nI have been doing some research and found that some stacks are like : \n\n1. React + GraphQL + Redux + Apollo \n2. React + GraphQL + Redux \n\nSince I havent tried out Apollo yet , can someone please briefly explain the difference or the pros and cons between the Stack 1 & 2 mentioned above ?\n\nThanks bro",
+      "updated_time": "2017-11-29T04:42:52+0000",
+      "from": {
+        "name": "Simone Li",
+        "id": "10155441152757492"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690940281111674/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T07:40:59+0000",
+      "id": "228321510706889_690883277784041",
+      "message": "I am looking for a React multi social media (facebook, twitter, github, vk, google, linkedin) login library but I cant. Can you help me?",
+      "updated_time": "2017-11-29T02:03:22+0000",
+      "from": {
+        "name": "Trần Nam",
+        "id": "1009445732522915"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690883277784041/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-26T06:49:20+0000",
+      "id": "228321510706889_690091037863265",
+      "message": "I am going to write a new React tutorial. Can you guys suggest me a topic ?",
+      "updated_time": "2017-11-29T00:40:20+0000",
+      "from": {
+        "name": "Trần Nam",
+        "id": "1009445732522915"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690091037863265/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T22:18:36+0000",
+      "id": "228321510706889_691197334419302",
+      "message": "at long last!  🎉🎉\n\n",
+      "updated_time": "2017-11-28T23:47:15+0000",
+      "caption": "reactjs.org",
+      "story": "Tropet Coniconde shared a link to the group: ReactJS.",
+      "description": "React 16.2 is now available! The biggest addition is improved support for returning multiple children from a component’s render method. We call this feature fragments : Fragments look like empty JSX tags. They let you group a list of children without adding extra nodes to the DOM: This exciting ne...",
+      "from": {
+        "name": "Tropet Coniconde",
+        "id": "10203282128931104"
+      },
+      "link": "https://reactjs.org/blog/2017/11/28/react-v16.2.0-fragment-support.html",
+      "name": "React v16.2.0: Improved Support for Fragments - React Blog",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBoLVpp9LIAB4xh&w=130&h=130&url=https%3A%2F%2Freactjs.org%2Flogo-og.png&cfs=1&_nc_hash=AQD9NB45brKgE_FL",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 8
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691197334419302/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T20:59:46+0000",
+      "id": "228321510706889_691177374421298",
+      "message": "Here are the React-specific sessions at Assert(js):\n\n1. Aaron Abramov (Jest core team / Facebook): \"Establishing testing patterns with software design principles\"\n\n2. Mary Snow (Codesmith): Testing React Applications\n\n3. Rotem Mizrachi-Meidan (Detox project core team / Wix): Testing React Native apps with Detox\n\nAnd a full-day hands-on training session by Kent C. Dodds (PayPal & TC39) on testing React apps.\n\n(And lots of other more general JS talks.)\n\nEarly-bird tickets are still available (but only for 2 more days).",
+      "updated_time": "2017-11-28T23:27:33+0000",
+      "caption": "assertjs.com",
+      "story": "Paul Dowman shared a link to the group: ReactJS.",
+      "description": "Assert(js) Testing Conference is a one-day, single-track conference with a laser focus on JavaScript testing for developers - both UI and Node.js.",
+      "from": {
+        "name": "Paul Dowman",
+        "id": "10158702989335584"
+      },
+      "link": "https://www.assertjs.com/",
+      "name": "Home",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQCjx3A9bYC64aCd&w=130&h=130&url=http%3A%2F%2Fstatic1.squarespace.com%2Fstatic%2F59b9455e8dd041ada30d76d8%2Ft%2F59ce7265b07869cacc28812e%2F1506701936699%2Fassertjs-banner.png%3Fformat%3D1000w&cfs=1&_nc_hash=AQD9YtIIhhiaNv3N",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691177374421298/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T19:49:52+0000",
+      "id": "228321510706889_691157191089983",
+      "updated_time": "2017-11-28T19:49:53+0000",
+      "story": "Manoj Singh Negi shared Manoj Singh Negi's post to the group: ReactJS.",
+      "description": "Promises introduced in ES6 to improve handling of async operations.\n\n#javascript #react #webdevelopment #es6",
+      "from": {
+        "name": "Manoj Singh Negi",
+        "id": "1125111517623856"
+      },
+      "link": "https://medium.com/@manojsinghnegi/the-es6-promises-87a979ab27e4",
+      "name": "Manoj Singh Negi",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQAPzfah8P8WaSdk&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2A6Aop_XAE7ymcQhF6GVmSTA.png&cfs=1&_nc_hash=AQA-E3ILSbe1cuwv",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691157191089983/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T18:20:59+0000",
+      "id": "228321510706889_691136611092041",
+      "message": "Hi,\nHow do I implement google analytics reporting api for custom dashboard using react?",
+      "updated_time": "2017-11-28T19:02:38+0000",
+      "from": {
+        "name": "Nisarg Parikh",
+        "id": "1689412527777756"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691136611092041/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T18:48:15+0000",
+      "id": "228321510706889_691142867758082",
+      "message": "Learn how to properly use Redux, a storage 🗃 facility that helps JavaScript applications to manage state 🤺\n\n→ https://auth0.com/blog/redux-practical-tutorial/?utm_source=facebookgroups&utm_medium=sc&utm_campaign=redux_tutorial",
+      "updated_time": "2017-11-28T18:48:15+0000",
+      "from": {
+        "name": "Ramiro Nuñez Dosio",
+        "id": "10212755529181243"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=10214701017897245&set=gm.691142867758082&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/24059078_10214701017897245_6615089936293705679_n.jpg?oh=dd057295660af4870b733eeaeeced062&oe=5AF807D2",
+      "status_type": "added_photos",
+      "type": "photo",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691142867758082/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T17:26:39+0000",
+      "id": "228321510706889_691122034426832",
+      "message": "Who can help me to set single selection and not multple on react-data-grid? ",
+      "updated_time": "2017-11-28T17:26:39+0000",
+      "caption": "adazzle.github.io",
+      "story": "Jarno Leppala shared a link to the group: ReactJS.",
+      "from": {
+        "name": "Jarno Leppala",
+        "id": "1119281768201848"
+      },
+      "link": "http://adazzle.github.io/react-data-grid/examples.html#/row-select",
+      "name": "React Data Grid - Excel-like grid component built with React",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691122034426832/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T16:41:48+0000",
+      "id": "228321510706889_691108811094821",
+      "message": "https://l.facebook.com/l.php?u=https%3A%2F%2Freactarmory.com%2Fguides%2Flifecycle-simulators&h=ATNAAWTHiBBBn0cTMRD5KyQUGNg8itl4CTjxkKZ2ia4n-UrofQQ02wBXsr3yk3hK6cV9Q1JV8sLXw9i90vZH-sbZXzhSS7XJfAE6mczxrKDTAa8IoHoWpBmjcUQXlmhwYQtyzWouKtu7iCRO219Nidcl9L_rHnI1dhte9DaiHSf7HHThygzTP-zaEXr-YFysBoUepCTQKTeweHvCnw_ULbUs_XO8kxInx3Zo6UbvXDerrNlBfWqecrKHH1u1zK_m8fR4k_Xm781UTEa4PB1vqaexdrCad5abS_Qn3rWtMozLZtx1siE",
+      "updated_time": "2017-11-28T16:41:49+0000",
+      "caption": "reactarmory.com",
+      "story": "Chandra Kishore Bakshi shared a link to the group: ReactJS.",
+      "description": "Deepen your understanding of component lifecycle by stepping through each method in slow-motion.",
+      "from": {
+        "name": "Chandra Kishore Bakshi",
+        "id": "1452888714790362"
+      },
+      "link": "https://reactarmory.com/guides/lifecycle-simulators",
+      "name": "Component Lifecycle Simulators — React Armory",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQA9YCUT8jA5yulc&w=130&h=130&url=https%3A%2F%2Freactarmory.com%2F9216da13ac3cff91434f8cc851f86df8.png&cfs=1&_nc_hash=AQA6oP5cdBcSibau",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 7
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/691108811094821/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T12:32:34+0000",
+      "id": "228321510706889_690958317776537",
+      "message": "hello i am beginner on reactjs. i want to do simple form validation using reactjs. like username and password on login form shouldn't be empty. \n\ncan anyone help with sample codes (on github or any other links) ? looking for little help here. thanks",
+      "updated_time": "2017-11-28T13:04:49+0000",
+      "from": {
+        "name": "Sagar Limbu",
+        "id": "10155509598036649"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690958317776537/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-28T08:42:47+0000",
+      "id": "228321510706889_690896327782736",
+      "updated_time": "2017-11-28T08:42:47+0000",
+      "story": "Zack Siri shared Codemy.net's post to the group: ReactJS.",
+      "description": "We add animation and some style to our Alert #component. #free #reactjs #video",
+      "from": {
+        "name": "Zack Siri",
+        "id": "10155584578468268"
+      },
+      "link": "https://www.codemy.net/posts/react-adding-animation-and-style-to-alert-compnent",
+      "name": "Codemy.net",
+      "picture": "https://scontent.xx.fbcdn.net/v/t45.1600-4/c50.0.130.130/p130x130/24293514_6086395939789_7369630964688879616_n.png?oh=48cb6b0b65583e4a193b95bed703a930&oe=5AB8FA1C",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690896327782736/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T16:13:54+0000",
+      "id": "228321510706889_689455074593528",
+      "message": "I'm looking for a library that provides a time picker. The web application that I'm building will be used mainly on mobiles so I need the library to use a native time picker on mobile or something that would be convenient to use on mobiles. I've tried react-flatpickr and all is good except from the fact that it is not possible to disable the display of seconds and milliseconds. I would appreciate any advice on this",
+      "updated_time": "2017-11-28T06:47:19+0000",
+      "from": {
+        "name": "Inga Vaičiakauskaitė",
+        "id": "10155967110364371"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689455074593528/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T16:07:11+0000",
+      "id": "228321510706889_690638937808475",
+      "message": "Today's the start of Kyle Simpson Week at Frontend Masters! 🎉 Watch 8 FREE JavaScript courses 🔥 by Kyle Simpson all week \n\nFrontend Masters\n\n",
+      "updated_time": "2017-11-28T05:47:28+0000",
+      "caption": "frontendmasters.com",
+      "story": "Mohamed Zubair shared a link to the group: ReactJS.",
+      "description": "To celebrate over 300,000 hours of Kyle’s courses being watched by developers the world over, all week Kyle Simpsons’ courses on Frontend Masters are FREE!",
+      "from": {
+        "name": "Mohamed Zubair",
+        "id": "1334632986617774"
+      },
+      "link": "https://frontendmasters.com/teachers/kyle-simpson/",
+      "name": "Kyle Simspon Week at Frontend Masters",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQDjaFExenUciSqd&w=130&h=130&url=https%3A%2F%2Ffrontendmasters.com%2Fstatic-assets%2Fsale%2Fksw-meta.jpg&cfs=1&sx=674&sy=0&sw=499&sh=499&_nc_hash=AQCgDQQXybzc31IT",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 8
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690638937808475/",
+      "message_tags": [
+        {
+          "id": "126977607478401",
+          "name": "Frontend Masters",
+          "type": "page",
+          "offset": 123,
+          "length": 16
+        }
+      ],
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          },
+          {
+            "id": "126977607478401",
+            "name": "Frontend Masters"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T04:27:21+0000",
+      "id": "228321510706889_690443071161395",
+      "message": "I am learning React Basic.After learning react basic,should I learn redux or do a small project and move on to advance.Plz guide me.",
+      "updated_time": "2017-11-28T02:01:08+0000",
+      "from": {
+        "name": "Arjun Karki",
+        "id": "1986183144980220"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690443071161395/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T20:17:24+0000",
+      "id": "228321510706889_690719127800456",
+      "message": "Guys, is someone here using Meteor professionally? I don't see much of the use of meteor with React, but I'm studying Meteor+React and I'm thinking its awesome! \n\nOf course, I'm a beginner, I have never developed a big scale app to know if it becomes a pain the ass. \n\nCould you guys give me your thoughts about React + Meteor and if it's worth focus on meteor learning?\n\nThanks!",
+      "updated_time": "2017-11-27T20:59:35+0000",
+      "from": {
+        "name": "Gu Dias",
+        "id": "236159860256361"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690719127800456/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T07:55:42+0000",
+      "id": "228321510706889_690486707823698",
+      "message": "Hi guys, yesterday a friend from this group message me to write a tutorial about integrating Facebook login into React. So here it is, please take a look and tell me what you think.",
+      "updated_time": "2017-11-27T16:23:56+0000",
+      "caption": "jslancer.com",
+      "story": "Trần Nam shared a link to the group: ReactJS.",
+      "description": "Social media login is inevitable for any modern website. Learn how to integrate Facebook login into your React application using Facebook Javascript SDK",
+      "from": {
+        "name": "Trần Nam",
+        "id": "1009445732522915"
+      },
+      "link": "http://jslancer.com/blog/2017/11/27/facebook-google-login-react/",
+      "name": "Integrating Facebook login into your React application",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQCiEJSYx2OrZ-Eo&w=130&h=130&url=http%3A%2F%2Fjslancer.com%2Fwp-content%2Fuploads%2F2017%2F11%2FUntitled-2.jpg&cfs=1&_nc_hash=AQCEjDQnH2nCCsQX",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 8
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690486707823698/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T15:53:30+0000",
+      "id": "228321510706889_690634567808912",
+      "message": "Is it possible to make authentication with service cookies ans session id in React? any tutorial or example? I was using jwt before, have no idea how to use cookies for this reason..",
+      "updated_time": "2017-11-27T16:01:14+0000",
+      "from": {
+        "name": "Kristina Matuleviciute",
+        "id": "10155406828316052"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690634567808912/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T15:49:24+0000",
+      "id": "228321510706889_690633514475684",
+      "message": "A redux connected component to manage location stuff in react-native\n",
+      "updated_time": "2017-11-27T15:49:25+0000",
+      "caption": "github.com",
+      "story": "Stefano Contini shared a link to the group: ReactJS.",
+      "description": "react-native-location-manager - A redux connected component to manage all location related stuff",
+      "from": {
+        "name": "Stefano Contini",
+        "id": "10212876578818471"
+      },
+      "link": "https://github.com/abidibo/react-native-location-manager",
+      "name": "abidibo/react-native-location-manager",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBGXO9ztiehDd63&w=130&h=130&url=https%3A%2F%2Favatars3.githubusercontent.com%2Fu%2F444093%3Fs%3D400%26v%3D4&cfs=1&_nc_hash=AQBPTlSLcwd4O9Ji",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690633514475684/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T12:34:27+0000",
+      "id": "228321510706889_690561087816260",
+      "message": "https://medium.com/@erikras/final-form-the-road-to-the-checkered-flag-cd9b75c25fe",
+      "updated_time": "2017-11-27T12:34:28+0000",
+      "caption": "medium.com",
+      "story": "Michal Takáč shared a link to the group: ReactJS.",
+      "description": "Two and a half years ago, about a month after Dan Abramov’s unforgettable launch of Redux at React Europe 2015, I released a humble little…",
+      "from": {
+        "name": "Michal Takáč",
+        "id": "1567799813230306"
+      },
+      "link": "https://medium.com/@erikras/final-form-the-road-to-the-checkered-flag-cd9b75c25fe",
+      "name": "🏁 Final Form: The road to the checkered flag – Erik Rasmussen – Medium",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQA5su9FZyMOMiyZ&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2AHx7QKm3R1J99GgRYr4NbbQ.jpeg&cfs=1&_nc_hash=AQB4t6Hz08XvYldW",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690561087816260/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T18:36:37+0000",
+      "id": "228321510706889_689495274589508",
+      "message": "Difference () => () and () => {} in arrow function ES6?",
+      "updated_time": "2017-11-27T11:35:56+0000",
+      "from": {
+        "name": "Phan Thắng",
+        "id": "608708646187223"
+      },
+      "type": "status",
+      "shares": {
+        "count": 2
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689495274589508/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T07:12:13+0000",
+      "id": "228321510706889_690475321158170",
+      "message": "Learn STATE\n",
+      "updated_time": "2017-11-27T07:12:14+0000",
+      "caption": "daveceddia.com",
+      "story": "Chandra Kishore Bakshi shared a link to the group: ReactJS.",
+      "description": "react A Visual Guide to State in React By Dave Ceddia October 18, 2016 Comment Follow @dceddia React’s “state” is one of the more difficult concepts to learn. Not just what to put in state, but what it actually is and what it’s for. And also how Redux is related to React state. I hope to clear up so...",
+      "from": {
+        "name": "Chandra Kishore Bakshi",
+        "id": "1452888714790362"
+      },
+      "link": "https://daveceddia.com/visual-guide-to-state-in-react/",
+      "name": "A Visual Guide to State in React",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?w=130&h=130&url=https%3A%2F%2Fdaveceddia.com%2Fimages%2Fvisual-state-guide.png&cfs=1&_nc_hash=AQDfKnMG1YAfXoKY",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 6
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690475321158170/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T07:05:17+0000",
+      "id": "228321510706889_690474044491631",
+      "message": "Hello everyone ! This is my post on a new insight on how to call the Action Creator for an API request. Please give it a read  . :)\n",
+      "updated_time": "2017-11-27T07:05:18+0000",
+      "caption": "sahilthakur7blog.wordpress.com",
+      "story": "Sahil Thakur shared a link to the group: ReactJS.",
+      "description": "So, another post related to the React-Redux ecosystem here. This is a post heavily influenced by an idea I heard in one of Stephen Grider’s videos. I hope you do get something out from this. …",
+      "from": {
+        "name": "Sahil Thakur",
+        "id": "1533733946706258"
+      },
+      "link": "https://sahilthakur7blog.wordpress.com/2017/11/27/data-loading-in-redux/",
+      "name": "Data Loading In Redux",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQCZTX7Oc_M49fvC&w=130&h=130&url=https%3A%2F%2Fsahilthakur7blog.files.wordpress.com%2F2017%2F11%2Fredux.jpg&cfs=1&_nc_hash=AQCbiQ8WJ-HyM9N2",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690474044491631/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-27T03:34:46+0000",
+      "id": "228321510706889_690433994495636",
+      "message": "Apparently, Netlify is super cool, few second launch React site, also work very well with Gitlab CICD.",
+      "updated_time": "2017-11-27T03:34:46+0000",
+      "from": {
+        "name": "Tawan",
+        "id": "1842783259379646"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690433994495636/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-25T10:08:20+0000",
+      "id": "228321510706889_689748204564215",
+      "message": "Just want to ask something about FlowType\n(Exact object types)\n\nas you can see, i have a function that have a \"values\" argument with a type of \"firstname\" and \"lastname\".\n\nHow come flow doesn't detect an error on the second If statement \"(values.noProperty)\" when i declare that only firstname and lastname should exist on values object.\n\nNow flow returns me an error if i try to access the property\n\"(values.noProperty.secondProp)\"\n\nAnyone encountered this? Cheers.",
+      "updated_time": "2017-11-27T00:31:29+0000",
+      "from": {
+        "name": "John Frades",
+        "id": "10203231458585069"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=10204012251504404&set=gm.689748204564215&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23795250_10204012251504404_6251640043739661895_n.jpg?oh=5f64b5ec2f2f656b5c857ae19e07764d&oe=5ABE821E",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689748204564215/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-26T18:45:39+0000",
+      "id": "228321510706889_690292487843120",
+      "message": "I used passport.js before for Node.js apps and it would store a cookie for me automatically and it would be sent to the server on each API request. Is the same true if it's a React app? Or I have to do something extra?",
+      "updated_time": "2017-11-26T19:01:22+0000",
+      "from": {
+        "name": "Dan Tenovski",
+        "id": "1662413363792549"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690292487843120/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-26T14:36:08+0000",
+      "id": "228321510706889_690220244517011",
+      "message": "This is the easiest way to describe what is {this.props.children}\n\n",
+      "updated_time": "2017-11-26T14:36:49+0000",
+      "caption": "codeburst.io",
+      "story": "Chandra Kishore Bakshi shared a link to the group: ReactJS.",
+      "description": "When I was first learning React, one of the concepts that I just couldn’t wrap my head around was this.props.children",
+      "from": {
+        "name": "Chandra Kishore Bakshi",
+        "id": "1452888714790362"
+      },
+      "link": "https://codeburst.io/a-quick-intro-to-reacts-props-children-cb3d2fce4891",
+      "name": "A quick intro to React’s props.children – codeburst",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQD-6b-SjRd196ew&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2AoHjmhD6Q4uOCl_E8-2Scug.jpeg&cfs=1&_nc_hash=AQBz82ofvMB7jFET",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690220244517011/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-26T13:26:44+0000",
+      "id": "228321510706889_690197817852587",
+      "message": "Hello everyone I recently built a shopping cart package for react-redux applications. Comments and feedbacks will be greatly appreciated. \n",
+      "updated_time": "2017-11-26T13:26:45+0000",
+      "caption": "github.com",
+      "story": "Enes Tufekci shared a link to the group: ReactJS.",
+      "description": "react-redux-shopping-cart - Shopping cart components for React Redux applications",
+      "from": {
+        "name": "Enes Tufekci",
+        "id": "10154704925465914"
+      },
+      "link": "https://github.com/enesTufekci/react-redux-shopping-cart",
+      "name": "enesTufekci/react-redux-shopping-cart",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBKoiVBmeWMykgY&w=130&h=130&url=https%3A%2F%2Favatars2.githubusercontent.com%2Fu%2F16020295%3Fs%3D400%26v%3D4&cfs=1&sx=0&sy=0&sw=400&sh=400&_nc_hash=AQCgU10z5YuqSArJ",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690197817852587/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-26T13:11:45+0000",
+      "id": "228321510706889_690192194519816",
+      "message": "how to use vn-tokenizer in reactjs?\ni have references github:\nhttps://github.com/duyetdev/node-vntokenizer\nbut i have a error: \"TypeError: s.split is not a function\" with token of state from api  :((",
+      "updated_time": "2017-11-26T13:11:45+0000",
+      "caption": "github.com",
+      "story": "Phan Thắng shared a link to the group: ReactJS.",
+      "description": "node-vntokenizer - Tokenizer for Vietnamese in Nodejs and Javascript.",
+      "from": {
+        "name": "Phan Thắng",
+        "id": "608708646187223"
+      },
+      "link": "https://github.com/duyetdev/node-vntokenizer",
+      "name": "duyetdev/node-vntokenizer",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBdSkqZwYCj3qNH&w=130&h=130&url=https%3A%2F%2Favatars2.githubusercontent.com%2Fu%2F5009534%3Fv%3D3%26s%3D400&cfs=1&_nc_hash=AQAVBo6mPq-zMADD",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690192194519816/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-26T11:20:23+0000",
+      "id": "228321510706889_690158281189874",
+      "message": "got my hand on React Boilerplate\n\n",
+      "updated_time": "2017-11-26T11:21:25+0000",
+      "caption": "bui-hien-text-converter.now.sh",
+      "story": "Thang T. Nguyen shared a link to the group: ReactJS.",
+      "from": {
+        "name": "Thang T. Nguyen",
+        "id": "10209198329902937"
+      },
+      "link": "https://bui-hien-text-converter.now.sh/",
+      "name": "React.js Boilerplate",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690158281189874/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-25T17:05:19+0000",
+      "id": "228321510706889_689882391217463",
+      "message": "https://github.com/SoorajChandran/image-hover-zoom \nSharing a small component I built using ReactJS for personal use. \nIt's an image zoom on hover widget - the kind you see in e-commerce websites. \nDemo here - soorajchandran.github.io/image-hover-zoom/\n\nFeel free to contribute and make it more efficient.",
+      "updated_time": "2017-11-26T05:17:06+0000",
+      "caption": "github.com",
+      "story": "Sooraj Chandran shared a link to the group: ReactJS.",
+      "description": "image-hover-zoom - React component for zoom on hover",
+      "from": {
+        "name": "Sooraj Chandran",
+        "id": "1529409690442548"
+      },
+      "link": "https://github.com/SoorajChandran/image-hover-zoom",
+      "name": "SoorajChandran/image-hover-zoom",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBU_uOtxjXPWU4D&w=130&h=130&url=https%3A%2F%2Favatars0.githubusercontent.com%2Fu%2F10363633%3Fs%3D400%26v%3D4&cfs=1&sx=0&sy=0&sw=400&sh=400&_nc_hash=AQBQ23k9aSAuL_W1",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689882391217463/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T09:42:25+0000",
+      "id": "228321510706889_689326714606364",
+      "message": "Hi people, who did login system in react+redux with passport.js (facebook oauth and github) ? Without react+redux i did in ejs + express. But with react+redux i cant do this. Who have any examples ? or tutorials ?",
+      "updated_time": "2017-11-26T03:56:47+0000",
+      "from": {
+        "name": "Mirali Rafiyev",
+        "id": "1593149374052930"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689326714606364/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-26T03:43:50+0000",
+      "id": "228321510706889_690047831200919",
+      "message": "https://github.com/antonybudianto/cra-universal\n\nadd ssr to your create-react-app without eject!",
+      "updated_time": "2017-11-26T03:43:50+0000",
+      "caption": "github.com",
+      "story": "Antony Budianto shared a link to the group: ReactJS.",
+      "description": "cra-universal - 🌏 CLI to initialize server for universal Create React App, without ejecting! (now with new React 16 renderToNodeStream API)",
+      "from": {
+        "name": "Antony Budianto",
+        "id": "10207023330662198"
+      },
+      "link": "https://github.com/antonybudianto/cra-universal",
+      "name": "antonybudianto/cra-universal",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQDIgi55jJAhoSyJ&w=130&h=130&url=https%3A%2F%2Favatars2.githubusercontent.com%2Fu%2F7658554%3Fs%3D400%26v%3D4&cfs=1&sx=0&sy=0&sw=400&sh=400&_nc_hash=AQBTvQaCJsXi5fdP",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/690047831200919/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-25T08:51:33+0000",
+      "id": "228321510706889_689727737899595",
+      "message": "Newbie question, if angular2 has services who handles the state of far away and shared state components. what would be it's counterpart in react?",
+      "updated_time": "2017-11-26T01:01:26+0000",
+      "from": {
+        "name": "AnthonyYolach Solana Lloveras",
+        "id": "10209037331762864"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689727737899595/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T20:18:54+0000",
+      "id": "228321510706889_689520411253661",
+      "message": "How could I create a multi-language website with React ?",
+      "updated_time": "2017-11-26T00:07:20+0000",
+      "from": {
+        "name": "Pan Chanom",
+        "id": "396324760786769"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689520411253661/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T01:17:25+0000",
+      "id": "228321510706889_688403674698668",
+      "message": "hey guys can someone help me understand how to push my state along to other components using react-router-dom. Right now I have the application hacked to store the state in local storage when user logs in, and then retreive the state from local storage when component mounts. However I am not sure if this is best practice, especially with security.\nThanks for the help",
+      "updated_time": "2017-11-25T19:27:19+0000",
+      "from": {
+        "name": "Natty B Davis III",
+        "id": "462481440761399"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=555585791450963&set=gm.688403674698668&type=3",
+      "name": "Photos from Natty B Davis III's post",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23722246_555585791450963_6618694646389876603_n.jpg?oh=5940b0c28bd7275469adb40ebeab5985&oe=5AC91BB8",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688403674698668/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-25T16:42:03+0000",
+      "id": "228321510706889_689875764551459",
+      "message": "Many members in the group ask about how to start learning React or how to move beyond the basics, so I’ve put together a comprehensive guide that captures what online courses are available to learn React and other web development skills when you're broke, short on time, on a budget, or looking to advance your expertise and skill set.\n\nMy goal with this post is to inspire folks along their developer journey and provide them with resources that can help them overcome the obstacles that may get in the way of their learning.\n\nIf you're up for it, join me for the Earn & Learn Coding Challenge.\n\nhttps://www.inventwithcode.com/best-courses-for-web-developers/ \n\nAlso, if I missed any resources, feel free to post them in the comments. I'm always looking for new resources to recommend!",
+      "updated_time": "2017-11-25T16:42:03+0000",
+      "caption": "inventwithcode.com",
+      "story": "Hahna Kane Latonick shared a link to the group: ReactJS.",
+      "description": "A comprehensive guide that captures what online courses are available for you to learn web development when you're broke, short on time, on a budget, or looking to advance your expertise and skill set.",
+      "from": {
+        "name": "Hahna Kane Latonick",
+        "id": "907965717302"
+      },
+      "link": "https://www.inventwithcode.com/best-courses-for-web-developers/",
+      "name": "Best Courses For Web Developers",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQDkyVhnOKCgfwJE&w=130&h=130&url=https%3A%2F%2Fwww.inventwithcode.com%2Fwp-content%2Fuploads%2F2017%2F11%2FFacebook.jpg&cfs=1&_nc_hash=AQCM5Z8GBfs0SSTA",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689875764551459/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T17:07:59+0000",
+      "id": "228321510706889_689470067925362",
+      "message": "Question: What is the best domain extension for a website that has a portfolio and a blog page containing some tutorials on programming, and please suggest some cheap hosting services. Thanks.",
+      "updated_time": "2017-11-25T16:29:53+0000",
+      "from": {
+        "name": "Анѓелко Милошевски",
+        "id": "10211366048929417"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689470067925362/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T22:29:08+0000",
+      "id": "228321510706889_689550614583974",
+      "message": "Does anyone use the 'React for Beginners' course by Wes Bos?  It's on Black Friday sale today so I was thinking about picking it up, unless someone suggests otherwise.",
+      "updated_time": "2017-11-25T15:44:35+0000",
+      "from": {
+        "name": "Keith Jones",
+        "id": "10212840370595719"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689550614583974/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-25T09:28:29+0000",
+      "id": "228321510706889_689739774565058",
+      "message": "hi react minds ...\nI am having an error of   props.videos.map is not a function when trying to render some videos from youtube...\ncould you please help me out..\nthe loop is not running ...\ncould you please help me out",
+      "updated_time": "2017-11-25T15:01:31+0000",
+      "from": {
+        "name": "Dibyendu Konar",
+        "id": "1509972472358265"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=1717921264896717&set=gm.689739774565058&type=3",
+      "name": "Photos from Dibyendu Konar's post",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23844654_1717921264896717_7710571649862362193_n.jpg?oh=791187327f2c788b76f34d7dba435562&oe=5AFEB496",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689739774565058/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T13:11:13+0000",
+      "id": "228321510706889_689390334600002",
+      "message": "What is best online course for React? \nAlso what is best React course on Udemy?\nI need most current, I don't want old coursers for old React versions.",
+      "updated_time": "2017-11-25T10:17:23+0000",
+      "from": {
+        "name": "Łukasz Marcinkowski",
+        "id": "1662337360473785"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689390334600002/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T07:18:02+0000",
+      "id": "228321510706889_689293531276349",
+      "message": "I have go through many article about Presentational and Container Components, but I am very confused when I have 3 children component of 3 different mother components but required to get same set of data from the DB.  \n\nIn this scenario, I wonder if I should bypass the monther component and get the data from the redux store directly to the children component?\n\nTruly hope someone could give me some hints on how to think in react. \nPlease see attached picture:\n\nMay I know if Method 2 would be the best practice in this case ? or Method 3, but I am worried if it will have affect the app performance since it will Get [contactData] from DB every time when the browser render the children component. \n\nIt would be so much appreciated if you have some advise in this case \nThanks",
+      "updated_time": "2017-11-25T08:12:29+0000",
+      "from": {
+        "name": "Simone Li",
+        "id": "10155441152757492"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=10155804981347492&set=gm.689293531276349&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23905426_10155804981347492_8110691857422102872_n.jpg?oh=ac5fb6cc56b55d3ba493e633ac419313&oe=5AC48D08",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689293531276349/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-25T06:05:24+0000",
+      "id": "228321510706889_689688691236833",
+      "message": "Have you guys tried this React 30 days book\n\nFree Download - ",
+      "updated_time": "2017-11-25T06:05:25+0000",
+      "caption": "fullstackreact.com",
+      "story": "Chandra Kishore Bakshi shared a link to the group: ReactJS.",
+      "from": {
+        "name": "Chandra Kishore Bakshi",
+        "id": "1452888714790362"
+      },
+      "link": "https://www.fullstackreact.com/assets/media/sGEMe/MNzue/30-days-of-react-ebook-fullstackio.pdf",
+      "name": "www.fullstackreact.com",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 4
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689688691236833/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T17:16:23+0000",
+      "id": "228321510706889_689472247925144",
+      "message": "How many of you agree with this pro tips\n\n",
+      "updated_time": "2017-11-25T05:23:30+0000",
+      "caption": "youtube.com",
+      "story": "Chandra Kishore Bakshi shared a link to the group: ReactJS.",
+      "description": "Learn from the success—and failures—of React developers who’ve learned valuable lessons about the framework. Here are 6 Pro Tips from React Developers.",
+      "from": {
+        "name": "Chandra Kishore Bakshi",
+        "id": "1452888714790362"
+      },
+      "link": "https://youtu.be/xa-_FIy2NgE",
+      "name": "6 Pro Tips from React Developers",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBbY7IC-IQf5hBN&w=130&h=130&url=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fxa-_FIy2NgE%2Fmaxresdefault.jpg&cfs=1&_nc_hash=AQBJTbgY3S9DiKWd",
+      "status_type": "shared_story",
+      "type": "video",
+      "shares": {
+        "count": 12
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689472247925144/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T21:43:08+0000",
+      "id": "228321510706889_689539961251706",
+      "message": "I'm new in react, how can I use uglify and minify with create-react-app at build",
+      "updated_time": "2017-11-25T03:29:38+0000",
+      "from": {
+        "name": "Mohamed Magdy",
+        "id": "10155447132086281"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689539961251706/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T22:20:00+0000",
+      "id": "228321510706889_688760577996311",
+      "message": "In this code snippet,\nWhy does it show a TypeError ?!\n\nAs I understand, function declarations are hoisted with their value “the function itself”\n\nSo why it doesn’t recognize it as a function ?!",
+      "updated_time": "2017-11-24T23:20:07+0000",
+      "from": {
+        "name": "Khalid El Maghawry",
+        "id": "2086221461591718"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=2096147250599139&set=gm.688760577996311&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23843657_2096147250599139_572047255789549272_n.jpg?oh=686e54001c7dbfd261043f81d2a2b723&oe=5AB52F85",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688760577996311/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T16:20:17+0000",
+      "id": "228321510706889_689456711260031",
+      "message": "m newb in reactjs.I want to use bootstrap in my react app with vscode.How to setup.",
+      "updated_time": "2017-11-24T19:30:35+0000",
+      "from": {
+        "name": "Arjun Karki",
+        "id": "1986183144980220"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689456711260031/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T18:48:50+0000",
+      "id": "228321510706889_689498011255901",
+      "message": "I am using react in my php project using cdn and not as an npm package. I want to use a datepicker which I can use with cdn please help",
+      "updated_time": "2017-11-24T18:48:50+0000",
+      "from": {
+        "name": "Jyotirmoy Nath",
+        "id": "10210101190983425"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689498011255901/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T16:57:21+0000",
+      "id": "228321510706889_689467491258953",
+      "message": "https://youtu.be/oyzfAABrUZo",
+      "updated_time": "2017-11-24T16:57:22+0000",
+      "from": {
+        "name": "Raghavender Yb",
+        "id": "10209354257282983"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=10209506058077908&set=gm.689467491258953&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23905706_10209506058077908_3987418359558283379_n.jpg?oh=e995feaf164ef5df68e880c1ed4f2a7f&oe=5ABFAD82",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689467491258953/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T13:04:09+0000",
+      "id": "228321510706889_688983301307372",
+      "message": "Smaller learning project showcasing Firebase Authentication & Realtime Database, React Router 4 and Semantic UI. Perhaps interesting for people after learning plain React :)\n\nhttps://github.com/rwieruch/road-beyond-react-app",
+      "updated_time": "2017-11-24T15:17:17+0000",
+      "from": {
+        "name": "Robin Wieruch",
+        "id": "10214430881155733"
+      },
+      "type": "status",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688983301307372/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T04:23:17+0000",
+      "id": "228321510706889_689256131280089",
+      "message": "Hi everyone,\n\nI'm thinking of implementing react-ga (Google analytics) to my web app, there are a lot of things I want to track such as; Page view, Crash report, Specific event interactions, etc. \n\nThe implementations should be straight-forward, but, how do I track user detail (Unique user) from Web perspective ? \n\nWhich will lead us to more specific cases (What if they clear their cookies, what if they logged in from incognito mode or different browser), in those cases, how do I know if they're the same user or not ?\n\nThere are a lot of questions I wanted to ask (regarding web analytics), but let's start from the basic analytics first.\n\nThanks",
+      "updated_time": "2017-11-24T14:28:00+0000",
+      "from": {
+        "name": "Frendy Guo",
+        "id": "1715812851796869"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689256131280089/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T17:47:02+0000",
+      "id": "228321510706889_689077924631243",
+      "message": "I am not sure if you guys know about this React JS tutorial site - \n\n",
+      "updated_time": "2017-11-24T12:35:20+0000",
+      "caption": "codemy.net",
+      "story": "Chandra Kishore Bakshi shared a link to the group: ReactJS.",
+      "description": "In this series we show you how to build a front end App using React. We will cover the basics of getting react setup with webpack, es6 and build a production ready app.",
+      "from": {
+        "name": "Chandra Kishore Bakshi",
+        "id": "1452888714790362"
+      },
+      "link": "https://www.codemy.net/channels/react-foundation",
+      "name": "React Foundation",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQA81H0Ul3RaZk0j&w=130&h=130&url=https%3A%2F%2Fi.vimeocdn.com%2Falbums_uploaded_thumb%2F4121729-1472627210_960x540&cfs=1&_nc_hash=AQC_ogbWenStQNtp",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 3
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689077924631243/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T11:44:53+0000",
+      "id": "228321510706889_689360791269623",
+      "message": "How can i read from json file with react redux without going trough creating a midleware, i mean is there a way for that? need to get data from my json into the container, do some treatments then send it with props to the component, the only issue for me now is to read from the json file, any help plz? tnx",
+      "updated_time": "2017-11-24T12:13:08+0000",
+      "from": {
+        "name": "Bo Chra",
+        "id": "503116820042174"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689360791269623/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T08:38:06+0000",
+      "id": "228321510706889_689311274607908",
+      "message": "Help me:\nI get a syntax: (id, list) => list.find(item => item.id === id)\ni know this is a arrow function but i don't know syntax: item => item.id === id\nWho can tell me keyword of ES6 ?",
+      "updated_time": "2017-11-24T10:04:05+0000",
+      "from": {
+        "name": "Phan Thắng",
+        "id": "608708646187223"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689311274607908/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-24T09:44:46+0000",
+      "id": "228321510706889_689327171272985",
+      "message": "20+ Best Free Responsive ReactJS Admin Themes\n\n#reactJS #admin #dashboard #template #cssauthor",
+      "updated_time": "2017-11-24T09:44:46+0000",
+      "caption": "cssauthor.com",
+      "story": "Prasad Prechu shared a link to the group: ReactJS.",
+      "description": "A collection of best free responsive ReactJS admin and dashboard themes. You can build highly effective admin pages faster and easier.",
+      "from": {
+        "name": "Prasad Prechu",
+        "id": "1615779638487906"
+      },
+      "link": "https://cssauthor.com/reactjs-admin-themes/",
+      "name": "20+ Best Free Responsive ReactJS Admin Themes » CSS Author",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQCE3RyUIspSsK4S&w=130&h=130&url=https%3A%2F%2Fcssauthor.com%2Fwp-content%2Fuploads%2F2017%2F04%2F20-Best-Responsive-Free-ReactJS-Admin-Themes.jpg&cfs=1&_nc_hash=AQB44wIthGqTtL1u",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 3
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689327171272985/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T09:23:40+0000",
+      "id": "228321510706889_688515031354199",
+      "message": "How do I redirect after a successful async action with redux and react-router v4? I'd prefer to do the redirect within the action creator if possible.",
+      "updated_time": "2017-11-24T02:40:41+0000",
+      "from": {
+        "name": "Raiyan Zubair",
+        "id": "10155897421133343"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688515031354199/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T21:35:18+0000",
+      "id": "228321510706889_688751197997249",
+      "message": "What is the best way to handle large form elements in reactjs?",
+      "updated_time": "2017-11-24T02:37:04+0000",
+      "from": {
+        "name": "Nikhil Karkra",
+        "id": "10208883554318267"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688751197997249/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T20:37:02+0000",
+      "id": "228321510706889_689118297960539",
+      "message": "Just published the article on medium to explain some points in my redux-saga event channel boilerplate.\n\n",
+      "updated_time": "2017-11-23T20:37:02+0000",
+      "caption": "medium.com",
+      "story": "Viacheslav Lushchinskiy shared a link to the group: ReactJS.",
+      "description": "Intro",
+      "from": {
+        "name": "Viacheslav Lushchinskiy",
+        "id": "1790807387624515"
+      },
+      "link": "https://medium.com/@viacheslavlushchinskiy/real-time-data-with-redux-saga-event-channels-and-socket-io-ad6e64dbefd9",
+      "name": "Real-time data with redux-saga event channels and socket.IO",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQDdj1zHPuD7sa-n&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2AOPHwxbf4Q29m1tRtsbUGyA.png&cfs=1&_nc_hash=AQDVsef8ZNaVg7gI",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 4
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/689118297960539/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T01:30:08+0000",
+      "id": "228321510706889_688801661325536",
+      "message": "Anybody offering internship for ReactJS / Angular / NodeJS?!",
+      "updated_time": "2017-11-23T20:24:42+0000",
+      "from": {
+        "name": "Mehdi Siddik",
+        "id": "10215003376057376"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688801661325536/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T01:02:36+0000",
+      "id": "228321510706889_688794104659625",
+      "message": "onChange event is not triggered in IE11  for input type checkbox. Any suggested fixes ? (Other than switch browser ones)",
+      "updated_time": "2017-11-23T18:23:03+0000",
+      "from": {
+        "name": "Chaitu Valkano",
+        "id": "1557923800885562"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688794104659625/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T13:56:55+0000",
+      "id": "228321510706889_688999167972452",
+      "message": "Help me: how to fetch api(localhost) from reactjs?\ni get a error:No 'Access-Control-Allow-Origin'\nHow to fix cors ? :((",
+      "updated_time": "2017-11-23T17:46:03+0000",
+      "from": {
+        "name": "Phan Thắng",
+        "id": "608708646187223"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688999167972452/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T08:05:17+0000",
+      "id": "228321510706889_688907397981629",
+      "message": "Hi everyone, I wrote an article about how to improve your React apps performance:\n https://medium.com/myheritage-engineering/how-to-greatly-improve-your-react-app-performance-e70f7cbbb5f6\nLet me know what you think 😊",
+      "updated_time": "2017-11-23T15:21:16+0000",
+      "caption": "medium.com",
+      "story": "Noam Elboim shared a link to the group: ReactJS.",
+      "description": "A review of common React performance pitfalls and how to avoid them",
+      "from": {
+        "name": "Noam Elboim",
+        "id": "10155309327147669"
+      },
+      "link": "https://medium.com/myheritage-engineering/how-to-greatly-improve-your-react-app-performance-e70f7cbbb5f6",
+      "name": "How to greatly improve your React app performance – MyHeritage Engineering – Medium",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQA5IF0_5h6EgPGp&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F1%2A2xOju9iTPGs22U0joILHmQ.png&cfs=1&_nc_hash=AQCfzhC60D0is6d-",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 3
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688907397981629/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-21T18:47:41+0000",
+      "id": "228321510706889_688310924707943",
+      "message": "Does anyone know of a native text/code editor except notepad++ and sublime text?\n\nUpdate: I see someone confuses native with atom and vscode, to clarify by native i mean native to the os itself atom/vscode are not native they are based on electron which is like the cordova/phonegap wrapper and they depend on html/css/js, and the reason i ask this is because this type of editors are very slow especially atom, even on decent cpu and ram, they just can't handle large files and typing becomes laggy, also the startup its really bad, thats why i ask if there is some native editor built on c#/c++ for windows it can be just editor with syntax support or IDE doesn't matter.. thnx. :)",
+      "updated_time": "2017-11-23T10:38:10+0000",
+      "from": {
+        "name": "Анѓелко Милошевски",
+        "id": "10211366048929417"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688310924707943/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-23T05:03:52+0000",
+      "id": "228321510706889_688850994653936",
+      "message": "This guy makes a very nice Tetris game by React.\n\nLive: http://blockersgame.herokuapp.com/",
+      "updated_time": "2017-11-23T05:03:52+0000",
+      "caption": "github.com",
+      "story": "Trần Nam shared a link to the group: ReactJS.",
+      "description": "blockers - A fun falling blocks game powered by ReactJS + MobX",
+      "from": {
+        "name": "Trần Nam",
+        "id": "1009445732522915"
+      },
+      "link": "https://github.com/pedsmoreira/blockers",
+      "name": "pedsmoreira/blockers",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBjBb1xGB_oG2O9&w=130&h=130&url=https%3A%2F%2Favatars0.githubusercontent.com%2Fu%2F5206633%3Fs%3D400%26v%3D4&cfs=1&sx=0&sy=0&sw=400&sh=400&_nc_hash=AQCboQIajrrLt_VB",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688850994653936/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-21T17:01:57+0000",
+      "id": "228321510706889_688287404710295",
+      "message": "Learn Node.js from the guy who wrote the book!\n\nActually, more than a dozen books! Author Azat Mardan & popular presenter Benjamin Lin show you the magic of Node.js and get you started right away. \n\nhttp://aka.ms/intro-to-nodejs\n\nWant to create a full-fledged web application? Find out how, with Azat Mardan & Benjamin Lin, as they step you through Node.js, along with demos, hands-on labs, and projects to get you up to speed fast. \n\nhttp://aka.ms/intro-to-nodejs",
+      "updated_time": "2017-11-23T00:28:00+0000",
+      "caption": "edx.org",
+      "story": "Azat Mardan shared a link to the group: ReactJS.",
+      "description": "The ultimate beginner guide to creating web applications using Node.js, Express and MongoDB.",
+      "from": {
+        "name": "Azat Mardan",
+        "id": "10211451977408686"
+      },
+      "link": "http://aka.ms/intro-to-nodejs",
+      "name": "Introduction to Node.js",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQC-W-DYvPFTgj_2&w=130&h=130&url=https%3A%2F%2Fwww.edx.org%2Fsites%2Fdefault%2Ffiles%2Fcourse%2Fimage%2Ffeatured-card%2Fdev283x-318.jpg&cfs=1&_nc_hash=AQC8rnwWsf2WAdzU",
+      "status_type": "shared_story",
+      "type": "video",
+      "shares": {
+        "count": 1
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688287404710295/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-21T06:54:29+0000",
+      "id": "228321510706889_688103764728659",
+      "message": "According to the docs, the constructor is recommended over cWM.\n\nBut when I'm trying to setState in constructor, it complained about component not being loaded.\n\nThe same block of code works fine in cWM.",
+      "updated_time": "2017-11-23T00:15:40+0000",
+      "from": {
+        "name": "Deojeff Lai",
+        "id": "1822970108004948"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688103764728659/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T09:08:32+0000",
+      "id": "228321510706889_688510441354658",
+      "message": "Anyone here using Flow in their medium-big react project? How was it?",
+      "updated_time": "2017-11-22T22:07:42+0000",
+      "from": {
+        "name": "John Frades",
+        "id": "10203231458585069"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688510441354658/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T01:56:11+0000",
+      "id": "228321510706889_688416104697425",
+      "message": "Hi all! I want to render my app on server-side with css modules or import css into component without check env.BROWSER, is it possible? if(yes) how to do it? who can show me a simple demo, thanks!",
+      "updated_time": "2017-11-22T21:01:54+0000",
+      "from": {
+        "name": "Huỳnh Nhựt Phương",
+        "id": "1582641901792659"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688416104697425/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-21T17:09:42+0000",
+      "id": "228321510706889_688289874710048",
+      "message": "Hello my friends, \nthis one took a bit longer than planned - but still, here I am with the second part of my blog series about creating a fully functional React app.\nToday: Creating a List Component with React\nI appreciate every kind of feedback, let me hear what you think :)",
+      "updated_time": "2017-11-22T15:59:20+0000",
+      "caption": "andreasreiterer.at",
+      "story": "Andreas Reiterer shared a link to the group: ReactJS.",
+      "description": "Learn how to build a React list component. Get to know functional components, use prop-types to validate props, and much more...",
+      "from": {
+        "name": "Andreas Reiterer",
+        "id": "10209859921236681"
+      },
+      "link": "http://www.andreasreiterer.at/web-development/react-list-component/?utm_source=facebook&utm_medium=post",
+      "name": "Create a React List Component » Andreas Reiterer",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQCVqhn6lOFreFis&w=130&h=130&url=http%3A%2F%2Fwww.andreasreiterer.at%2Fwp-content%2Fuploads%2F2017%2F11%2Freact-logo.jpg&cfs=1&_nc_hash=AQDx4PTEu10KRLkp",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 3
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688289874710048/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-21T03:59:57+0000",
+      "id": "228321510706889_688070044732031",
+      "message": "M building an app using React-Router.\nM facing issue of CORS while routing.\nCan smbdy sugst me bst and quick solution to fix it?",
+      "updated_time": "2017-11-22T15:41:21+0000",
+      "from": {
+        "name": "Ojas Patharkar",
+        "id": "1687661487963381"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688070044732031/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-20T07:55:04+0000",
+      "id": "228321510706889_687719148100454",
+      "message": "Painless React+ webpack = getreact cli \n\nnpm i -g -getreact\n\nsource : https://www.npmjs.com/package/getreact",
+      "updated_time": "2017-11-22T14:55:03+0000",
+      "from": {
+        "name": "Mostafa Kamal",
+        "id": "2050621851886520"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=2054077921540913&set=gm.687719148100454&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23755104_2054077921540913_8118746662007837076_n.jpg?oh=45a1e99f17a722393f693b22205b783a&oe=5AFA6C5F",
+      "status_type": "added_photos",
+      "type": "photo",
+      "shares": {
+        "count": 7
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/687719148100454/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T12:51:48+0000",
+      "id": "228321510706889_688571904681845",
+      "message": "Are you learning while reading a book? All course packages on the Road to React, including ebooks, video courses and code packages, are $30 off this week. Thus the two ebooks about learning pragmatic React, Redux and MobX are for free. So grab your copy :-)",
+      "updated_time": "2017-11-22T12:51:48+0000",
+      "caption": "roadtoreact.com",
+      "story": "Robin Wieruch shared a link to the group: ReactJS.",
+      "description": "React courses to learn the fundamentals of React and its ecosystem on the Road to learn React ...",
+      "from": {
+        "name": "Robin Wieruch",
+        "id": "10214430881155733"
+      },
+      "link": "https://roadtoreact.com/",
+      "name": "The Road to React",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQA7ssnz780TKHIo&w=130&h=130&url=https%3A%2F%2Froadtoreact.com%2Fstatic%2Fcourses%2Fthe-road-to-learn-react%2Fthumbnail_wide.jpg&cfs=1&_nc_hash=AQBf3HmTDydA4MXr",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 3
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688571904681845/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-21T22:43:00+0000",
+      "id": "228321510706889_688369871368715",
+      "message": "New article on how configure React.js with Spring.:\nhttps://medium.com/@pietroghezzi/spring-and-react-js-the-easy-way-5abe8a529058\nCode example (with Spring boot): \nhttps://github.com/gpietro/spring_react_demo/tree/master",
+      "updated_time": "2017-11-22T10:40:55+0000",
+      "caption": "medium.com",
+      "story": "Pietro Ghezzi shared a link to the group: ReactJS.",
+      "description": "I always found Spring framework the most difficult to master, due to its very complex xml configuration.",
+      "from": {
+        "name": "Pietro Ghezzi",
+        "id": "10213491893120222"
+      },
+      "link": "https://medium.com/@pietroghezzi/spring-and-react-js-the-easy-way-5abe8a529058",
+      "name": "Spring and React.js: the easy way – Pietro Ghezzi – Medium",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQDdUWnvChzvcyN-&w=130&h=130&url=https%3A%2F%2Fcdn-images-1.medium.com%2Ffit%2Fc%2F120%2F120%2F1%2ATdTCQ2jdKhosQ7J1cluVVQ.jpeg&cfs=1&_nc_hash=AQBqlZ5ZjR3V25_z",
+      "status_type": "shared_story",
+      "type": "link",
+      "shares": {
+        "count": 2
+      },
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688369871368715/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T09:30:39+0000",
+      "id": "228321510706889_688516871354015",
+      "message": "Top JavaScript Charting Libraries to Follow ",
+      "updated_time": "2017-11-22T09:30:39+0000",
+      "caption": "dashbouquet.com",
+      "story": "Anton  Shaleynikov shared a link to the group: ReactJS.",
+      "description": "The huge amount of data needs to be properly refined and visualized. JavaScript charting libraries have made the task easier, as developers do not have to endure a change of language syntax to convert numbers into understandable charts.",
+      "from": {
+        "name": "Anton  Shaleynikov",
+        "id": "1269643636488771"
+      },
+      "link": "http://bit.ly/2zZ8npG",
+      "name": "9 Best JavaScript Charting Libraries — DashBouquet",
+      "picture": "https://external.xx.fbcdn.net/safe_image.php?d=AQBN4NKDzKHwswXV&w=130&h=130&url=https%3A%2F%2Fdashbouquet.com%2Fassets%2Fimg%2Fblog%2Fjs-charting-libraries.png&cfs=1&_nc_hash=AQAfO_3CwANGFl3M",
+      "status_type": "shared_story",
+      "type": "link",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688516871354015/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-22T05:38:20+0000",
+      "id": "228321510706889_688462938026075",
+      "message": "do you use redux+apollo? or apollo alone should be fine? what great resources to get started with redux+apollo or apollo only do you know?",
+      "updated_time": "2017-11-22T07:59:24+0000",
+      "from": {
+        "name": "Glendon Philipp Baculio",
+        "id": "1440083162679666"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688462938026075/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    },
+    {
+      "created_time": "2017-11-21T16:54:57+0000",
+      "id": "228321510706889_688285621377140",
+      "message": "I have an object contains some nested objects with a  dynamic ID as the key, how can I declare its deep propTypes exactly ??",
+      "updated_time": "2017-11-22T03:22:42+0000",
+      "from": {
+        "name": "Nguyễn Xuân Hải",
+        "id": "1993129110971340"
+      },
+      "link": "https://www.facebook.com/photo.php?fbid=2003347253282859&set=gm.688285621377140&type=3",
+      "picture": "https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/23755235_2003347253282859_3070869297643012534_n.jpg?oh=1a848efe04bcf9e667034e08961c64de&oe=5AC8207D",
+      "status_type": "added_photos",
+      "type": "photo",
+      "permalink_url": "https://www.facebook.com/groups/228321510706889/permalink/688285621377140/",
+      "to": {
+        "data": [
+          {
+            "id": "228321510706889",
+            "name": "ReactJS"
+          }
+        ]
+      }
+    }
+  ],
+  "paging": {
+    "previous": "https://graph.facebook.com/v2.11/228321510706889/feed?fields=created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags&limit=100&__paging_token=enc_AdBQeKOlCLuSvV52vsRZAWX4C0HSLGHajNCaQ9dTua5RG82XugKJqXkd7HeJQeWlWXWoy237GAvB56ZBnA52yjCJ2u1g082jp7dJthAYwkC0ZBFlQZDZD&icon_size=16&since=1512060446&access_token=EAAFhcjTi6hIBAFkGRxPrH4lf0weZCJ3FQhsGXXpOMkYEUg6rMRT87NFulRWlV7oJ0KYlBh83Tuh3uwu8KH9GZAfsZAtaYFtr97tZA2Q3oPYHPCqlA4qslh05ZBR5LCObL6yAFACEC1qApmu3WNBrXHwNZCBdZA1MZCu8YwgzMoZBXjwZDZD&__previous=1",
+    "next": "https://graph.facebook.com/v2.11/228321510706889/feed?fields=created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags&limit=100&__paging_token=enc_AdCyypeYYpL5PfkPILlvUCFuYrMKTZAUicvHqAGfZBusppZCCVRTx6LN8MqXwl0XLZA7EnzlkYJpJKB7MN5ZCFyfR3cETEK0JlE6wWeCnBUA3Kd2z3gZDZD&icon_size=16&access_token=EAAFhcjTi6hIBAFkGRxPrH4lf0weZCJ3FQhsGXXpOMkYEUg6rMRT87NFulRWlV7oJ0KYlBh83Tuh3uwu8KH9GZAfsZAtaYFtr97tZA2Q3oPYHPCqlA4qslh05ZBR5LCObL6yAFACEC1qApmu3WNBrXHwNZCBdZA1MZCu8YwgzMoZBXjwZDZD&until=1511320962"
+  }
+}
