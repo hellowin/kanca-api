@@ -4,7 +4,7 @@ import java.sql.Connection
 
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
-import io.kanca.fbgraph.{FBGraph, FBGraphModule, GroupFeed}
+import io.kanca.fbgraph.{FBGraph, FBGraphMockModule, GroupFeed}
 
 class RepositoryMySQLSpec extends IntegrationTest {
 
@@ -33,13 +33,10 @@ class RepositoryMySQLSpec extends IntegrationTest {
       "repo.mysql.password" -> MYSQL_PASSWORD,
       "repo.mysql.driver" -> MYSQL_DRIVER,
       "repo.readLimit" -> READ_LIMIT.toString,
-      "fbgraph.version" -> FB_GRAPH_VERSION,
-      "fbgraph.defaultPageLimit" -> DEFAULT_PAGE_LIMIT.toString,
-      "fbgraph.defaultRequestLimit" -> DEFAULT_REQUEST_LIMIT.toString,
     ),
     modules = Seq(
       RepoModuleMySQL,
-      FBGraphModule,
+      FBGraphMockModule,
     ),
   ).create
 
