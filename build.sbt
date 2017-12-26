@@ -20,6 +20,7 @@ lazy val root = (project in file(".")).
     )),
     name := "kanca-api",
     mainClass := Some("KancaApiServer"),
+    mainClass in assembly := Some("io.kanca.KancaApiServerMain"),
     libraryDependencies ++= Seq(
       scalaTest % Test,
       "org.scalaj" %% "scalaj-http" % versions.scalajHttp,
