@@ -1,6 +1,5 @@
 package io.kanca.fbgraph
 
-import com.twitter.inject.Logging
 import play.api.libs.json._
 
 import scalaj.http._
@@ -9,7 +8,7 @@ class FBGraphHttp(
   version: String,
   defaultPageLimit: Int,
   defaultRequestLimit: String,
-) extends FBGraph(defaultPageLimit) with FBException with Logging {
+) extends FBGraph(defaultPageLimit) {
 
   private val FB_URL: String = s"https://graph.facebook.com/v$version"
 
@@ -17,15 +16,9 @@ class FBGraphHttp(
 
   private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
     val resString: String = req.asString.body
-    val rawJson: JsValue = Json.parse(resString)
+    val (result, next) = parseStringResultArray[T](resString, parser)
 
-    // handle error
-    checkException(rawJson)
-
-    val data: List[JsObject] = (rawJson \ "data").validate[JsArray].getOrElse(Json.arr()).as[List[JsObject]]
-    val next: Option[String] = (rawJson \ "paging" \ "next").validate[String].asOpt
-
-    val newResults: List[T] = results ::: data.map(parser)
+    val newResults: List[T] = results ::: result
 
     if (next.orNull == null || pageLimit - 1 <= 0) return newResults
 
