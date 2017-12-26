@@ -14,13 +14,13 @@ class FBGraphHttp(
 
   debug(s"Initiated FB Graph API with base URL: $FB_URL")
 
-  private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): List[T] = {
+  private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): FBListResult[T] = {
     val resString: String = req.asString.body
     val listResult: FBListResult[T] = FBListResult.parse[T](resString, parser)
 
     val newResults: List[T] = results ::: listResult.data
 
-    if (listResult.next.orNull == null || pageLimit - 1 <= 0) return newResults
+    if (listResult.next.orNull == null || pageLimit - 1 <= 0) return FBListResult(newResults,  listResult.next)
 
     // rebuild request if request is post, token and method params are vanished
     val nextReq: HttpRequest = getHttpRequest(token, listResult.next.get)
@@ -44,7 +44,7 @@ class FBGraphHttp(
   }
 
   @throws(classOf[Exception])
-  def getGroupFeeds(token: String, groupId: String, pageLimit: Int = defaultPageLimit): List[GroupFeed] = {
+  def getGroupFeeds(token: String, groupId: String, pageLimit: Int = defaultPageLimit): FBListResult[GroupFeed] = {
     val req: HttpRequest = getHttpRequest(
       token, s"$groupId/feed",
       "created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags,reactions"

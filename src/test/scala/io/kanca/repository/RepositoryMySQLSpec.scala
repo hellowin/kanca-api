@@ -54,7 +54,7 @@ class RepositoryMySQLSpec extends IntegrationTest {
   }
 
   test("GroupFeedRepo should able to insert group feeds batch, multiple times") {
-    val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID)
+    val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID).data
     val res: Boolean = repo.insertGroupFeed(groupFeeds)
     res shouldEqual true
 
