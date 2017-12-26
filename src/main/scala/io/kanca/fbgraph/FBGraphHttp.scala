@@ -14,7 +14,7 @@ class FBGraphHttp(
 
   debug(s"Initiated FB Graph API with base URL: $FB_URL")
 
-  private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): FBListResult[T] = {
+  private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int = defaultPageLimit, results: List[T] = List()): FBListResult[T] = {
     val resString: String = req.asString.body
     val listResult: FBListResult[T] = FBListResult.parse[T](resString, parser)
 
@@ -52,7 +52,23 @@ class FBGraphHttp(
 
     debug(s"get group feeds url = ${req.url} params = ${req.params.map { case (key: String, value: String) => s"$key = $value" }}")
 
-    getListResult[GroupFeed](req, token, GroupFeed.parse, pageLimit)
+    val feedResult: FBListResult[GroupFeed] = getListResult[GroupFeed](req, token, GroupFeed.parse, pageLimit)
+
+    // iterate reactions
+    val feeds: List[GroupFeed] = feedResult.data.map(feed => {
+      val rea = feed.reactions
+
+      if (feed.reactions.next.orNull == null) {
+        feed
+      } else {
+        val newReactions: List[Reaction] = rea.data ::: getListResult[Reaction](getHttpRequest(token, rea.next.get), token, Reaction.parse).data
+        feed.reactions = FBListResult(newReactions, None)
+        feed
+      }
+
+    })
+
+    FBListResult(feeds, feedResult.next)
   }
 
 }

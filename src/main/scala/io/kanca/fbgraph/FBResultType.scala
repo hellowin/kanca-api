@@ -61,7 +61,7 @@ case class GroupFeed(
   story: Option[String],
   typ: String,
   updatedTime: LocalDateTime,
-  reactions: FBListResult[Reaction],
+  var reactions: FBListResult[Reaction],
 )
 
 object GroupFeed extends FBGraphUtils {
