@@ -14,8 +14,8 @@ class FBGraphMock(defaultPageLimit: Int) extends FBGraph(defaultPageLimit) {
       debug(s"Getting mock JSON from file $path")
       val resource: URL = getClass.getResource(path)
       val jsonString: String = Source.fromURL(resource)(Codec.UTF8).mkString
-      val (result, next) = parseStringResultArray[T](jsonString, parser)
-      val newResults = results ::: result
+      val listResult: FBListResult[T] = FBListResult.parse[T](jsonString, parser)
+      val newResults = results ::: listResult.data
       val nextPage = pageLimit - 1
       if (nextPage > 0) {
         getResultArrayFromFile[T](filePrefix, parser, nextPage, newResults)

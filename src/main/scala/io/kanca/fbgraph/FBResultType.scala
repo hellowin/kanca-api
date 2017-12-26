@@ -3,10 +3,36 @@ package io.kanca.fbgraph
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-import play.api.libs.json.JsObject
+import play.api.libs.json.{JsArray, JsObject, JsValue, Json}
 
-class FBGraphResult {
+trait FBGraphUtils {
   val TIME_FORMATTER = "yyyy-MM-dd'T'HH:mm:ssZ"
+}
+
+case class FBListResult[T](
+  data: List[T],
+  next: Option[String],
+)
+
+object FBListResult extends FBException {
+
+  def parse[T](string: String, parser: JsObject => T): FBListResult[T] = {
+    val rawJson: JsValue = Json.parse(string)
+    parse(rawJson, parser)
+  }
+
+  def parse[T](rawJson: JsValue, parser: JsObject => T): FBListResult[T] = {
+    // handle error
+    checkException(rawJson)
+
+    val data: List[JsObject] = (rawJson \ "data").validate[JsArray].getOrElse(Json.arr()).as[List[JsObject]]
+    val next: Option[String] = (rawJson \ "paging" \ "next").validate[String].asOpt
+
+    val result: List[T] = data.map(parser)
+
+    FBListResult[T](result, next)
+  }
+
 }
 
 case class From(name: String, id: String)
@@ -37,7 +63,7 @@ case class GroupFeed(
   updatedTime: LocalDateTime,
 )
 
-object GroupFeed extends FBGraphResult {
+object GroupFeed extends FBGraphUtils {
 
   def parse(rawFeed: JsObject): GroupFeed = GroupFeed(
     (rawFeed \ "id").validate[String].get,
@@ -68,4 +94,18 @@ object GroupFeed extends FBGraphResult {
     LocalDateTime.parse((rawFeed \ "updated_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
   )
 
+}
+
+case class Reaction(
+  id: String,
+  name: String,
+  typ: String,
+)
+
+object Reaction {
+  def parse(obj: JsObject): Reaction = Reaction(
+    (obj \ "id").validate[String].get,
+    (obj \ "name").validate[String].get,
+    (obj \ "type").validate[String].get,
+  )
 }
