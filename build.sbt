@@ -44,5 +44,9 @@ lazy val root = (project in file(".")).
       "com.google.inject.extensions" % "guice-testlib" % versions.guice % Test classifier "tests",
       "ch.qos.logback" % "logback-classic" % versions.logback,
       "mysql" % "mysql-connector-java" % versions.mysqlConnector
-    )
+    ),
+    assemblyMergeStrategy in assembly := {
+      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case x => MergeStrategy.first
+    }
   )

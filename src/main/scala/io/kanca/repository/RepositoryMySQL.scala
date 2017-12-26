@@ -76,11 +76,20 @@ object RepositoryMySQL {
       """.stripMargin
     )
 
-    statement.execute(
+    val rs = statement.executeQuery(
       """
-        |ALTER TABLE group_feed ADD INDEX (group_id asc)
-      """.stripMargin
-    )
+        |select count(*) as count from information_schema.statistics where table_name = 'group_feed' and index_name = 'GROUP_ID' and table_schema = database()
+      """.stripMargin)
+
+    rs.next()
+    val count: Int = rs.getInt("count")
+    if (count == 0) {
+      statement.execute(
+        """
+          |ALTER TABLE group_feed ADD INDEX GROUP_ID(group_id asc)
+        """.stripMargin
+      )
+    }
 
     true
   }
