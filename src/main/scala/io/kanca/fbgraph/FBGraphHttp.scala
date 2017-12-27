@@ -20,7 +20,7 @@ class FBGraphHttp(
 
     val newResults: List[T] = results ::: listResult.data
 
-    if (listResult.next.orNull == null || pageLimit - 1 <= 0) return FBListResult(newResults,  listResult.next)
+    if (listResult.next.orNull == null || pageLimit - 1 <= 0) return FBListResult(newResults, listResult.next)
 
     // rebuild request if request is post, token and method params are vanished
     val nextReq: HttpRequest = getHttpRequest(token, listResult.next.get, null, requestLimit)
@@ -68,6 +68,11 @@ class FBGraphHttp(
     // iterate reactions
     val feeds: List[GroupFeed] = feedResult.data.map(feed => {
       feed.reactions = getDeepListResult[Reaction](feed.reactions, token, Reaction.parse, pageLimit, requestLimit)
+      feed.comments = getDeepListResult[Comment](feed.comments, token, Comment.parse, pageLimit, requestLimit)
+      feed.comments = FBListResult(feed.comments.data.map(comment => {
+        comment.comments = getDeepListResult[Comment](comment.comments, token, Comment.parse, pageLimit, requestLimit)
+        comment
+      }), feed.comments.next)
       feed
     })
 
