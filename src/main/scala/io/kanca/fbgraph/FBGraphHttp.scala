@@ -65,12 +65,17 @@ class FBGraphHttp(
 
     val feedResult: FBListResult[GroupFeed] = getListResult[GroupFeed](req, token, GroupFeed.parse, pageLimit, requestLimit)
 
-    // iterate reactions
+    // iterate feed reactions, comments, comment's comments, comment's reactions, comment's comment's reactions >:)
     val feeds: List[GroupFeed] = feedResult.data.map(feed => {
       feed.reactions = getDeepListResult[Reaction](feed.reactions, token, Reaction.parse, pageLimit, requestLimit)
       feed.comments = getDeepListResult[Comment](feed.comments, token, Comment.parse, pageLimit, requestLimit)
       feed.comments = FBListResult(feed.comments.data.map(comment => {
         comment.comments = getDeepListResult[Comment](comment.comments, token, Comment.parse, pageLimit, requestLimit)
+        comment.reactions = getDeepListResult[Reaction](comment.reactions, token, Reaction.parse, pageLimit, requestLimit)
+        comment.comments = FBListResult(comment.comments.data.map(comment2 => {
+          comment2.reactions = getDeepListResult[Reaction](comment2.reactions, token, Reaction.parse, pageLimit, requestLimit)
+          comment2
+        }), comment.comments.next)
         comment
       }), feed.comments.next)
       feed
