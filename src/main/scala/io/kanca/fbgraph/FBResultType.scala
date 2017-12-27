@@ -62,6 +62,7 @@ case class GroupFeed(
   typ: String,
   updatedTime: LocalDateTime,
   var reactions: FBListResult[Reaction],
+  var comments: FBListResult[Comment],
 )
 
 object GroupFeed extends FBGraphUtils {
@@ -94,8 +95,32 @@ object GroupFeed extends FBGraphUtils {
     (rawFeed \ "type").validate[String].get,
     LocalDateTime.parse((rawFeed \ "updated_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
     FBListResult.parse[Reaction]((rawFeed \ "reactions").validate[JsValue].getOrElse(Json.obj()), Reaction.parse _),
+    FBListResult.parse[Comment]((rawFeed \ "comments").validate[JsValue].getOrElse(Json.obj()), Comment.parse _),
   )
 
+}
+
+case class Comment(
+  id: String,
+  from: From,
+  permalinkUrl: String,
+  message: String,
+  var reactions: FBListResult[Reaction],
+  var comments: FBListResult[Comment],
+)
+
+object Comment {
+  def parse(obj: JsObject): Comment = Comment(
+    (obj \ "id").validate[String].get,
+    From(
+      (obj \ "from" \ "name").validate[String].get,
+      (obj \ "from" \ "id").validate[String].get
+    ),
+    (obj \ "permalink_url").validate[String].get,
+    (obj \ "message").validate[String].get,
+    FBListResult.parse[Reaction]((obj \ "reactions").validate[JsValue].getOrElse(Json.obj()), Reaction.parse _),
+    FBListResult.parse[Comment]((obj \ "comments").validate[JsValue].getOrElse(Json.obj()), Comment.parse _),
+  )
 }
 
 case class Reaction(

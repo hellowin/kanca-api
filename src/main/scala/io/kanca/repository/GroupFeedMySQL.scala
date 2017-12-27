@@ -74,12 +74,12 @@ object GroupFeedMySQL {
           "type" -> rea.typ
         )
       }).toString())
-      preparedStatement.setString(19, Json.toJson(feed.reactions.data.groupBy(_.typ).map { case (key, list) => {
+      preparedStatement.setString(19, Json.toJson(feed.reactions.data.groupBy(_.typ).map { case (key, list) =>
         Json.obj(
           "type" -> key,
           "count" -> list.size
         )
-      }}).toString())
+      }).toString())
       preparedStatement.addBatch()
     })
     preparedStatement.executeBatch()
@@ -88,7 +88,7 @@ object GroupFeedMySQL {
     true
   }
 
-  def read(connection: Connection, readLimit:Int, groupId: String, page: Int = 1): List[GroupFeed] = {
+  def read(connection: Connection, readLimit: Int, groupId: String, page: Int = 1): List[GroupFeed] = {
     val offset = readLimit * (page - 1)
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
@@ -124,13 +124,8 @@ object GroupFeedMySQL {
         Option(rs.getString("story")),
         rs.getString("type"),
         rs.getTimestamp("updated_time").toLocalDateTime,
-        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(obj => {
-          Reaction(
-            (obj \ "id").validate[String].get,
-            (obj \ "name").validate[String].get,
-            (obj \ "type").validate[String].get
-          )
-        }), None)
+        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(Reaction.parse), None),
+        FBListResult(List(), None)
       )
       groupFeeds += groupFeed
     }
