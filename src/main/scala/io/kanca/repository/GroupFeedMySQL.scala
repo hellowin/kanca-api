@@ -41,6 +41,8 @@ object GroupFeedMySQL {
         |""".stripMargin
     val preparedStatement: PreparedStatement = connection.prepareStatement(sql)
 
+    var comments: ListBuffer[(Comment, String, Option[String])] = ListBuffer[(Comment, String, Option[String])]()
+
     groupFeeds.foreach(feed => {
       preparedStatement.setString(1, feed.id)
       preparedStatement.setString(2, feed.id.split("_")(0))
@@ -81,9 +83,17 @@ object GroupFeedMySQL {
         )
       }).toString())
       preparedStatement.addBatch()
+
+      // add to comments for every feed comments and comment's comments
+      comments ++= feed.comments.data.map(comment => (comment, feed.id, None))
+      feed.comments.data.foreach(comment => {
+        comments ++= comment.comments.data.map(comment2 => (comment2, feed.id, Some(comment.id)))
+      })
     })
     preparedStatement.executeBatch()
     preparedStatement.close()
+
+    GroupCommentMySQL.insert(connection, comments.toList, groupFeeds.head.id)
 
     true
   }

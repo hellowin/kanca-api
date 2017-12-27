@@ -102,6 +102,8 @@ object RepositoryMySQL {
          |create table if not exists group_comment (
          |	id varchar(255) primary key,
          |  group_id varchar(255) not null,
+         |  feed_id varchar(255) not null,
+         |  parent_id varchar(255),
          |	created_time datetime,
          |	from_name varchar(255),
          |	from_id varchar(255),
@@ -114,6 +116,8 @@ object RepositoryMySQL {
     )
 
     addIndex(statement, "group_comment", "GROUP_ID", "group_id asc")
+    addIndex(statement, "group_comment", "FEED_ID", "feed_id asc")
+    addIndex(statement, "group_comment", "PARENT_ID", "parent_id asc")
 
     true
   }
