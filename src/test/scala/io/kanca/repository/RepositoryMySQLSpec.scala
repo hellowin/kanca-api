@@ -75,9 +75,9 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
   }
 
   test("able to read group feeds") {
-    repo.readGroupFeed(GROUP_ID)
+    repo.readGroupFeed(GROUP_ID).size should be >= 100
 
-    repo.readGroupFeed(GROUP_ID, 2)
+    repo.readGroupFeed(GROUP_ID, 2).size should be >= 1
   }
 
 }
