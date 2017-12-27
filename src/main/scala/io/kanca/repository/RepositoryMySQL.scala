@@ -1,6 +1,6 @@
 package io.kanca.repository
 
-import java.sql.{Connection, DriverManager}
+import java.sql.{Connection, DriverManager, Statement}
 
 import io.kanca.fbgraph.GroupFeed
 
@@ -48,6 +48,23 @@ object RepositoryMySQL {
     connection
   }
 
+  def addIndex(statement: Statement, tableName: String, indexName: String, indexStatement: String): Unit = {
+    val rs = statement.executeQuery(
+      s"""
+        |select count(*) as count from information_schema.statistics where table_name = '$tableName' and index_name = '$indexName' and table_schema = database()
+      """.stripMargin)
+
+    rs.next()
+    val count: Int = rs.getInt("count")
+    if (count == 0) {
+      statement.execute(
+        s"""
+          |ALTER TABLE $tableName ADD INDEX $indexName($indexStatement)
+        """.stripMargin
+      )
+    }
+  }
+
   @throws[Exception]
   def setupTables(connection: Connection): Boolean = {
     val statement = connection.createStatement()
@@ -78,20 +95,7 @@ object RepositoryMySQL {
       """.stripMargin
     )
 
-    val rs = statement.executeQuery(
-      """
-        |select count(*) as count from information_schema.statistics where table_name = 'group_feed' and index_name = 'GROUP_ID' and table_schema = database()
-      """.stripMargin)
-
-    rs.next()
-    val count: Int = rs.getInt("count")
-    if (count == 0) {
-      statement.execute(
-        """
-          |ALTER TABLE group_feed ADD INDEX GROUP_ID(group_id asc)
-        """.stripMargin
-      )
-    }
+    addIndex(statement, "group_feed", "GROUP_ID", "group_id asc")
 
     statement.execute(
       s"""
@@ -108,6 +112,8 @@ object RepositoryMySQL {
          |)
       """.stripMargin
     )
+
+    addIndex(statement, "group_comment", "GROUP_ID", "group_id asc")
 
     true
   }

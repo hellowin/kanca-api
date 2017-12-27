@@ -51,6 +51,11 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
         |DROP TABLE IF EXISTS group_feed
       """.stripMargin)
 
+    statement.execute(
+      """
+        |DROP TABLE IF EXISTS group_comment
+      """.stripMargin)
+
     RepositoryMySQL.setupTables(connection)
   }
 
