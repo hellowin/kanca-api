@@ -20,9 +20,7 @@ class RepositoryMySQLSpec extends IntegrationTest {
   private val READ_LIMIT = sys.env.getOrElse("READ_LIMIT", "100").toInt
   private val connection = RepositoryMySQL.getConnection(MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DRIVER)
 
-  private val FB_GRAPH_VERSION: String = sys.env.getOrElse("FB_GRAPH_VERSION", "2.11")
-  private val DEFAULT_PAGE_LIMIT: Int = sys.env.getOrElse("DEFAULT_PAGE_LIMIT", "10").toInt
-  private val DEFAULT_REQUEST_LIMIT: Int = sys.env.getOrElse("DEFAULT_REQUEST_LIMIT", "100").toInt
+  private val DEFAULT_PAGE_LIMIT: Int = 10
 
   def injector: Injector = TestInjector(
     flags = Map(
