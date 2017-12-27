@@ -32,7 +32,7 @@ class FBGraphSpec extends IntegrationTest {
   val graphOld: FBGraph = injectorOld.instance[FBGraph]
 
   test(s"Group feeds fetcher with page limit $DEFAULT_PAGE_LIMIT and request limit $DEFAULT_REQUEST_LIMIT should able to get feeds by default arguments") {
-    val feeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID).data
+    val feeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
     feeds.map(_.id).toSet.size should be <= DEFAULT_PAGE_LIMIT * DEFAULT_REQUEST_LIMIT
     feeds.map(_.id).toSet.size should be > 1 * DEFAULT_REQUEST_LIMIT
     feeds.map(_.id).toSet.size shouldEqual feeds.size
@@ -40,23 +40,23 @@ class FBGraphSpec extends IntegrationTest {
   }
 
   test(s"Able to get from old API version $FB_GRAPH_VERSION_OLD") {
-    val feeds: List[GroupFeed] = graphOld.getGroupFeeds(USER_TOKEN, GROUP_ID).data
+    val feeds: List[GroupFeed] = graphOld.getGroupFeeds(USER_TOKEN, GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
     feeds.map { feed => feed.isInstanceOf[GroupFeed] shouldEqual true }
   }
 
   test("able to get feeds by page limit arguments") {
-    val feeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID, 2).data
+    val feeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID, 2, DEFAULT_REQUEST_LIMIT).data
     feeds.map(_.id).toSet should have size 2 * DEFAULT_REQUEST_LIMIT
     feeds.map(_.id).toSet.size shouldEqual feeds.size
     feeds.map { feed => feed.isInstanceOf[GroupFeed] shouldEqual true }
   }
 
   test("able handle wrong token") {
-    an[FBOAuthException] should be thrownBy graph.getGroupFeeds("any_token", GROUP_ID)
+    an[FBOAuthException] should be thrownBy graph.getGroupFeeds("any_token", GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT)
   }
 
   test("able handle wrong group id") {
-    an[FBOAuthException] should be thrownBy graph.getGroupFeeds(USER_TOKEN, "any_id")
+    an[FBOAuthException] should be thrownBy graph.getGroupFeeds(USER_TOKEN, "any_id", DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT)
   }
 
 }

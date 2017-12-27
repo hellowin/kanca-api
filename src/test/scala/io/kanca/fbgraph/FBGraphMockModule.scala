@@ -12,6 +12,6 @@ object FBGraphMockModule extends TwitterModule {
   @Provides
   def providesGraph(
     @Flag("fbgraph.defaultPageLimit") defaultPageLimit: Int,
-  ): FBGraph = new FBGraphMock(defaultPageLimit)
+  ): FBGraph = new FBGraphMock
 
 }

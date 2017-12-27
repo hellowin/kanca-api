@@ -41,6 +41,8 @@ object GroupFeedMySQL {
         |""".stripMargin
     val preparedStatement: PreparedStatement = connection.prepareStatement(sql)
 
+    var comments: ListBuffer[(Comment, String, Option[String])] = ListBuffer[(Comment, String, Option[String])]()
+
     groupFeeds.foreach(feed => {
       preparedStatement.setString(1, feed.id)
       preparedStatement.setString(2, feed.id.split("_")(0))
@@ -74,21 +76,29 @@ object GroupFeedMySQL {
           "type" -> rea.typ
         )
       }).toString())
-      preparedStatement.setString(19, Json.toJson(feed.reactions.data.groupBy(_.typ).map { case (key, list) => {
+      preparedStatement.setString(19, Json.toJson(feed.reactions.data.groupBy(_.typ).map { case (key, list) =>
         Json.obj(
           "type" -> key,
           "count" -> list.size
         )
-      }}).toString())
+      }).toString())
       preparedStatement.addBatch()
+
+      // add to comments for every feed comments and comment's comments
+      comments ++= feed.comments.data.map(comment => (comment, feed.id, None))
+      feed.comments.data.foreach(comment => {
+        comments ++= comment.comments.data.map(comment2 => (comment2, feed.id, Some(comment.id)))
+      })
     })
     preparedStatement.executeBatch()
     preparedStatement.close()
 
+    GroupCommentMySQL.insert(connection, comments.toList, groupFeeds.head.id)
+
     true
   }
 
-  def read(connection: Connection, readLimit:Int, groupId: String, page: Int = 1): List[GroupFeed] = {
+  def read(connection: Connection, readLimit: Int, groupId: String, page: Int = 1): List[GroupFeed] = {
     val offset = readLimit * (page - 1)
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
@@ -124,13 +134,8 @@ object GroupFeedMySQL {
         Option(rs.getString("story")),
         rs.getString("type"),
         rs.getTimestamp("updated_time").toLocalDateTime,
-        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(obj => {
-          Reaction(
-            (obj \ "id").validate[String].get,
-            (obj \ "name").validate[String].get,
-            (obj \ "type").validate[String].get
-          )
-        }), None)
+        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(Reaction.parse), None),
+        FBListResult(List(), None)
       )
       groupFeeds += groupFeed
     }

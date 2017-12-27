@@ -1,6 +1,6 @@
 package io.kanca.repository
 
-import java.sql.{Connection, DriverManager}
+import java.sql.{Connection, DriverManager, Statement}
 
 import io.kanca.fbgraph.GroupFeed
 
@@ -48,6 +48,23 @@ object RepositoryMySQL {
     connection
   }
 
+  def addIndex(statement: Statement, tableName: String, indexName: String, indexStatement: String): Unit = {
+    val rs = statement.executeQuery(
+      s"""
+        |select count(*) as count from information_schema.statistics where table_name = '$tableName' and index_name = '$indexName' and table_schema = database()
+      """.stripMargin)
+
+    rs.next()
+    val count: Int = rs.getInt("count")
+    if (count == 0) {
+      statement.execute(
+        s"""
+          |ALTER TABLE $tableName ADD INDEX $indexName($indexStatement)
+        """.stripMargin
+      )
+    }
+  }
+
   @throws[Exception]
   def setupTables(connection: Connection): Boolean = {
     val statement = connection.createStatement()
@@ -78,20 +95,29 @@ object RepositoryMySQL {
       """.stripMargin
     )
 
-    val rs = statement.executeQuery(
-      """
-        |select count(*) as count from information_schema.statistics where table_name = 'group_feed' and index_name = 'GROUP_ID' and table_schema = database()
-      """.stripMargin)
+    addIndex(statement, "group_feed", "GROUP_ID", "group_id asc")
 
-    rs.next()
-    val count: Int = rs.getInt("count")
-    if (count == 0) {
-      statement.execute(
-        """
-          |ALTER TABLE group_feed ADD INDEX GROUP_ID(group_id asc)
-        """.stripMargin
-      )
-    }
+    statement.execute(
+      s"""
+         |create table if not exists group_comment (
+         |	id varchar(255) primary key,
+         |  group_id varchar(255) not null,
+         |  feed_id varchar(255) not null,
+         |  parent_id varchar(255),
+         |	created_time datetime,
+         |	from_name varchar(255),
+         |	from_id varchar(255),
+         |	message longtext,
+         |	permalink_url varchar(255),
+         |  reactions json,
+         |  reactions_summary json
+         |)
+      """.stripMargin
+    )
+
+    addIndex(statement, "group_comment", "GROUP_ID", "group_id asc")
+    addIndex(statement, "group_comment", "FEED_ID", "feed_id asc")
+    addIndex(statement, "group_comment", "PARENT_ID", "parent_id asc")
 
     true
   }
