@@ -21,6 +21,7 @@ class RepositoryMySQLSpec extends IntegrationTest {
   private val connection = RepositoryMySQL.getConnection(MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DRIVER)
 
   private val DEFAULT_PAGE_LIMIT: Int = 10
+  private val DEFAULT_REQUEST_LIMIT: Int = 100
 
   def injector: Injector = TestInjector(
     flags = Map(
@@ -52,7 +53,7 @@ class RepositoryMySQLSpec extends IntegrationTest {
   }
 
   test("GroupFeedRepo should able to insert group feeds batch, multiple times") {
-    val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID).data
+    val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
     val res: Boolean = repo.insertGroupFeed(groupFeeds)
     res shouldEqual true
 

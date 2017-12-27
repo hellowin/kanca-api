@@ -6,7 +6,7 @@ import play.api.libs.json.JsObject
 
 import scala.io.{Codec, Source}
 
-class FBGraphMock(defaultPageLimit: Int) extends FBGraph(defaultPageLimit) {
+class FBGraphMock extends FBGraph {
 
   private def getResultArrayFromFile[T](filePrefix: String, parser: JsObject => T, pageLimit: Int, results: List[T] = List()): FBListResult[T] = {
     try {
@@ -27,7 +27,7 @@ class FBGraphMock(defaultPageLimit: Int) extends FBGraph(defaultPageLimit) {
     }
   }
 
-  override def getGroupFeeds(token: String, groupId: String, pageLimit: Int): FBListResult[GroupFeed] =
+  override def getGroupFeeds(token: String, groupId: String, pageLimit: Int, requestLimit: Int): FBListResult[GroupFeed] =
     getResultArrayFromFile[GroupFeed]("group_feed", GroupFeed.parse, pageLimit)
 
 }
