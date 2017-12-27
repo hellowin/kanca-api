@@ -105,11 +105,12 @@ case class Comment(
   from: From,
   permalinkUrl: String,
   message: String,
+  createdTime: LocalDateTime,
   var reactions: FBListResult[Reaction],
   var comments: FBListResult[Comment],
 )
 
-object Comment {
+object Comment extends FBGraphUtils {
   def parse(obj: JsObject): Comment = Comment(
     (obj \ "id").validate[String].get,
     From(
@@ -118,6 +119,7 @@ object Comment {
     ),
     (obj \ "permalink_url").validate[String].get,
     (obj \ "message").validate[String].get,
+    LocalDateTime.parse((obj \ "created_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
     FBListResult.parse[Reaction]((obj \ "reactions").validate[JsValue].getOrElse(Json.obj()), Reaction.parse _),
     FBListResult.parse[Comment]((obj \ "comments").validate[JsValue].getOrElse(Json.obj()), Comment.parse _),
   )

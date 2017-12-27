@@ -93,6 +93,22 @@ object RepositoryMySQL {
       )
     }
 
+    statement.execute(
+      s"""
+         |create table if not exists group_comment (
+         |	id varchar(255) primary key,
+         |  group_id varchar(255) not null,
+         |	created_time datetime,
+         |	from_name varchar(255),
+         |	from_id varchar(255),
+         |	message longtext,
+         |	permalink_url varchar(255),
+         |  reactions json,
+         |  reactions_summary json
+         |)
+      """.stripMargin
+    )
+
     true
   }
 

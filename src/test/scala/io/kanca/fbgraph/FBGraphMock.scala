@@ -23,7 +23,9 @@ class FBGraphMock extends FBGraph {
         FBListResult(newResults, None)
       }
     } catch {
-      case e: Exception => getResultArrayFromFile[T](filePrefix, parser, pageLimit - 1, results)
+      case _: NullPointerException =>
+        if (pageLimit < 1) return FBListResult(results, None)
+        getResultArrayFromFile[T](filePrefix, parser, pageLimit - 1, results)
     }
   }
 

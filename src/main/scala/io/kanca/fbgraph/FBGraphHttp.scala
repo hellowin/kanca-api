@@ -57,7 +57,7 @@ class FBGraphHttp(
   def getGroupFeeds(token: String, groupId: String, pageLimit: Int, requestLimit: Int): FBListResult[GroupFeed] = {
     val req: HttpRequest = getHttpRequest(
       token, s"$groupId/feed",
-      s"created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags,reactions,comments.limit($requestLimit){comments.limit($requestLimit){message,from,permalink_url,reactions.limit($requestLimit)},message,from,permalink_url,reactions.limit($requestLimit)}",
+      s"created_time,id,message,updated_time,caption,story,description,from,link,name,picture,status_type,type,shares,permalink_url,to,message_tags,reactions,comments.limit($requestLimit){comments.limit($requestLimit){created_time,message,from,permalink_url,reactions.limit($requestLimit)},created_time,message,from,permalink_url,reactions.limit($requestLimit)}",
       requestLimit
     )
 
