@@ -6,8 +6,6 @@ import scalaj.http._
 
 class FBGraphHttp(
   version: String,
-  defaultPageLimit: Int,
-  defaultRequestLimit: Int,
 ) extends FBGraph {
 
   private val FB_URL: String = s"https://graph.facebook.com/v$version"

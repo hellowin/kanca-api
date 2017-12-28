@@ -15,8 +15,6 @@ class FBGraphSpec extends IntegrationTest {
   def injector: Injector = TestInjector(
     flags = Map(
       "fbgraph.version" -> FB_GRAPH_VERSION,
-      "fbgraph.defaultPageLimit" -> DEFAULT_PAGE_LIMIT.toString,
-      "fbgraph.defaultRequestLimit" -> DEFAULT_REQUEST_LIMIT.toString,
     ),
     modules = Seq(FBGraphModule),
   ).create
