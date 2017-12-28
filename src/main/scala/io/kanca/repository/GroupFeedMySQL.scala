@@ -2,6 +2,7 @@ package io.kanca.repository
 
 import java.sql.{Connection, PreparedStatement, ResultSet, Timestamp}
 
+import com.google.inject.Inject
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.fbgraph._
@@ -9,10 +10,11 @@ import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
 
-object GroupFeedMySQL extends Logging {
+class GroupFeedMySQL @Inject()(dataSource: DataSource, groupCommentMySQL: GroupCommentMySQL) extends Logging {
 
-  def insert(connection: Connection, groupFeeds: List[GroupFeed]): Boolean = {
+  def insert(groupFeeds: List[GroupFeed]): Boolean = {
     val elapsed: () => Duration = Stopwatch.start()
+    val connection: Connection = dataSource.getConnection
 
     val sql: String =
       """
@@ -103,17 +105,20 @@ object GroupFeedMySQL extends Logging {
     preparedStatement.executeBatch()
     preparedStatement.close()
 
-    debug(s"MySQL inject group feeds injected all feeds: ${elapsed().inMilliseconds} ms, total feeds: ${groupFeeds.size}, 1 feed in ms: ${elapsed().inMilliseconds/groupFeeds.size}")
+    debug(s"MySQL inject group feeds injected all feeds: ${elapsed().inMilliseconds} ms, total feeds: ${groupFeeds.size}, 1 feed in ms: ${elapsed().inMilliseconds / groupFeeds.size}")
 
-    GroupCommentMySQL.insert(connection, comments.toList, groupFeeds.head.id)
+    groupCommentMySQL.insert(comments.toList, groupFeeds.head.id)
 
-    debug(s"MySQL inject group feeds injected all comments: ${elapsed().inMilliseconds} ms, total comments: ${comments.size}, 1 comment in ms: ${elapsed().inMilliseconds/comments.size}")
+    debug(s"MySQL inject group feeds injected all comments: ${elapsed().inMilliseconds} ms, total comments: ${comments.size}, 1 comment in ms: ${elapsed().inMilliseconds / comments.size}")
+
+    connection.close()
 
     true
   }
 
-  def read(connection: Connection, readLimit: Int, groupId: String, page: Int = 1): List[GroupFeed] = {
+  def read(groupId: String, page: Int = 1, readLimit: Int): List[GroupFeed] = {
     val offset = readLimit * (page - 1)
+    val connection: Connection = dataSource.getConnection
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
       s"""
@@ -156,6 +161,8 @@ object GroupFeedMySQL extends Logging {
       )
       groupFeeds += groupFeed
     }
+
+    connection.close()
 
     groupFeeds.toList
   }

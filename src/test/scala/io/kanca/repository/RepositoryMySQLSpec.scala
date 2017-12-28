@@ -19,7 +19,6 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
   private val USER_TOKEN = sys.env("USER_TOKEN")
   private val GROUP_ID = sys.env("GROUP_ID")
   private val READ_LIMIT = sys.env.getOrElse("READ_LIMIT", "100").toInt
-  private val connection = RepositoryMySQL.getConnection(MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DRIVER)
 
   private val DEFAULT_PAGE_LIMIT: Int = 10
   private val DEFAULT_REQUEST_LIMIT: Int = 100
@@ -42,6 +41,8 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
 
   private val graph = injector.instance[FBGraph]
   private val repo = injector.instance[Repository]
+  private val dataSource = injector.instance[DataSource]
+  private val connection = dataSource.getConnection
 
   override def beforeAll() {
     val statement = connection.createStatement()
@@ -56,7 +57,7 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
         |DROP TABLE IF EXISTS group_comment
       """.stripMargin)
 
-    RepositoryMySQL.setupTables(connection)
+    dataSource.setup()
   }
 
   test("MySQL Spec should able to get connection") {
@@ -64,8 +65,8 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
   }
 
   test("able to setup tables, multiple times") {
-    RepositoryMySQL.setupTables(connection) shouldEqual true
-    RepositoryMySQL.setupTables(connection) shouldEqual true
+    dataSource.setup() shouldEqual true
+    dataSource.setup() shouldEqual true
   }
 
   test("GroupFeedRepo should able to insert group feeds batch, multiple times") {
