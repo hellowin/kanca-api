@@ -4,6 +4,7 @@ import java.sql.{Connection, DriverManager, Statement}
 
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
+import com.zaxxer.hikari.{HikariConfig, HikariDataSource}
 
 class DataSourceMySQL(
   host: String,
@@ -16,8 +17,15 @@ class DataSourceMySQL(
 
   Class.forName(driver)
 
+  val config = new HikariConfig()
+  config.setJdbcUrl(s"jdbc:mysql://$host:$port/$database")
+  config.setUsername(username)
+  config.setPassword(password)
+
+  val ds: HikariDataSource = new HikariDataSource(config)
+
   @throws[Exception]
-  def getConnection: Connection = DriverManager.getConnection(s"jdbc:mysql://$host:$port/$database", username, password)
+  def getConnection: Connection = ds.getConnection()
 
   def addIndex(statement: Statement, tableName: String, indexName: String, indexStatement: String): Unit = {
     val rs = statement.executeQuery(
