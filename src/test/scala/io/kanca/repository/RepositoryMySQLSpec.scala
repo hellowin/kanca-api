@@ -60,6 +60,10 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
     dataSource.setup()
   }
 
+  override def afterAll() {
+    dataSource.close()
+  }
+
   test("MySQL Spec should able to get connection") {
     connection.isInstanceOf[Connection] shouldEqual true
   }

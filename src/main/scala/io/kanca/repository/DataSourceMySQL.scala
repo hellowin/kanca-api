@@ -126,6 +126,9 @@ class DataSourceMySQL(
   }
 
   @throws[Exception]
-  def close(): Boolean = true
+  def close(): Boolean = {
+    ds.close()
+    true
+  }
 
 }
