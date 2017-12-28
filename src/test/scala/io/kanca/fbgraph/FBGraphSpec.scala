@@ -9,6 +9,8 @@ class FBGraphSpec extends IntegrationTest {
   private val GROUP_ID = sys.env("GROUP_ID")
   private val FB_GRAPH_VERSION: String = sys.env.getOrElse("FB_GRAPH_VERSION", "2.11")
   private val FB_GRAPH_VERSION_OLD: String = sys.env.getOrElse("FB_GRAPH_VERSION_OLD", "2.8")
+  private val FB_GRAPH_CONNECTION_TIMEOUT: Int = sys.env.getOrElse("FB_GRAPH_CONNECTION_TIMEOUT", "2000").toInt
+  private val FB_GRAPH_READ_TIMEOUT: Int = sys.env.getOrElse("FB_GRAPH_READ_TIMEOUT", "10000").toInt
   private val DEFAULT_PAGE_LIMIT: Int = sys.env.getOrElse("DEFAULT_PAGE_LIMIT", "10").toInt
   private val DEFAULT_REQUEST_LIMIT: Int = sys.env.getOrElse("DEFAULT_REQUEST_LIMIT", "100").toInt
 
@@ -22,6 +24,8 @@ class FBGraphSpec extends IntegrationTest {
   def injectorOld: Injector = TestInjector(
     flags = Map(
       "fbgraph.version" -> FB_GRAPH_VERSION_OLD,
+      "fbgraph.connectionTimeout" -> FB_GRAPH_CONNECTION_TIMEOUT.toString,
+      "fbgraph.readTimeout" -> FB_GRAPH_READ_TIMEOUT.toString,
     ),
     modules = Seq(FBGraphModule),
   ).create

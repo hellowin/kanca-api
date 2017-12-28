@@ -6,6 +6,8 @@ import scalaj.http._
 
 class FBGraphHttp(
   version: String,
+  connectionTimeout: Int,
+  readTimeout: Int,
 ) extends FBGraph {
 
   private val FB_URL: String = s"https://graph.facebook.com/v$version"
@@ -38,7 +40,7 @@ class FBGraphHttp(
     } else {
       url = node
     }
-    Http(url).params(params).postForm
+    Http(url).timeout(connectionTimeout, readTimeout).params(params).postForm
   }
 
   private def getDeepListResult[T](listResult: FBListResult[T], token: String, parser: JsObject => T, pageLimit: Int, requestLimit: Int): FBListResult[T] = {
