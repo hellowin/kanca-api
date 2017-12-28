@@ -10,7 +10,7 @@ import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
 
-class GroupFeedMySQL @Inject()(dataSource: DataSource, groupCommentMySQL: GroupCommentMySQL) extends Logging {
+class GroupFeedMySQL @Inject()(dataSource: DataSource, groupCommentMySQL: GroupCommentMySQL, conf: MySQLConfiguration) extends Logging {
 
   def insert(groupFeeds: List[GroupFeed]): Boolean = {
 
@@ -18,7 +18,7 @@ class GroupFeedMySQL @Inject()(dataSource: DataSource, groupCommentMySQL: GroupC
 
     val elapsed: () => Duration = Stopwatch.start()
     var comments: ListBuffer[(Comment, String, Option[String])] = ListBuffer[(Comment, String, Option[String])]()
-    val itemsPerThread: Int = if ((groupFeeds.size / 3) == 0) 1 else groupFeeds.size / 3
+    val itemsPerThread: Int = if ((groupFeeds.size / conf.numberOfThreadPerInject) == 0) 1 else groupFeeds.size / conf.numberOfThreadPerInject
 
     groupFeeds.grouped(itemsPerThread).toList.par.foreach(feedPool => {
       val connection: Connection = dataSource.getConnection

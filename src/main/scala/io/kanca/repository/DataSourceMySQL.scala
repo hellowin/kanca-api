@@ -7,21 +7,17 @@ import com.twitter.util.{Duration, Stopwatch}
 import com.zaxxer.hikari.{HikariConfig, HikariDataSource}
 
 class DataSourceMySQL(
-  host: String,
-  port: String,
-  database: String,
-  username: String,
-  password: String,
-  driver: String,
+  conf: MySQLConfiguration,
 ) extends DataSource with Logging {
 
-  Class.forName(driver)
+  Class.forName(conf.driver)
 
   val config = new HikariConfig()
-  config.setJdbcUrl(s"jdbc:mysql://$host:$port/$database")
-  config.setUsername(username)
-  config.setPassword(password)
-  config.setConnectionTimeout(50000)
+  config.setJdbcUrl(s"jdbc:mysql://${conf.host}:${conf.port}/${conf.database}")
+  config.setUsername(conf.username)
+  config.setPassword(conf.password)
+  config.setConnectionTimeout(conf.connectionTimeout)
+  config.setMaximumPoolSize(conf.connectionPoolSize)
 
   val ds: HikariDataSource = new HikariDataSource(config)
 
@@ -48,23 +44,23 @@ class DataSourceMySQL(
   @throws[Exception]
   def setup(): Boolean = {
     val elapsed: () => Duration = Stopwatch.start()
-    val URL = s"jdbc:mysql://$host:$port"
+    val URL = s"jdbc:mysql://${conf.host}:${conf.port}"
 
     // make the connection
-    val connection = DriverManager.getConnection(URL, username, password)
+    val connection = DriverManager.getConnection(URL, conf.username, conf.password)
 
     // create the statement, and run the select query
     val preStatement = connection.createStatement()
     // utf8mb4 is necessary because existence of emotikon on some post's message
     preStatement.execute(
       s"""
-         |CREATE DATABASE IF NOT EXISTS $database
+         |CREATE DATABASE IF NOT EXISTS ${conf.database}
          |  CHARACTER SET utf8mb4
          |  COLLATE utf8mb4_unicode_ci
     """.stripMargin
     )
 
-    connection.setCatalog(database)
+    connection.setCatalog(conf.database)
     preStatement.close()
 
     val statement = connection.createStatement()

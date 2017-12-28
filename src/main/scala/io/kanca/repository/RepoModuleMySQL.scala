@@ -12,31 +12,46 @@ object RepoModuleMySQL extends TwitterModule {
   flag[String](name = "repo.mysql.username", help = "MySQL Username.")
   flag[String](name = "repo.mysql.password", help = "MySQL Password.")
   flag(name = "repo.mysql.driver", default = "com.mysql.cj.jdbc.Driver", help = "MySQL Driver.")
+  flag[Int](name = "repo.mysql.connectionTimeout", default = 30000, help = "Timeout when things too long waiting get connection from connection pool.")
+  flag[Int](name = "repo.mysql.connectionPoolSize", default = 10, help = "Maximum connections per pool.")
+  flag[Int](name = "repo.mysql.numberOfThreadPerInject", default = 7, help = "Number or thread uses when performing inject.")
   flag[Int](name = "repo.readLimit", default = 100, help = "Read limit per page.")
 
   @Singleton
   @Provides
-  def providesDataSource(
+  def providesMySQLConfiguration(
     @Flag("repo.mysql.host") host: String,
     @Flag("repo.mysql.port") port: String,
     @Flag("repo.mysql.database") database: String,
     @Flag("repo.mysql.username") username: String,
     @Flag("repo.mysql.password") password: String,
     @Flag("repo.mysql.driver") driver: String,
-  ): DataSource = new DataSourceMySQL(host, port, database, username, password, driver)
+    @Flag("repo.readLimit") readLimit: Int,
+    @Flag("repo.mysql.connectionTimeout") connectionTimeout: Int,
+    @Flag("repo.mysql.numberOfThreadPerInject") numberOfThreadPerInject: Int,
+    @Flag("repo.mysql.connectionPoolSize") connectionPoolSize: Int,
+  ): MySQLConfiguration = MySQLConfiguration(host, port, database, username, password, driver, readLimit, connectionTimeout, numberOfThreadPerInject, connectionPoolSize)
+
+  @Singleton
+  @Provides
+  def providesDataSource(
+    @Inject conf: MySQLConfiguration,
+  ): DataSource = new DataSourceMySQL(conf)
 
   @Singleton
   @Provides
   def providesGroupCommentMySQL(
     @Inject dataSource: DataSource,
-  ): GroupCommentMySQL = new GroupCommentMySQL(dataSource)
+    @Inject conf: MySQLConfiguration,
+  ): GroupCommentMySQL = new GroupCommentMySQL(dataSource, conf)
 
   @Singleton
   @Provides
   def providesGroupFeedMySQL(
     @Inject dataSource: DataSource,
     @Inject groupCommentMySQL: GroupCommentMySQL,
-  ): GroupFeedMySQL = new GroupFeedMySQL(dataSource, groupCommentMySQL)
+    @Inject conf: MySQLConfiguration,
+  ): GroupFeedMySQL = new GroupFeedMySQL(dataSource, groupCommentMySQL, conf)
 
   @Singleton
   @Provides

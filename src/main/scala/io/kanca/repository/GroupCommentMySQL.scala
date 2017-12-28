@@ -7,14 +7,14 @@ import com.twitter.inject.Logging
 import io.kanca.fbgraph._
 import play.api.libs.json.Json
 
-class GroupCommentMySQL @Inject()(dataSource: DataSource) extends Logging {
+class GroupCommentMySQL @Inject()(dataSource: DataSource, conf: MySQLConfiguration) extends Logging {
 
   // insert must list of (comment, feed id, parent id)
   def insert(groupComments: List[(Comment, String, Option[String])], groupId: String): Boolean = {
 
     if (groupComments.size < 1) return true
 
-    val itemsPerThread: Int = if ((groupComments.size / 3) == 0) 1 else groupComments.size / 3
+    val itemsPerThread: Int = if ((groupComments.size / conf.numberOfThreadPerInject) == 0) 1 else groupComments.size / conf.numberOfThreadPerInject
 
     groupComments.grouped(itemsPerThread).toList.par.foreach(commentsPool => {
       val connection = dataSource.getConnection
