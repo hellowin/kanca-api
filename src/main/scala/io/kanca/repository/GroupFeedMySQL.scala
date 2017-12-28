@@ -2,14 +2,18 @@ package io.kanca.repository
 
 import java.sql.{Connection, PreparedStatement, ResultSet, Timestamp}
 
+import com.twitter.inject.Logging
+import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.fbgraph._
 import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
 
-object GroupFeedMySQL {
+object GroupFeedMySQL extends Logging {
 
   def insert(connection: Connection, groupFeeds: List[GroupFeed]): Boolean = {
+    val elapsed: () => Duration = Stopwatch.start()
+
     val sql: String =
       """
         |insert into group_feed (
@@ -95,10 +99,15 @@ object GroupFeedMySQL {
         comments ++= comment.comments.data.map(comment2 => (comment2, feed.id, Some(comment.id)))
       })
     })
+    debug(s"MySQL inject group feeds prepared all feeds: ${elapsed().inMilliseconds} ms")
     preparedStatement.executeBatch()
     preparedStatement.close()
 
+    debug(s"MySQL inject group feeds injected all feeds: ${elapsed().inMilliseconds} ms, total feeds: ${groupFeeds.size}, 1 feed in ms: ${elapsed().inMilliseconds/groupFeeds.size}")
+
     GroupCommentMySQL.insert(connection, comments.toList, groupFeeds.head.id)
+
+    debug(s"MySQL inject group feeds injected all comments: ${elapsed().inMilliseconds} ms, total comments: ${comments.size}, 1 comment in ms: ${elapsed().inMilliseconds/comments.size}")
 
     true
   }

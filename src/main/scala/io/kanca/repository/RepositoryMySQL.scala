@@ -2,6 +2,8 @@ package io.kanca.repository
 
 import java.sql.{Connection, DriverManager, Statement}
 
+import com.twitter.inject.Logging
+import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.fbgraph.GroupFeed
 
 class RepositoryMySQL(
@@ -15,7 +17,7 @@ class RepositoryMySQL(
 
 }
 
-object RepositoryMySQL {
+object RepositoryMySQL extends Logging {
 
   @throws[Exception]
   def getConnection(
@@ -26,6 +28,7 @@ object RepositoryMySQL {
     password: String,
     driver: String,
   ): Connection = {
+    val elapsed: () => Duration = Stopwatch.start()
     val URL = s"jdbc:mysql://$host:$port"
 
     // make the connection
@@ -44,6 +47,8 @@ object RepositoryMySQL {
     )
 
     connection.setCatalog(database)
+
+    debug(s"MySQL get connection time lapsed: ${elapsed().inMilliseconds.toString} ms")
 
     connection
   }
@@ -67,6 +72,7 @@ object RepositoryMySQL {
 
   @throws[Exception]
   def setupTables(connection: Connection): Boolean = {
+    val elapsed: () => Duration = Stopwatch.start()
     val statement = connection.createStatement()
 
     statement.execute(
@@ -119,6 +125,8 @@ object RepositoryMySQL {
     addIndex(statement, "group_comment", "GROUP_ID", "group_id asc")
     addIndex(statement, "group_comment", "FEED_ID", "feed_id asc")
     addIndex(statement, "group_comment", "PARENT_ID", "parent_id asc")
+
+    debug(s"MySQL setup table time: ${elapsed().inMilliseconds.toString} ms")
 
     true
   }

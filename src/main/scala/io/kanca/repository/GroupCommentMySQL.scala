@@ -2,13 +2,17 @@ package io.kanca.repository
 
 import java.sql.{Connection, PreparedStatement, Timestamp}
 
+import com.twitter.inject.Logging
+import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.fbgraph._
 import play.api.libs.json.Json
 
-object GroupCommentMySQL {
+object GroupCommentMySQL extends Logging {
 
   // insert must list of (comment, feed id, parent id)
   def insert(connection: Connection, groupComments: List[(Comment, String, Option[String])], groupId: String): Boolean = {
+    val elapsed: () => Duration = Stopwatch.start()
+
     val sql: String =
       """
         |insert into group_comment (
@@ -55,10 +59,11 @@ object GroupCommentMySQL {
         )
       }).toString())
       preparedStatement.addBatch()
-    }
-    }
+    }}
+    debug(s"MySQL inject comments prepared batch: ${elapsed().inMilliseconds} ms")
     preparedStatement.executeBatch()
     preparedStatement.close()
+    debug(s"MySQL inject comments injected: ${elapsed().inMilliseconds} ms")
 
     true
   }
