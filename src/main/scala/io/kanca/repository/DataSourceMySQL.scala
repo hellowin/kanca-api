@@ -21,6 +21,7 @@ class DataSourceMySQL(
   config.setJdbcUrl(s"jdbc:mysql://$host:$port/$database")
   config.setUsername(username)
   config.setPassword(password)
+  config.setConnectionTimeout(50000)
 
   val ds: HikariDataSource = new HikariDataSource(config)
 

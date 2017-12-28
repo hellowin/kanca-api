@@ -79,8 +79,11 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
     val res: Boolean = repo.insertGroupFeed(groupFeeds)
     res shouldEqual true
 
-    val res2: Boolean = repo.insertGroupFeed(groupFeeds)
+    val res2: Boolean = repo.insertGroupFeed(groupFeeds.take(10))
     res2 shouldEqual true
+
+    val res3: Boolean = repo.insertGroupFeed(groupFeeds.take(10))
+    res3 shouldEqual true
   }
 
   test("able to read group feeds") {
