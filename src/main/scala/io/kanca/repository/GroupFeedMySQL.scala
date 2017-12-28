@@ -30,12 +30,16 @@ object GroupFeedMySQL {
         |	story,
         |	`type`,
         |	updated_time,
+        | shares_count,
         | reactions,
         | reactions_summary
-        |) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        |) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         |ON DUPLICATE KEY UPDATE
         | caption = values(caption),
         | description = values(description),
+        | message = values(message),
+        | message_tags = values(message_tags),
+        | shares_count = values(shares_count),
         | reactions = values(reactions),
         | reactions_summary = values(reactions_summary)
         |""".stripMargin
@@ -69,14 +73,15 @@ object GroupFeedMySQL {
       preparedStatement.setString(15, feed.story.orNull)
       preparedStatement.setString(16, feed.typ)
       preparedStatement.setTimestamp(17, Timestamp.valueOf(feed.updatedTime))
-      preparedStatement.setString(18, Json.toJson(feed.reactions.data.map { rea =>
+      preparedStatement.setInt(18, feed.shares.count)
+      preparedStatement.setString(19, Json.toJson(feed.reactions.data.map { rea =>
         Json.obj(
           "id" -> rea.id,
           "name" -> rea.name,
           "type" -> rea.typ
         )
       }).toString())
-      preparedStatement.setString(19, Json.toJson(feed.reactions.data.groupBy(_.typ).map { case (key, list) =>
+      preparedStatement.setString(20, Json.toJson(feed.reactions.data.groupBy(_.typ).map { case (key, list) =>
         Json.obj(
           "type" -> key,
           "count" -> list.size
@@ -134,6 +139,9 @@ object GroupFeedMySQL {
         Option(rs.getString("story")),
         rs.getString("type"),
         rs.getTimestamp("updated_time").toLocalDateTime,
+        Shares(
+          rs.getInt("shares_count")
+        ),
         FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(Reaction.parse), None),
         FBListResult(List(), None)
       )

@@ -37,6 +37,8 @@ object FBListResult extends FBException {
 
 case class From(name: String, id: String)
 
+case class Shares(count: Int)
+
 case class MessageTag(
   id: String,
   name: String,
@@ -61,6 +63,7 @@ case class GroupFeed(
   story: Option[String],
   typ: String,
   updatedTime: LocalDateTime,
+  shares: Shares,
   var reactions: FBListResult[Reaction],
   var comments: FBListResult[Comment],
 )
@@ -94,6 +97,9 @@ object GroupFeed extends FBGraphUtils {
     (rawFeed \ "story").validate[String].asOpt,
     (rawFeed \ "type").validate[String].get,
     LocalDateTime.parse((rawFeed \ "updated_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
+    Shares(
+      (rawFeed \ "shares" \ "count").validate[Int].getOrElse(0),
+    ),
     FBListResult.parse[Reaction]((rawFeed \ "reactions").validate[JsValue].getOrElse(Json.obj()), Reaction.parse _),
     FBListResult.parse[Comment]((rawFeed \ "comments").validate[JsValue].getOrElse(Json.obj()), Comment.parse _),
   )

@@ -89,6 +89,7 @@ object RepositoryMySQL {
          |	story longtext,
          |	`type` varchar(255),
          |	updated_time datetime,
+         |  shares_count integer,
          |  reactions json,
          |  reactions_summary json
          |)
