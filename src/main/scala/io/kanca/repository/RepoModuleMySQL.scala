@@ -1,10 +1,8 @@
 package io.kanca.repository
 
-import java.sql.Connection
-
 import com.google.inject.{Inject, Provides, Singleton}
-import com.twitter.inject.{Injector, TwitterModule}
 import com.twitter.inject.annotations.Flag
+import com.twitter.inject.{Injector, TwitterModule}
 
 object RepoModuleMySQL extends TwitterModule {
 
@@ -18,30 +16,43 @@ object RepoModuleMySQL extends TwitterModule {
 
   @Singleton
   @Provides
-  def providesConnection(
+  def providesDataSource(
     @Flag("repo.mysql.host") host: String,
     @Flag("repo.mysql.port") port: String,
     @Flag("repo.mysql.database") database: String,
     @Flag("repo.mysql.username") username: String,
     @Flag("repo.mysql.password") password: String,
     @Flag("repo.mysql.driver") driver: String,
-  ): Connection = RepositoryMySQL.getConnection(host, port, database, username, password, driver)
+  ): DataSource = new DataSourceMySQL(host, port, database, username, password, driver)
+
+  @Singleton
+  @Provides
+  def providesGroupCommentMySQL(
+    @Inject dataSource: DataSource,
+  ): GroupCommentMySQL = new GroupCommentMySQL(dataSource)
+
+  @Singleton
+  @Provides
+  def providesGroupFeedMySQL(
+    @Inject dataSource: DataSource,
+    @Inject groupCommentMySQL: GroupCommentMySQL,
+  ): GroupFeedMySQL = new GroupFeedMySQL(dataSource, groupCommentMySQL)
 
   @Singleton
   @Provides
   def providesRepository(
-    @Inject connection: Connection,
+    @Inject groupFeedMySQL: GroupFeedMySQL,
     @Flag("repo.readLimit") readLimit: Int,
-  ): Repository = new RepositoryMySQL(connection, readLimit)
+  ): Repository = new RepositoryMySQL(groupFeedMySQL, readLimit)
 
   override def singletonStartup(injector: Injector) {
-    val connection: Connection = injector.instance[Connection]
-    RepositoryMySQL.setupTables(connection)
+    val dataSource: DataSource = injector.instance[DataSource]
+    dataSource.setup()
   }
 
   override def singletonShutdown(injector: Injector) {
-    val connection: Connection = injector.instance[Connection]
-    connection.close()
+    val dataSource: DataSource = injector.instance[DataSource]
+    dataSource.close()
   }
 
 }

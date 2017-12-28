@@ -1,17 +1,19 @@
 package io.kanca.repository
 
-import java.sql.{Connection, PreparedStatement, Timestamp}
+import java.sql.{PreparedStatement, Timestamp}
 
+import com.google.inject.Inject
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.fbgraph._
 import play.api.libs.json.Json
 
-object GroupCommentMySQL extends Logging {
+class GroupCommentMySQL @Inject()(dataSource: DataSource) extends Logging {
 
   // insert must list of (comment, feed id, parent id)
-  def insert(connection: Connection, groupComments: List[(Comment, String, Option[String])], groupId: String): Boolean = {
+  def insert(groupComments: List[(Comment, String, Option[String])], groupId: String): Boolean = {
     val elapsed: () => Duration = Stopwatch.start()
+    val connection = dataSource.getConnection
 
     val sql: String =
       """
@@ -35,7 +37,7 @@ object GroupCommentMySQL extends Logging {
         |""".stripMargin
     val preparedStatement: PreparedStatement = connection.prepareStatement(sql)
 
-    groupComments.foreach { case (comment: Comment, feedId: String, parentId: Option[String]) => {
+    groupComments.foreach { case (comment: Comment, feedId: String, parentId: Option[String]) =>
       preparedStatement.setString(1, comment.id)
       preparedStatement.setString(2, groupId)
       preparedStatement.setString(3, feedId)
@@ -59,11 +61,13 @@ object GroupCommentMySQL extends Logging {
         )
       }).toString())
       preparedStatement.addBatch()
-    }}
+    }
     debug(s"MySQL inject comments prepared batch: ${elapsed().inMilliseconds} ms")
     preparedStatement.executeBatch()
     preparedStatement.close()
     debug(s"MySQL inject comments injected: ${elapsed().inMilliseconds} ms")
+
+    connection.close()
 
     true
   }

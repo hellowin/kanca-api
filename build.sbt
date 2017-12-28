@@ -9,6 +9,7 @@ val versions = new {
   val mysqlConnector = "6.0.6"
   val play = "2.6.8"
   val scalajHttp = "2.3.0"
+  val HikariCP = "2.7.4"
 }
 
 lazy val root = (project in file(".")).
@@ -44,7 +45,8 @@ lazy val root = (project in file(".")).
       "com.google.inject.extensions" % "guice-testlib" % versions.guice % Test,
       "com.google.inject.extensions" % "guice-testlib" % versions.guice % Test classifier "tests",
       "ch.qos.logback" % "logback-classic" % versions.logback,
-      "mysql" % "mysql-connector-java" % versions.mysqlConnector
+      "mysql" % "mysql-connector-java" % versions.mysqlConnector,
+      "com.zaxxer" % "HikariCP" % versions.HikariCP
     ),
     assemblyMergeStrategy in assembly := {
       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
