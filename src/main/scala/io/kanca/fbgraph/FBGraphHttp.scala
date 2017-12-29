@@ -1,5 +1,6 @@
 package io.kanca.fbgraph
 
+import io.kanca.core.FBGraph
 import play.api.libs.json._
 
 import scalaj.http._
@@ -8,7 +9,7 @@ class FBGraphHttp(
   version: String,
   connectionTimeout: Int,
   readTimeout: Int,
-) extends FBGraph {
+) extends FBGraph with FBException {
 
   private val FB_URL: String = s"https://graph.facebook.com/v$version"
 

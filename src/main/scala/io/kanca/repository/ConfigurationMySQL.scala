@@ -1,6 +1,6 @@
 package io.kanca.repository
 
-case class MySQLConfiguration(
+case class ConfigurationMySQL(
   host: String,
   port: String,
   database: String,

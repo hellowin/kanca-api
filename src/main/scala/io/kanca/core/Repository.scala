@@ -1,8 +1,10 @@
-package io.kanca.repository
+package io.kanca.core
 
 import io.kanca.fbgraph.GroupFeed
 
 abstract class Repository {
+  def initialize(): Boolean
+  def shutdown(): Boolean
   def insertGroupFeed(groupFeeds: List[GroupFeed]): Boolean
   def readGroupFeed(groupId: String, page: Int = 1): List[GroupFeed]
 }

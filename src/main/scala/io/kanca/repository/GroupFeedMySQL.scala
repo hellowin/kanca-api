@@ -10,7 +10,7 @@ import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
 
-class GroupFeedMySQL @Inject()(dataSource: DataSource, groupCommentMySQL: GroupCommentMySQL, conf: MySQLConfiguration) extends Logging {
+class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: GroupCommentMySQL, conf: ConfigurationMySQL) extends Logging {
 
   def insert(groupFeeds: List[GroupFeed]): Boolean = {
 

@@ -3,6 +3,7 @@ package io.kanca.repository
 import com.google.inject.{Inject, Provides, Singleton}
 import com.twitter.inject.annotations.Flag
 import com.twitter.inject.{Injector, TwitterModule}
+import io.kanca.core.Repository
 
 object RepoModuleMySQL extends TwitterModule {
 
@@ -30,29 +31,24 @@ object RepoModuleMySQL extends TwitterModule {
     @Flag("repo.mysql.connectionTimeout") connectionTimeout: Int,
     @Flag("repo.mysql.numberOfThreadPerInject") numberOfThreadPerInject: Int,
     @Flag("repo.mysql.connectionPoolSize") connectionPoolSize: Int,
-  ): MySQLConfiguration = MySQLConfiguration(host, port, database, username, password, driver, readLimit, connectionTimeout, numberOfThreadPerInject, connectionPoolSize)
-
-  @Singleton
-  @Provides
-  def providesDataSource(
-    @Inject conf: MySQLConfiguration,
-  ): DataSource = new DataSourceMySQL(conf)
+  ): ConfigurationMySQL = ConfigurationMySQL(host, port, database, username, password, driver, readLimit, connectionTimeout, numberOfThreadPerInject, connectionPoolSize)
 
   @Singleton
   @Provides
   def providesRepository(
+    @Inject conf: ConfigurationMySQL,
+    @Inject dataSource: DataSourceMySQL,
     @Inject groupFeedMySQL: GroupFeedMySQL,
-    @Inject conf: MySQLConfiguration,
-  ): Repository = new RepositoryMySQL(groupFeedMySQL, conf)
+  ): Repository = new RepositoryMySQL(conf, dataSource, groupFeedMySQL)
 
   override def singletonStartup(injector: Injector) {
-    val dataSource: DataSource = injector.instance[DataSource]
-    dataSource.setup()
+    val repository: Repository = injector.instance[Repository]
+    repository.initialize()
   }
 
   override def singletonShutdown(injector: Injector) {
-    val dataSource: DataSource = injector.instance[DataSource]
-    dataSource.close()
+    val repository: Repository = injector.instance[Repository]
+    repository.shutdown()
   }
 
 }

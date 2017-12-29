@@ -2,6 +2,7 @@ package io.kanca.fbgraph
 
 import java.net.URL
 
+import io.kanca.core.FBGraph
 import play.api.libs.json.JsObject
 
 import scala.io.{Codec, Source}

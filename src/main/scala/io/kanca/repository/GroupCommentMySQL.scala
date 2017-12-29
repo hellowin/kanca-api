@@ -7,7 +7,7 @@ import com.twitter.inject.Logging
 import io.kanca.fbgraph._
 import play.api.libs.json.Json
 
-class GroupCommentMySQL @Inject()(dataSource: DataSource, conf: MySQLConfiguration) extends Logging {
+class GroupCommentMySQL @Inject()(dataSource: DataSourceMySQL, conf: ConfigurationMySQL) extends Logging {
 
   // insert must list of (comment, feed id, parent id)
   def insert(groupComments: List[(Comment, String, Option[String])], groupId: String): Boolean = {

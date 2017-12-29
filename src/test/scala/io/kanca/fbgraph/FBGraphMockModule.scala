@@ -3,6 +3,7 @@ package io.kanca.fbgraph
 import com.google.inject.{Provides, Singleton}
 import com.twitter.inject.TwitterModule
 import com.twitter.inject.annotations.Flag
+import io.kanca.core.FBGraph
 
 object FBGraphMockModule extends TwitterModule {
 

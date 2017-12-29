@@ -2,13 +2,15 @@ package io.kanca.repository
 
 import java.sql.{Connection, DriverManager, Statement}
 
+import com.google.inject.{Inject, Singleton}
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import com.zaxxer.hikari.{HikariConfig, HikariDataSource}
 
-class DataSourceMySQL(
-  conf: MySQLConfiguration,
-) extends DataSource with Logging {
+@Singleton
+class DataSourceMySQL @Inject()(
+  conf: ConfigurationMySQL,
+) extends Logging {
 
   Class.forName(conf.driver)
 
