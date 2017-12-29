@@ -57,8 +57,8 @@ object RepoModuleMySQL extends TwitterModule {
   @Provides
   def providesRepository(
     @Inject groupFeedMySQL: GroupFeedMySQL,
-    @Flag("repo.readLimit") readLimit: Int,
-  ): Repository = new RepositoryMySQL(groupFeedMySQL, readLimit)
+    @Inject conf: MySQLConfiguration,
+  ): Repository = new RepositoryMySQL(groupFeedMySQL, conf)
 
   override def singletonStartup(injector: Injector) {
     val dataSource: DataSource = injector.instance[DataSource]
