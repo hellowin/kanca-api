@@ -2,7 +2,7 @@ package io.kanca.repository
 
 import java.sql.{Connection, PreparedStatement, ResultSet, Timestamp}
 
-import com.google.inject.Inject
+import com.google.inject.{Inject, Singleton}
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.fbgraph._

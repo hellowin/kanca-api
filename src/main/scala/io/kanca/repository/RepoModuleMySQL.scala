@@ -40,21 +40,6 @@ object RepoModuleMySQL extends TwitterModule {
 
   @Singleton
   @Provides
-  def providesGroupCommentMySQL(
-    @Inject dataSource: DataSource,
-    @Inject conf: MySQLConfiguration,
-  ): GroupCommentMySQL = new GroupCommentMySQL(dataSource, conf)
-
-  @Singleton
-  @Provides
-  def providesGroupFeedMySQL(
-    @Inject dataSource: DataSource,
-    @Inject groupCommentMySQL: GroupCommentMySQL,
-    @Inject conf: MySQLConfiguration,
-  ): GroupFeedMySQL = new GroupFeedMySQL(dataSource, groupCommentMySQL, conf)
-
-  @Singleton
-  @Provides
   def providesRepository(
     @Inject groupFeedMySQL: GroupFeedMySQL,
     @Inject conf: MySQLConfiguration,

@@ -1,9 +1,8 @@
 package io.kanca.repository
 
-import com.google.inject.Inject
 import io.kanca.fbgraph.GroupFeed
 
-class RepositoryMySQL @Inject()(
+class RepositoryMySQL(
   groupFeedRepo: GroupFeedMySQL,
   conf: MySQLConfiguration,
 ) extends Repository {
