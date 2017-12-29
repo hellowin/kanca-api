@@ -2,10 +2,11 @@ package io.kanca.repository
 
 import java.sql.{Connection, PreparedStatement, ResultSet, Timestamp}
 
-import com.google.inject.{Inject, Singleton}
+import com.google.inject.Inject
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
-import io.kanca.fbgraph._
+import io.kanca.core.FBGraphType._
+import io.kanca.fbgraph.ReactionParser
 import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
@@ -162,7 +163,7 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
         Shares(
           rs.getInt("shares_count")
         ),
-        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(Reaction.parse), None),
+        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(ReactionParser.parse), None),
         FBListResult(List(), None)
       )
       groupFeeds += groupFeed

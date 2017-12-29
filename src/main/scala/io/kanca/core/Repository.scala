@@ -1,6 +1,6 @@
 package io.kanca.core
 
-import io.kanca.fbgraph.GroupFeed
+import io.kanca.core.FBGraphType.GroupFeed
 
 abstract class Repository {
   def initialize(): Boolean

@@ -1,6 +1,7 @@
 package io.kanca.fbgraph
 
 import io.kanca.core.FBGraph
+import io.kanca.core.FBGraphType.{Comment, FBListResult, GroupFeed, Reaction}
 import play.api.libs.json._
 
 import scalaj.http._
@@ -17,7 +18,7 @@ class FBGraphHttp(
 
   private def getListResult[T](req: HttpRequest, token: String, parser: JsObject => T, pageLimit: Int, requestLimit: Int, results: List[T] = List()): FBListResult[T] = {
     val resString: String = req.asString.body
-    val listResult: FBListResult[T] = FBListResult.parse[T](resString, parser)
+    val listResult: FBListResult[T] = FBListResultParser.parse[T](resString, parser)
 
     val newResults: List[T] = results ::: listResult.data
 
@@ -64,17 +65,17 @@ class FBGraphHttp(
 
     debug(s"get group feeds url = ${req.url} params = ${req.params.map { case (key: String, value: String) => s"$key = $value" }}")
 
-    val feedResult: FBListResult[GroupFeed] = getListResult[GroupFeed](req, token, GroupFeed.parse, pageLimit, requestLimit)
+    val feedResult: FBListResult[GroupFeed] = getListResult[GroupFeed](req, token, GroupFeedParser.parse, pageLimit, requestLimit)
 
     // iterate feed reactions, comments, comment's comments, comment's reactions, comment's comment's reactions >:)
     val feeds: List[GroupFeed] = feedResult.data.map(feed => {
-      feed.reactions = getDeepListResult[Reaction](feed.reactions, token, Reaction.parse, pageLimit, requestLimit)
-      feed.comments = getDeepListResult[Comment](feed.comments, token, Comment.parse, pageLimit, requestLimit)
+      feed.reactions = getDeepListResult[Reaction](feed.reactions, token, ReactionParser.parse, pageLimit, requestLimit)
+      feed.comments = getDeepListResult[Comment](feed.comments, token, CommentParser.parse, pageLimit, requestLimit)
       feed.comments = FBListResult(feed.comments.data.map(comment => {
-        comment.comments = getDeepListResult[Comment](comment.comments, token, Comment.parse, pageLimit, requestLimit)
-        comment.reactions = getDeepListResult[Reaction](comment.reactions, token, Reaction.parse, pageLimit, requestLimit)
+        comment.comments = getDeepListResult[Comment](comment.comments, token, CommentParser.parse, pageLimit, requestLimit)
+        comment.reactions = getDeepListResult[Reaction](comment.reactions, token, ReactionParser.parse, pageLimit, requestLimit)
         comment.comments = FBListResult(comment.comments.data.map(comment2 => {
-          comment2.reactions = getDeepListResult[Reaction](comment2.reactions, token, Reaction.parse, pageLimit, requestLimit)
+          comment2.reactions = getDeepListResult[Reaction](comment2.reactions, token, ReactionParser.parse, pageLimit, requestLimit)
           comment2
         }), comment.comments.next)
         comment

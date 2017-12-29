@@ -1,7 +1,7 @@
 package io.kanca.repository
 
+import io.kanca.core.FBGraphType.GroupFeed
 import io.kanca.core.Repository
-import io.kanca.fbgraph.GroupFeed
 
 class RepositoryMySQL(
   conf: ConfigurationMySQL,

@@ -4,8 +4,9 @@ import java.sql.Connection
 
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
+import io.kanca.core.FBGraphType.GroupFeed
 import io.kanca.core.{FBGraph, Repository}
-import io.kanca.fbgraph.{FBGraphMockModule, GroupFeed}
+import io.kanca.fbgraph.FBGraphMockModule
 import org.scalatest.BeforeAndAfterAll
 
 class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {

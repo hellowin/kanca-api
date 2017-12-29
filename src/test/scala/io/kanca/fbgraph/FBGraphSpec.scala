@@ -3,6 +3,7 @@ package io.kanca.fbgraph
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
 import io.kanca.core.FBGraph
+import io.kanca.core.FBGraphType.GroupFeed
 
 class FBGraphSpec extends IntegrationTest {
 

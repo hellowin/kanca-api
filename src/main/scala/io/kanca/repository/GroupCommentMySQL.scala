@@ -2,9 +2,9 @@ package io.kanca.repository
 
 import java.sql.{PreparedStatement, Timestamp}
 
-import com.google.inject.{Inject, Singleton}
+import com.google.inject.Inject
 import com.twitter.inject.Logging
-import io.kanca.fbgraph._
+import io.kanca.core.FBGraphType.Comment
 import play.api.libs.json.Json
 
 class GroupCommentMySQL @Inject()(dataSource: DataSourceMySQL, conf: ConfigurationMySQL) extends Logging {

@@ -1,7 +1,7 @@
 package io.kanca.core
 
 import com.twitter.inject.Logging
-import io.kanca.fbgraph.{FBListResult, GroupFeed}
+import io.kanca.core.FBGraphType.{FBListResult, GroupFeed}
 
 abstract class FBGraph extends Logging {
 

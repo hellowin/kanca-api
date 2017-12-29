@@ -3,18 +3,14 @@ package io.kanca.fbgraph
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+import io.kanca.core.FBGraphType._
 import play.api.libs.json.{JsArray, JsObject, JsValue, Json}
 
 trait FBGraphUtils {
   val TIME_FORMATTER = "yyyy-MM-dd'T'HH:mm:ssZ"
 }
 
-case class FBListResult[T](
-  data: List[T],
-  next: Option[String],
-)
-
-object FBListResult extends FBException {
+object FBListResultParser extends FBException {
 
   def parse[T](string: String, parser: JsObject => T): FBListResult[T] = {
     val rawJson: JsValue = Json.parse(string)
@@ -35,40 +31,7 @@ object FBListResult extends FBException {
 
 }
 
-case class From(name: String, id: String)
-
-case class Shares(count: Int)
-
-case class MessageTag(
-  id: String,
-  name: String,
-  typ: String,
-  offset: Int,
-  length: Int,
-)
-
-case class GroupFeed(
-  id: String,
-  caption: Option[String],
-  createdTime: LocalDateTime,
-  description: Option[String],
-  from: From,
-  link: Option[String],
-  message: Option[String],
-  messageTags: List[MessageTag],
-  name: Option[String],
-  permalinkUrl: String,
-  picture: Option[String],
-  statusType: Option[String],
-  story: Option[String],
-  typ: String,
-  updatedTime: LocalDateTime,
-  shares: Shares,
-  var reactions: FBListResult[Reaction],
-  var comments: FBListResult[Comment],
-)
-
-object GroupFeed extends FBGraphUtils {
+object GroupFeedParser extends FBGraphUtils {
 
   def parse(rawFeed: JsObject): GroupFeed = GroupFeed(
     (rawFeed \ "id").validate[String].get,
@@ -100,23 +63,13 @@ object GroupFeed extends FBGraphUtils {
     Shares(
       (rawFeed \ "shares" \ "count").validate[Int].getOrElse(0),
     ),
-    FBListResult.parse[Reaction]((rawFeed \ "reactions").validate[JsValue].getOrElse(Json.obj()), Reaction.parse _),
-    FBListResult.parse[Comment]((rawFeed \ "comments").validate[JsValue].getOrElse(Json.obj()), Comment.parse _),
+    FBListResultParser.parse[Reaction]((rawFeed \ "reactions").validate[JsValue].getOrElse(Json.obj()), ReactionParser.parse _),
+    FBListResultParser.parse[Comment]((rawFeed \ "comments").validate[JsValue].getOrElse(Json.obj()), CommentParser.parse _),
   )
 
 }
 
-case class Comment(
-  id: String,
-  from: From,
-  permalinkUrl: String,
-  message: String,
-  createdTime: LocalDateTime,
-  var reactions: FBListResult[Reaction],
-  var comments: FBListResult[Comment],
-)
-
-object Comment extends FBGraphUtils {
+object CommentParser extends FBGraphUtils {
   def parse(obj: JsObject): Comment = Comment(
     (obj \ "id").validate[String].get,
     From(
@@ -126,18 +79,12 @@ object Comment extends FBGraphUtils {
     (obj \ "permalink_url").validate[String].get,
     (obj \ "message").validate[String].get,
     LocalDateTime.parse((obj \ "created_time").validate[String].get, DateTimeFormatter ofPattern TIME_FORMATTER),
-    FBListResult.parse[Reaction]((obj \ "reactions").validate[JsValue].getOrElse(Json.obj()), Reaction.parse _),
-    FBListResult.parse[Comment]((obj \ "comments").validate[JsValue].getOrElse(Json.obj()), Comment.parse _),
+    FBListResultParser.parse[Reaction]((obj \ "reactions").validate[JsValue].getOrElse(Json.obj()), ReactionParser.parse _),
+    FBListResultParser.parse[Comment]((obj \ "comments").validate[JsValue].getOrElse(Json.obj()), CommentParser.parse _),
   )
 }
 
-case class Reaction(
-  id: String,
-  name: String,
-  typ: String,
-)
-
-object Reaction {
+object ReactionParser {
   def parse(obj: JsObject): Reaction = Reaction(
     (obj \ "id").validate[String].get,
     (obj \ "name").validate[String].get,
