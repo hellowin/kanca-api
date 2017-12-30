@@ -227,16 +227,16 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
     // third, inject childs to parents
     nestedComments.foreach {
       case (key, coms) => coms.foreach(com => {
-        com.comments = childComments.getOrElse(com.id, List())
+        com.comments = childComments.getOrElse(com.id, List()).sortBy(_.createdTime).reverse
       })
     }
 
     // Then put comments to its feed
     groupFeeds.foreach(feed => {
-      feed.comments = nestedComments.getOrElse(feed.id, List())
+      feed.comments = nestedComments.getOrElse(feed.id, List()).sortBy(_.createdTime).reverse
     })
 
-    groupFeeds.toList
+    groupFeeds.toList.sortBy(_.updatedTime).reverse
   }
 
 }
