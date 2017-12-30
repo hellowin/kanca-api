@@ -15,6 +15,6 @@ class RepositoryMySQL(
 
   def insertGroupFeed(groupFeeds: List[GroupFeed]): Boolean = groupFeedRepo.insert(groupFeeds)
 
-  def readGroupFeed(groupId: String, page: Int): List[GroupFeed] = groupFeedRepo.read(groupId, page, conf.readLimit)
+  def readGroupFeed(groupId: String, page: Int, limit: Int): List[GroupFeed] = groupFeedRepo.read(groupId, page, limit)
 
 }
