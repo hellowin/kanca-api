@@ -131,7 +131,10 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
       s"""
-         |select * from group_feed where group_id = "$groupId" limit $readLimit offset $offset
+         |select * from group_feed
+         |  where group_id = "$groupId"
+         |  order by updated_time desc
+         |  limit $readLimit offset $offset
       """.stripMargin)
     val groupFeeds: ListBuffer[GroupFeedResult] = ListBuffer()
     while (rs.next()) {
