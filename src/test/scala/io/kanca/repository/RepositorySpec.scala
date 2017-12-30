@@ -4,12 +4,13 @@ import java.sql.Connection
 
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
-import io.kanca.core.{FBGraph, Repository}
 import io.kanca.core.FBGraphType.GroupFeed
+import io.kanca.core.ResultType.GroupFeedResult
+import io.kanca.core.{FBGraph, Repository}
 import io.kanca.fbgraph.FBGraphMockModule
 import org.scalatest.BeforeAndAfterAll
 
-class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
+class RepositorySpec extends IntegrationTest with BeforeAndAfterAll {
 
   private val MYSQL_HOST = sys.env.getOrElse("MYSQL_HOST", "localhost")
   private val MYSQL_PORT = sys.env.getOrElse("MYSQL_PORT", "3306")
@@ -19,11 +20,12 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
   private val MYSQL_DRIVER = sys.env.getOrElse("MYSQL_DRIVER", "com.mysql.cj.jdbc.Driver")
 
   private val USER_TOKEN = sys.env("USER_TOKEN")
-  private val GROUP_ID = sys.env("GROUP_ID")
   private val READ_LIMIT = sys.env.getOrElse("READ_LIMIT", "100").toInt
 
-  private val DEFAULT_PAGE_LIMIT: Int = 10
+  private val DEFAULT_PAGE_LIMIT: Int = 1
   private val DEFAULT_REQUEST_LIMIT: Int = 100
+
+  private val DUMMY_GROUP = "123456789123456"
 
   def injector: Injector = TestInjector(
     flags = Map(
@@ -60,38 +62,21 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
       """.stripMargin)
 
     repo.initialize()
+
+    val fixtures = graph.getGroupFeeds(USER_TOKEN, DUMMY_GROUP, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
+    repo.insertGroupFeed(fixtures)
   }
 
   override def afterAll() {
     repo.shutdown()
   }
 
-  test("MySQL Spec should able to get connection") {
-    connection.isInstanceOf[Connection] shouldEqual true
-  }
-
-  test("able to setup tables, multiple times") {
-    dataSource.setup() shouldEqual true
-    dataSource.setup() shouldEqual true
-  }
-
-  test("GroupFeedRepo should able to insert group feeds batch, multiple times") {
-    val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
-    groupFeeds.size should be >= 400
-    val res: Boolean = repo.insertGroupFeed(groupFeeds)
-    res shouldEqual true
-
-    val res2: Boolean = repo.insertGroupFeed(groupFeeds.take(10))
-    res2 shouldEqual true
-
-    val res3: Boolean = repo.insertGroupFeed(groupFeeds.take(10))
-    res3 shouldEqual true
-  }
-
-  test("able to read group feeds") {
-    repo.readGroupFeed(GROUP_ID).size should be >= 100
-
-    repo.readGroupFeed(GROUP_ID, 2).size should be >= 1
+  test("able to read group feeds with basic parameter") {
+    val results: List[GroupFeedResult] = repo.readGroupFeed(DUMMY_GROUP)
+    results.size shouldEqual 3
+    
+    // first item should be message 2 because it has latest updated time
+    results.head.id shouldEqual "123456789123456_000000000000002"
   }
 
 }

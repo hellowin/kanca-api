@@ -79,6 +79,66 @@
           }
         }
       }
+    },
+    {
+      "created_time": "2017-01-01T09:00:00+0000",
+      "id": "123456789123456_000000000000002",
+      "message": "Message 2",
+      "updated_time": "2017-01-01T12:00:00+0000",
+      "from": {
+        "name": "User 2",
+        "id": "12345678900000002"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/123456789123456/permalink/000000000000002/",
+      "to": {
+        "data": [
+          {
+            "id": "123456789123456",
+            "name": "DummyGroup"
+          }
+        ]
+      },
+      "comments": {
+        "data": [
+        ],
+        "paging": {
+          "cursors": {
+            "before": "WTI5dGJXVnVkRjlqZAFhKemIzSTZAOekU0TlRFMU9USTRNelUwTVRBNU9qRTFNVFF6TURjek9UZAz0ZD",
+            "after": "WTI5dGJXVnVkRjlqZAFhKemIzSTZAOekl3TmpBM05qazBPREV4TlRrNU9qRTFNVFF6TmpRM05EUT0ZD"
+          }
+        }
+      }
+    },
+    {
+      "created_time": "2017-01-01T10:00:00+0000",
+      "id": "123456789123456_000000000000003",
+      "message": "Message 3",
+      "updated_time": "2017-01-01T10:00:00+0000",
+      "from": {
+        "name": "User 3",
+        "id": "12345678900000003"
+      },
+      "type": "status",
+      "permalink_url": "https://www.facebook.com/groups/123456789123456/permalink/000000000000003/",
+      "to": {
+        "data": [
+          {
+            "id": "123456789123456",
+            "name": "DummyGroup"
+          }
+        ]
+      },
+      "comments": {
+        "data": [
+        ],
+        "paging": {
+          "cursors": {
+            "before": "WTI5dGJXVnVkRjlqZAFhKemIzSTZAOekU0TlRFMU9USTRNelUwTVRBNU9qRTFNVFF6TURjek9UZAz0ZD",
+            "after": "WTI5dGJXVnVkRjlqZAFhKemIzSTZAOekl3TmpBM05qazBPREV4TlRrNU9qRTFNVFF6TmpRM05EUT0ZD"
+          }
+        }
+      }
     }
   ],
   "paging": {

@@ -1,6 +1,7 @@
 package io.kanca.repository
 
 import java.sql.{Connection, PreparedStatement, ResultSet, Timestamp}
+import java.time.ZoneOffset
 
 import com.google.inject.Inject
 import com.twitter.inject.Logging
@@ -260,8 +261,8 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
     var finalResult: List[GroupFeedResult] = groupFeeds.toList
 
     sortBy match {
-      case CREATED_TIME => finalResult = finalResult.sortBy(_.createdTime.getNano)
-      case UPDATED_TIME | _ => finalResult = finalResult.sortBy(_.createdTime.getNano)
+      case CREATED_TIME => finalResult = finalResult.sortBy(_.createdTime.toEpochSecond(ZoneOffset.UTC))
+      case UPDATED_TIME | _ => finalResult = finalResult.sortBy(_.updatedTime.toEpochSecond(ZoneOffset.UTC))
     }
 
     sortOrder match {
