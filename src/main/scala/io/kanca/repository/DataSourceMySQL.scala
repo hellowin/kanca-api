@@ -35,11 +35,15 @@ class DataSourceMySQL @Inject()(
     rs.next()
     val count: Int = rs.getInt("count")
     if (count == 0) {
-      statement.execute(
-        s"""
-           |ALTER TABLE $tableName ADD INDEX $indexName($indexStatement)
+      try {
+        statement.execute(
+          s"""
+             |ALTER TABLE $tableName ADD INDEX $indexName($indexStatement)
         """.stripMargin
-      )
+        )
+      } catch {
+        case _: Exception => // no-op
+      }
     }
   }
 

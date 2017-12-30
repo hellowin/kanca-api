@@ -6,7 +6,9 @@ import com.google.inject.Inject
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.core.FBGraphType._
-import io.kanca.fbgraph.ReactionParser
+import io.kanca.core.ResultType.ResultSortOrder._
+import io.kanca.core.ResultType.ResultSortType._
+import io.kanca.core.ResultType._
 import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
@@ -123,17 +125,38 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
     true
   }
 
-  def read(groupId: String, page: Int = 1, readLimit: Int): List[GroupFeed] = {
-    val offset = readLimit * (page - 1)
+  def read(
+    groupId: String,
+    page: Int,
+    limit: Int,
+    sortBy: ResultSortType,
+    sortOrder: ResultSortOrder
+  ): List[GroupFeedResult] = {
+    val offset = limit * (page - 1)
     val connection: Connection = dataSource.getConnection
+
+    val sqlSortType: String = sortBy match {
+      case CREATED_TIME => "created_time"
+      case UPDATED_TIME | _ => "updated_time"
+    }
+
+    val sqlSortOrder: String = sortOrder match {
+      case ASC => "asc"
+      case DESC | _ => "desc"
+    }
+
+    // fetch group feeds
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
       s"""
-         |select * from group_feed where group_id = "$groupId" limit $readLimit offset $offset
+         |select * from group_feed
+         |  where group_id = "$groupId"
+         |  order by $sqlSortType $sqlSortOrder
+         |  limit $limit offset $offset
       """.stripMargin)
-    val groupFeeds: ListBuffer[GroupFeed] = ListBuffer()
+    val groupFeeds: ListBuffer[GroupFeedResult] = ListBuffer()
     while (rs.next()) {
-      val groupFeed = GroupFeed(
+      val groupFeed = GroupFeedResult(
         rs.getString("id"),
         Option(rs.getString("caption")),
         rs.getTimestamp("created_time").toLocalDateTime,
@@ -163,15 +186,90 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
         Shares(
           rs.getInt("shares_count")
         ),
-        FBListResult(Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(ReactionParser.parse), None),
-        FBListResult(List(), None)
+        Json.parse(rs.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(obj => Reaction(
+          (obj \ "id").validate[String].get,
+          (obj \ "name").validate[String].get,
+          (obj \ "type").validate[String].get
+        )),
+        Json.parse(rs.getString("reactions_summary")).validate[List[JsObject]].getOrElse(List()).map(obj => ReactionSummary(
+          (obj \ "type").validate[String].get,
+          (obj \ "count").validate[Int].get
+        )),
+        List()
       )
       groupFeeds += groupFeed
     }
 
+    // get List[String] of feed id
+    val feedIds: List[String] = groupFeeds.map(feed => feed.id).toList
+
+    // fetch comments only from selected feed ids
+    val rsCom: ResultSet = statement.executeQuery(
+      s"""
+         |SELECT * FROM group_comment where feed_id in (${feedIds.map(id => s""""$id"""").mkString(",")})
+      """.stripMargin)
+    // our convention, internal repo comment enhanced to tuple (comment, feed_id, parent)
+    val comments: ListBuffer[CommentResult] = ListBuffer()
+    while (rsCom.next()) {
+      val comment = CommentResult(
+        rsCom.getString("id"),
+        rsCom.getString("feed_id"),
+        Option(rsCom.getString("parent_id")),
+        From(
+          rsCom.getString("from_name"),
+          rsCom.getString("from_id")
+        ),
+        rsCom.getString("permalink_url"),
+        rsCom.getString("message"),
+        rsCom.getTimestamp("created_time").toLocalDateTime,
+        Json.parse(rsCom.getString("reactions")).validate[List[JsObject]].getOrElse(List()).map(obj => Reaction(
+          (obj \ "id").validate[String].get,
+          (obj \ "name").validate[String].get,
+          (obj \ "type").validate[String].get
+        )),
+        Json.parse(rsCom.getString("reactions_summary")).validate[List[JsObject]].getOrElse(List()).map(obj => ReactionSummary(
+          (obj \ "type").validate[String].get,
+          (obj \ "count").validate[Int].get
+        )),
+        List()
+      )
+      comments += comment
+    }
     connection.close()
 
-    groupFeeds.toList
+    // insert comment's comments to its parent
+    // first, find the parents (grouped by its feed id for later use)
+    val nestedComments: Map[String, List[CommentResult]] = comments.toList
+      .filter(comment => comment.parentId.isDefined)
+      .groupBy(_.feedId)
+    // second, find the child
+    val childComments: Map[String, List[CommentResult]] = comments.toList
+      .groupBy(_.feedId)
+    // third, inject childs to parents
+    nestedComments.foreach {
+      case (key, coms) => coms.foreach(com => {
+        com.comments = childComments.getOrElse(com.id, List()).sortBy(_.createdTime.getNano).reverse
+      })
+    }
+
+    // Then put comments to its feed
+    groupFeeds.foreach(feed => {
+      feed.comments = nestedComments.getOrElse(feed.id, List()).sortBy(_.createdTime.getNano).reverse
+    })
+
+    var finalResult: List[GroupFeedResult] = groupFeeds.toList
+
+    sortBy match {
+      case CREATED_TIME => finalResult = finalResult.sortBy(_.createdTime.getNano)
+      case UPDATED_TIME | _ => finalResult = finalResult.sortBy(_.createdTime.getNano)
+    }
+
+    sortOrder match {
+      case ASC =>
+      case DESC | _ => finalResult = finalResult.reverse
+    }
+
+    finalResult
   }
 
 }
