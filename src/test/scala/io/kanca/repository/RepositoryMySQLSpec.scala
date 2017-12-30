@@ -13,7 +13,7 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
 
   private val MYSQL_HOST = sys.env.getOrElse("MYSQL_HOST", "localhost")
   private val MYSQL_PORT = sys.env.getOrElse("MYSQL_PORT", "3306")
-  private val MYSQL_DATABASE = sys.env.getOrElse("MYSQL_DATABASE", "kanca_api")
+  private val MYSQL_DATABASE = sys.env.getOrElse("MYSQL_DATABASE", "kanca_api_test")
   private val MYSQL_USERNAME = sys.env("MYSQL_USERNAME")
   private val MYSQL_PASSWORD = sys.env("MYSQL_PASSWORD")
   private val MYSQL_DRIVER = sys.env.getOrElse("MYSQL_DRIVER", "com.mysql.cj.jdbc.Driver")
