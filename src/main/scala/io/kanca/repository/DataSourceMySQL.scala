@@ -45,6 +45,9 @@ class DataSourceMySQL @Inject()(
 
   @throws[Exception]
   def setup(): Boolean = {
+    val GROUP_FEED_TABLE = "group_feed"
+    val GROUP_COMMENT_TABLE = "group_comment"
+
     val elapsed: () => Duration = Stopwatch.start()
     val URL = s"jdbc:mysql://${conf.host}:${conf.port}"
 
@@ -69,7 +72,7 @@ class DataSourceMySQL @Inject()(
 
     statement.execute(
       s"""
-         |create table if not exists group_feed (
+         |create table if not exists $GROUP_FEED_TABLE (
          |	id varchar(255) primary key,
          |  group_id varchar(255) not null,
          |  caption varchar(255),
@@ -94,11 +97,12 @@ class DataSourceMySQL @Inject()(
       """.stripMargin
     )
 
-    addIndex(statement, "group_feed", "GROUP_ID", "group_id asc")
+    addIndex(statement, GROUP_FEED_TABLE, "GROUP_ID", "group_id asc")
+    addIndex(statement, GROUP_FEED_TABLE, "UPDATED_TIME_DESC", "updated_time desc")
 
     statement.execute(
       s"""
-         |create table if not exists group_comment (
+         |create table if not exists $GROUP_COMMENT_TABLE (
          |	id varchar(255) primary key,
          |  group_id varchar(255) not null,
          |  feed_id varchar(255) not null,
@@ -114,9 +118,9 @@ class DataSourceMySQL @Inject()(
       """.stripMargin
     )
 
-    addIndex(statement, "group_comment", "GROUP_ID", "group_id asc")
-    addIndex(statement, "group_comment", "FEED_ID", "feed_id asc")
-    addIndex(statement, "group_comment", "PARENT_ID", "parent_id asc")
+    addIndex(statement, GROUP_COMMENT_TABLE, "GROUP_ID", "group_id asc")
+    addIndex(statement, GROUP_COMMENT_TABLE, "FEED_ID", "feed_id asc")
+    addIndex(statement, GROUP_COMMENT_TABLE, "PARENT_ID", "parent_id asc")
     statement.close()
 
     debug(s"MySQL setup table time: ${elapsed().inMilliseconds.toString} ms")
