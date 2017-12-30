@@ -6,7 +6,9 @@ import com.google.inject.Inject
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.core.FBGraphType._
-import io.kanca.core.ResultType.{CommentResult, GroupFeedResult, ReactionSummary}
+import io.kanca.core.ResultType.ResultSortOrder._
+import io.kanca.core.ResultType.ResultSortType._
+import io.kanca.core.ResultType._
 import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ListBuffer
@@ -123,9 +125,25 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
     true
   }
 
-  def read(groupId: String, page: Int = 1, readLimit: Int): List[GroupFeedResult] = {
-    val offset = readLimit * (page - 1)
+  def read(
+    groupId: String,
+    page: Int,
+    limit: Int,
+    sortBy: ResultSortType,
+    sortOrder: ResultSortOrder
+  ): List[GroupFeedResult] = {
+    val offset = limit * (page - 1)
     val connection: Connection = dataSource.getConnection
+
+    val sqlSortType: String = sortBy match {
+      case CREATED_TIME => "created_time"
+      case UPDATED_TIME | _ => "updated_time"
+    }
+
+    val sqlSortOrder: String = sortOrder match {
+      case ASC => "asc"
+      case DESC | _ => "desc"
+    }
 
     // fetch group feeds
     val statement = connection.createStatement()
@@ -133,8 +151,8 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
       s"""
          |select * from group_feed
          |  where group_id = "$groupId"
-         |  order by updated_time desc
-         |  limit $readLimit offset $offset
+         |  order by $sqlSortType $sqlSortOrder
+         |  limit $limit offset $offset
       """.stripMargin)
     val groupFeeds: ListBuffer[GroupFeedResult] = ListBuffer()
     while (rs.next()) {
@@ -239,7 +257,19 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
       feed.comments = nestedComments.getOrElse(feed.id, List()).sortBy(_.createdTime.getNano).reverse
     })
 
-    groupFeeds.toList.sortBy(_.updatedTime.getNano).reverse
+    var finalResult: List[GroupFeedResult] = groupFeeds.toList
+
+    sortBy match {
+      case CREATED_TIME => finalResult = finalResult.sortBy(_.createdTime.getNano)
+      case UPDATED_TIME | _ => finalResult = finalResult.sortBy(_.createdTime.getNano)
+    }
+
+    sortOrder match {
+      case ASC =>
+      case DESC | _ => finalResult = finalResult.reverse
+    }
+
+    finalResult
   }
 
 }

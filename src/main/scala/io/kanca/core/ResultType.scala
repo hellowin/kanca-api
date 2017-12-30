@@ -6,6 +6,21 @@ import io.kanca.core.FBGraphType._
 
 object ResultType {
 
+  object ResultSortType extends Enumeration {
+    type ResultSortType = Value
+    val UPDATED_TIME: ResultSortType = Value
+    val CREATED_TIME: ResultSortType = Value
+    val TOTAL_REACTIONS: ResultSortType = Value
+    val TOTAL_SHARED: ResultSortType = Value
+    val TOTAL_COMMENTS: ResultSortType = Value
+  }
+
+  object ResultSortOrder extends Enumeration {
+    type ResultSortOrder = Value
+    val ASC: ResultSortOrder = Value
+    val DESC: ResultSortOrder = Value
+  }
+
   case class GroupFeedResult(
     id: String,
     caption: Option[String],
