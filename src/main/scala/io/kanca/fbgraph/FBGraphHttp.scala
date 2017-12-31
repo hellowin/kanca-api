@@ -1,7 +1,7 @@
 package io.kanca.fbgraph
 
 import io.kanca.core.FBGraph
-import io.kanca.core.FBGraphType.{Comment, FBListResult, GroupFeed, Reaction}
+import io.kanca.core.FBGraphType._
 import play.api.libs.json._
 
 import scalaj.http._
@@ -84,6 +84,19 @@ class FBGraphHttp(
     })
 
     FBListResult(feeds, feedResult.next)
+  }
+
+  @throws(classOf[Exception])
+  def getGroupMembers(token: String, groupId: String, pageLimit: Int, requestLimit: Int): FBListResult[GroupMember] = {
+    val req: HttpRequest = getHttpRequest(
+      token, s"$groupId/members",
+      s"id,name,picture{url}",
+      requestLimit
+    )
+
+    debug(s"get group members url = ${req.url} params = ${req.params.map { case (key: String, value: String) => s"$key = $value" }}")
+
+    getListResult[GroupMember](req, token, GroupMemberParser.parse, pageLimit, requestLimit)
   }
 
 }
