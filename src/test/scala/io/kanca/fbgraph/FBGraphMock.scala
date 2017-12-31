@@ -3,7 +3,7 @@ package io.kanca.fbgraph
 import java.net.URL
 
 import io.kanca.core.FBGraph
-import io.kanca.core.FBGraphType.{FBListResult, GroupFeed}
+import io.kanca.core.FBGraphType.{FBListResult, GroupFeed, GroupMember}
 import play.api.libs.json.JsObject
 
 import scala.io.{Codec, Source}
@@ -33,5 +33,8 @@ class FBGraphMock extends FBGraph {
 
   override def getGroupFeeds(token: String, groupId: String, pageLimit: Int, requestLimit: Int): FBListResult[GroupFeed] =
     getResultArrayFromFile[GroupFeed]("group_feed", GroupFeedParser.parse, pageLimit)
+
+  override def getGroupMembers(token: String, groupId: String, pageLimit: Int, requestLimit: Int): FBListResult[GroupMember] =
+    getResultArrayFromFile[GroupMember]("group_member", GroupMemberParser.parse, pageLimit)
 
 }

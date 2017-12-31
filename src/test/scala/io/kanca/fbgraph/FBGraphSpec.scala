@@ -3,7 +3,7 @@ package io.kanca.fbgraph
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
 import io.kanca.core.FBGraph
-import io.kanca.core.FBGraphType.GroupFeed
+import io.kanca.core.FBGraphType.{GroupFeed, GroupMember}
 
 class FBGraphSpec extends IntegrationTest {
 
@@ -61,6 +61,14 @@ class FBGraphSpec extends IntegrationTest {
 
   test("able handle wrong group id") {
     an[FBOAuthException] should be thrownBy graph.getGroupFeeds(USER_TOKEN, "any_id", DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT)
+  }
+
+  test(s"Group members fetcher") {
+    val members: List[GroupMember] = graph.getGroupMembers(USER_TOKEN, GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
+    members.map(_.id).toSet.size should be <= DEFAULT_PAGE_LIMIT * DEFAULT_REQUEST_LIMIT
+    members.map(_.id).toSet.size should be > 1 * DEFAULT_REQUEST_LIMIT
+    members.map(_.id).toSet.size shouldEqual members.size
+    members.map { member => member.isInstanceOf[GroupMember] shouldEqual true }
   }
 
 }

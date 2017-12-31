@@ -7,8 +7,8 @@ import com.google.inject.Inject
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.core.FBGraphType._
+import io.kanca.core.ResultType.GroupFeedResultSortType._
 import io.kanca.core.ResultType.ResultSortOrder._
-import io.kanca.core.ResultType.ResultSortType._
 import io.kanca.core.ResultType._
 import play.api.libs.json.{JsObject, Json}
 
@@ -130,7 +130,7 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
     groupId: String,
     page: Int,
     limit: Int,
-    sortBy: ResultSortType,
+    sortBy: GroupFeedResultSortType,
     sortOrder: ResultSortOrder
   ): List[GroupFeedResult] = {
     val offset = limit * (page - 1)

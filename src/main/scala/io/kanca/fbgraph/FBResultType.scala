@@ -91,3 +91,11 @@ object ReactionParser {
     (obj \ "type").validate[String].get,
   )
 }
+
+object GroupMemberParser {
+  def parse(obj: JsObject): GroupMember = GroupMember(
+    (obj \ "id").validate[String].get,
+    (obj \ "name").validate[String].get,
+    (obj \ "picture" \ "data" \ "url").validate[String].get,
+  )
+}

@@ -1,9 +1,10 @@
 package io.kanca.core
 
-import io.kanca.core.FBGraphType.GroupFeed
+import io.kanca.core.FBGraphType.{GroupFeed, GroupMember}
+import io.kanca.core.ResultType.GroupFeedResultSortType.GroupFeedResultSortType
+import io.kanca.core.ResultType.GroupMemberResultSortType.GroupMemberResultSortType
 import io.kanca.core.ResultType.ResultSortOrder.ResultSortOrder
-import io.kanca.core.ResultType.ResultSortType.ResultSortType
-import io.kanca.core.ResultType.{GroupFeedResult, ResultSortOrder, ResultSortType}
+import io.kanca.core.ResultType.{GroupFeedResult, GroupFeedResultSortType, GroupMemberResultSortType, ResultSortOrder}
 
 abstract class Repository {
   def initialize(): Boolean
@@ -16,7 +17,18 @@ abstract class Repository {
     groupId: String,
     page: Int = 1,
     limit: Int = 100,
-    sortBy: ResultSortType = ResultSortType.UPDATED_TIME,
+    sortBy: GroupFeedResultSortType = GroupFeedResultSortType.UPDATED_TIME,
     sortOrder: ResultSortOrder = ResultSortOrder.DESC
   ): List[GroupFeedResult]
+
+  def insertGroupMember(groupId: String, groupMembers: List[GroupMember]): Boolean
+
+  def readGroupMember(
+    groupId: String,
+    page: Int = 1,
+    limit: Int = 100,
+    sortBy: GroupMemberResultSortType = GroupMemberResultSortType.NAME,
+    sortOrder: ResultSortOrder = ResultSortOrder.ASC
+  ): List[GroupMember]
+
 }

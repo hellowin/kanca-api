@@ -58,4 +58,10 @@ object FBGraphType {
     typ: String,
   )
 
+  case class GroupMember(
+    id: String,
+    name: String,
+    pictureUrl: String
+  )
+
 }
