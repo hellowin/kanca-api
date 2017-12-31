@@ -6,8 +6,8 @@ import com.google.inject.Inject
 import com.twitter.inject.Logging
 import com.twitter.util.{Duration, Stopwatch}
 import io.kanca.core.FBGraphType._
+import io.kanca.core.ResultType.GroupMemberResultSortType._
 import io.kanca.core.ResultType.ResultSortOrder._
-import io.kanca.core.ResultType.ResultSortType._
 
 import scala.collection.mutable.ListBuffer
 
@@ -77,14 +77,14 @@ class GroupMemberMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL:
     groupId: String,
     page: Int,
     limit: Int,
-    sortBy: ResultSortType,
+    sortBy: GroupMemberResultSortType,
     sortOrder: ResultSortOrder
   ): List[GroupMember] = {
     val offset = limit * (page - 1)
     val connection: Connection = dataSource.getConnection
 
     val sqlSortType: String = sortBy match {
-      case _ => "name"
+      case NAME | _ => "name"
     }
 
     val sqlSortOrder: String = sortOrder match {

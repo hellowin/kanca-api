@@ -2,9 +2,10 @@ package io.kanca.repository
 
 import io.kanca.core.FBGraphType.{GroupFeed, GroupMember}
 import io.kanca.core.Repository
+import io.kanca.core.ResultType.GroupFeedResultSortType.GroupFeedResultSortType
+import io.kanca.core.ResultType.GroupMemberResultSortType.GroupMemberResultSortType
 import io.kanca.core.ResultType.ResultSortOrder.ResultSortOrder
-import io.kanca.core.ResultType.ResultSortType.ResultSortType
-import io.kanca.core.ResultType.{GroupFeedResult, ResultSortOrder, ResultSortType}
+import io.kanca.core.ResultType._
 
 class RepositoryMySQL(
   conf: ConfigurationMySQL,
@@ -24,7 +25,7 @@ class RepositoryMySQL(
     groupId: String,
     page: Int = 1,
     limit: Int = 100,
-    sortBy: ResultSortType = ResultSortType.UPDATED_TIME,
+    sortBy: GroupFeedResultSortType = GroupFeedResultSortType.UPDATED_TIME,
     sortOrder: ResultSortOrder = ResultSortOrder.DESC
   ): List[GroupFeedResult] = groupFeed.read(groupId, page, limit, sortBy, sortOrder)
 
@@ -34,7 +35,7 @@ class RepositoryMySQL(
     groupId: String,
     page: Int = 1,
     limit: Int = 100,
-    sortBy: ResultSortType = ResultSortType.UPDATED_TIME,
+    sortBy: GroupMemberResultSortType = GroupMemberResultSortType.NAME,
     sortOrder: ResultSortOrder = ResultSortOrder.DESC
   ): List[GroupMember] = groupMember.read(groupId, page, limit, sortBy, sortOrder)
 
