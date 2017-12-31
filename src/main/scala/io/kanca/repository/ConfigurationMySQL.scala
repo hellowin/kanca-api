@@ -11,4 +11,5 @@ case class ConfigurationMySQL(
   connectionTimeout: Long,
   numberOfThreadPerInject: Int,
   connectionPoolSize: Int,
+  useSSL: Boolean
 )

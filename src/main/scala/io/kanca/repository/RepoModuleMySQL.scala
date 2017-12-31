@@ -16,6 +16,7 @@ object RepoModuleMySQL extends TwitterModule {
   flag[Int](name = "repo.mysql.connectionTimeout", default = 30000, help = "Timeout when things too long waiting get connection from connection pool.")
   flag[Int](name = "repo.mysql.connectionPoolSize", default = 10, help = "Maximum connections per pool.")
   flag[Int](name = "repo.mysql.numberOfThreadPerInject", default = 7, help = "Number or thread uses when performing inject.")
+  flag[Boolean](name = "repo.mysql.useSSL", default = false, help = "Will the connection use SSL?")
   flag[Int](name = "repo.readLimit", default = 100, help = "Read limit per page.")
 
   @Singleton
@@ -31,7 +32,8 @@ object RepoModuleMySQL extends TwitterModule {
     @Flag("repo.mysql.connectionTimeout") connectionTimeout: Int,
     @Flag("repo.mysql.numberOfThreadPerInject") numberOfThreadPerInject: Int,
     @Flag("repo.mysql.connectionPoolSize") connectionPoolSize: Int,
-  ): ConfigurationMySQL = ConfigurationMySQL(host, port, database, username, password, driver, readLimit, connectionTimeout, numberOfThreadPerInject, connectionPoolSize)
+    @Flag("repo.mysql.useSSL") useSSL: Boolean,
+  ): ConfigurationMySQL = ConfigurationMySQL(host, port, database, username, password, driver, readLimit, connectionTimeout, numberOfThreadPerInject, connectionPoolSize, useSSL)
 
   @Singleton
   @Provides

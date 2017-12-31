@@ -15,7 +15,7 @@ class DataSourceMySQL @Inject()(
   Class.forName(conf.driver)
 
   val config = new HikariConfig()
-  config.setJdbcUrl(s"jdbc:mysql://${conf.host}:${conf.port}/${conf.database}")
+  config.setJdbcUrl(s"jdbc:mysql://${conf.host}:${conf.port}/${conf.database}?useSSL=${if (conf.useSSL) "true" else "false"}")
   config.setUsername(conf.username)
   config.setPassword(conf.password)
   config.setConnectionTimeout(conf.connectionTimeout)
@@ -53,7 +53,7 @@ class DataSourceMySQL @Inject()(
     val GROUP_COMMENT_TABLE = "group_comment"
 
     val elapsed: () => Duration = Stopwatch.start()
-    val URL = s"jdbc:mysql://${conf.host}:${conf.port}"
+    val URL = s"jdbc:mysql://${conf.host}:${conf.port}?useSSL=${if (conf.useSSL) "true" else "false"}"
 
     // make the connection
     val connection = DriverManager.getConnection(URL, conf.username, conf.password)
