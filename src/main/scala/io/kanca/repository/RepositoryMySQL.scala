@@ -36,7 +36,7 @@ class RepositoryMySQL(
     page: Int = 1,
     limit: Int = 100,
     sortBy: GroupMemberResultSortType = GroupMemberResultSortType.NAME,
-    sortOrder: ResultSortOrder = ResultSortOrder.DESC
+    sortOrder: ResultSortOrder = ResultSortOrder.ASC
   ): List[GroupMember] = groupMember.read(groupId, page, limit, sortBy, sortOrder)
 
 }

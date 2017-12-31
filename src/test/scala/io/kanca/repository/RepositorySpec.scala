@@ -2,7 +2,8 @@ package io.kanca.repository
 
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
-import io.kanca.core.ResultType.{GroupFeedResult, GroupFeedResultSortType, ResultSortOrder}
+import io.kanca.core.FBGraphType.GroupMember
+import io.kanca.core.ResultType.{GroupFeedResult, GroupFeedResultSortType, GroupMemberResultSortType, ResultSortOrder}
 import io.kanca.core.{FBGraph, Repository}
 import io.kanca.fbgraph.FBGraphMockModule
 import org.scalatest.BeforeAndAfterAll
@@ -58,10 +59,23 @@ class RepositorySpec extends IntegrationTest with BeforeAndAfterAll {
         |DROP TABLE IF EXISTS group_comment
       """.stripMargin)
 
+    statement.execute(
+      """
+        |DROP TABLE IF EXISTS group_member
+      """.stripMargin)
+
+    statement.execute(
+      """
+        |DROP TABLE IF EXISTS group_member_membership
+      """.stripMargin)
+
     repo.initialize()
 
-    val fixtures = graph.getGroupFeeds(USER_TOKEN, DUMMY_GROUP, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
-    repo.insertGroupFeed(fixtures)
+    val groupFeeds = graph.getGroupFeeds(USER_TOKEN, DUMMY_GROUP, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
+    repo.insertGroupFeed(groupFeeds)
+
+    val groupMembers = graph.getGroupMembers(USER_TOKEN, DUMMY_GROUP, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
+    repo.insertGroupMember(DUMMY_GROUP, groupMembers)
   }
 
   override def afterAll() {
@@ -142,6 +156,70 @@ class RepositorySpec extends IntegrationTest with BeforeAndAfterAll {
     lasta.id shouldEqual "123456789123456_000000000000003"
 
     page1a.map(_.id).mkString(", ") shouldEqual "123456789123456_000000000000001, 123456789123456_000000000000002, 123456789123456_000000000000003"
+  }
+
+  test("able to read group members with basic parameter") {
+    val results: List[GroupMember] = repo.readGroupMember(DUMMY_GROUP)
+    results.size shouldEqual 4
+
+    // first item should be message 2 because it has latest updated time
+    results.head.id shouldEqual "12345678900000001"
+
+    results.map(_.id).mkString(", ") shouldEqual "12345678900000001, 12345678900000002, 12345678900000003, 12345678900000004"
+  }
+
+  test("able to read group members with pagination and limit") {
+
+    // get page 1, limit 3
+    val page1: List[GroupMember] = repo.readGroupMember(DUMMY_GROUP, 1, 3)
+    page1.size shouldEqual 3
+
+    val first = page1.head
+    val last = page1.last
+
+    first.id shouldEqual "12345678900000001"
+
+    last.id shouldEqual "12345678900000003"
+
+    page1.map(_.id).mkString(", ") shouldEqual "12345678900000001, 12345678900000002, 12345678900000003"
+
+    // get page 2, limit 3
+    val page2: List[GroupMember] = repo.readGroupMember(DUMMY_GROUP, 2, 3)
+    page2.size shouldEqual 1
+
+    // first item should be message 2 because it has latest updated time
+    page2.head.id shouldEqual "12345678900000004"
+
+    page2.map(_.id).mkString(", ") shouldEqual "12345678900000004"
+  }
+
+  test("able to read group members with sort type and order") {
+
+    // get page 1, limit 3, by created at
+    val page1: List[GroupMember] = repo.readGroupMember(DUMMY_GROUP, 1, 3, GroupMemberResultSortType.NAME)
+    page1.size shouldEqual 3
+
+    val first = page1.head
+    val last = page1.last
+
+    first.id shouldEqual "12345678900000001"
+
+    last.id shouldEqual "12345678900000003"
+
+    page1.map(_.id).mkString(", ") shouldEqual "12345678900000001, 12345678900000002, 12345678900000003"
+
+    // get page 1, limit 3, by created at, desc
+    val page2: List[GroupMember] = repo.readGroupMember(DUMMY_GROUP, 1, 3, GroupMemberResultSortType.NAME, ResultSortOrder.DESC)
+    page1.size shouldEqual 3
+
+    val firsta = page2.head
+    val lasta = page2.last
+
+    firsta.id shouldEqual "12345678900000004"
+
+    lasta.id shouldEqual "12345678900000002"
+
+    page2.map(_.id).mkString(", ") shouldEqual "12345678900000004, 12345678900000003, 12345678900000002"
   }
 
 }
