@@ -96,7 +96,7 @@ class GroupMemberMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL:
     val statement = connection.createStatement()
     val rs: ResultSet = statement.executeQuery(
       s"""
-         |select * from group_member
+         |select id, name, picture_url from group_member
          |  join group_member_membership on group_member.id = group_member_membership.group_member_id
          |  where group_id = "$groupId"
          |  order by $sqlSortType $sqlSortOrder
