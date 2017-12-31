@@ -1,10 +1,7 @@
 package io.kanca.repository
 
-import java.sql.Connection
-
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
-import io.kanca.core.FBGraphType.GroupFeed
 import io.kanca.core.ResultType.{GroupFeedResult, ResultSortOrder, ResultSortType}
 import io.kanca.core.{FBGraph, Repository}
 import io.kanca.fbgraph.FBGraphMockModule
@@ -74,7 +71,7 @@ class RepositorySpec extends IntegrationTest with BeforeAndAfterAll {
   test("able to read group feeds with basic parameter") {
     val results: List[GroupFeedResult] = repo.readGroupFeed(DUMMY_GROUP)
     results.size shouldEqual 4
-    
+
     // first item should be message 2 because it has latest updated time
     results.head.id shouldEqual "123456789123456_000000000000002"
 
