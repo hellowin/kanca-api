@@ -4,8 +4,8 @@ import java.sql.Connection
 
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
+import io.kanca.core.FBGraphType.{GroupFeed, GroupMember}
 import io.kanca.core.{FBGraph, Repository}
-import io.kanca.core.FBGraphType.GroupFeed
 import io.kanca.fbgraph.FBGraphMockModule
 import org.scalatest.BeforeAndAfterAll
 
@@ -59,6 +59,16 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
         |DROP TABLE IF EXISTS group_comment
       """.stripMargin)
 
+    statement.execute(
+      """
+        |DROP TABLE IF EXISTS group_member
+      """.stripMargin)
+
+    statement.execute(
+      """
+        |DROP TABLE IF EXISTS group_member_membership
+      """.stripMargin)
+
     repo.initialize()
   }
 
@@ -92,6 +102,25 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
     repo.readGroupFeed(GROUP_ID).size should be >= 100
 
     repo.readGroupFeed(GROUP_ID, 2).size should be >= 1
+  }
+
+  test("GroupMemberRepo should able to insert group member batch, multiple times") {
+    val members: List[GroupMember] = graph.getGroupMembers(USER_TOKEN, GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
+    members.size should be >= 200
+    val res: Boolean = repo.insertGroupMember(GROUP_ID, members)
+    res shouldEqual true
+
+    val res2: Boolean = repo.insertGroupMember(GROUP_ID, members.take(10))
+    res2 shouldEqual true
+
+    val res3: Boolean = repo.insertGroupMember(GROUP_ID, members.take(10))
+    res3 shouldEqual true
+  }
+
+  test("able to read group members") {
+    repo.readGroupMember(GROUP_ID).size should be >= 100
+
+    repo.readGroupMember(GROUP_ID, 2).size should be >= 1
   }
 
 }

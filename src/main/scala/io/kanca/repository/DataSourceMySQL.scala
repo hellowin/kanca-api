@@ -51,6 +51,8 @@ class DataSourceMySQL @Inject()(
   def setup(): Boolean = {
     val GROUP_FEED_TABLE = "group_feed"
     val GROUP_COMMENT_TABLE = "group_comment"
+    val GROUP_MEMBER_TABLE = "group_member"
+    val GROUP_MEMBER_MEMBERSHIP_TABLE = "group_member_membership"
 
     val elapsed: () => Duration = Stopwatch.start()
     val URL = s"jdbc:mysql://${conf.host}:${conf.port}?useSSL=${if (conf.useSSL) "true" else "false"}"
@@ -125,6 +127,37 @@ class DataSourceMySQL @Inject()(
     addIndex(statement, GROUP_COMMENT_TABLE, "GROUP_ID", "group_id asc")
     addIndex(statement, GROUP_COMMENT_TABLE, "FEED_ID", "feed_id asc")
     addIndex(statement, GROUP_COMMENT_TABLE, "PARENT_ID", "parent_id asc")
+
+    statement.execute(
+      s"""
+         |create table if not exists $GROUP_MEMBER_TABLE (
+         |	id varchar(255) primary key,
+         |  name longtext,
+         |  picture_url longtext
+         |)
+      """.stripMargin
+    )
+
+    statement.execute(
+      s"""
+         |create table if not exists $GROUP_MEMBER_MEMBERSHIP_TABLE (
+         |	group_member_id varchar(255),
+         |  group_id varchar(255)
+         |)
+      """.stripMargin
+    )
+
+    try {
+      statement.execute(
+        s"""
+           |ALTER TABLE $GROUP_MEMBER_MEMBERSHIP_TABLE
+           |  ADD UNIQUE INDEX GROUP_MEMBER_RELATION (`group_member_id` ASC, `group_id` ASC);
+        """.stripMargin
+      )
+    } catch {
+      case _: Exception => // no-op
+    }
+
     statement.close()
 
     debug(s"MySQL setup table time: ${elapsed().inMilliseconds.toString} ms")
