@@ -1,5 +1,8 @@
 package io.kanca.repository
 
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
 import io.kanca.core.FBGraphType.GroupMember
@@ -220,6 +223,15 @@ class RepositorySpec extends IntegrationTest with BeforeAndAfterAll {
     lasta.id shouldEqual "12345678900000002"
 
     page2.map(_.id).mkString(", ") shouldEqual "12345678900000004, 12345678900000003, 12345678900000002"
+  }
+
+  test("test metrics activities by date") {
+    val activitiesMyDate = repo.readActivitiesByDate(DUMMY_GROUP, LocalDate.now().minusYears(1), LocalDate.now())
+    println(activitiesMyDate)
+    activitiesMyDate.size shouldEqual 2
+    activitiesMyDate.head.feedsCount shouldEqual 3
+    activitiesMyDate.head.commentsCount shouldEqual 2
+    activitiesMyDate.head.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) shouldEqual "2017-01-01"
   }
 
 }
