@@ -1,7 +1,9 @@
 package io.kanca.repository
 
+import java.time.LocalDate
+
 import io.kanca.core.FBGraphType.{GroupFeed, GroupMember}
-import io.kanca.core.Repository
+import io.kanca.core.{MetricType, Repository}
 import io.kanca.core.ResultType.GroupFeedResultSortType.GroupFeedResultSortType
 import io.kanca.core.ResultType.GroupMemberResultSortType.GroupMemberResultSortType
 import io.kanca.core.ResultType.ResultSortOrder.ResultSortOrder
@@ -11,7 +13,8 @@ class RepositoryMySQL(
   conf: ConfigurationMySQL,
   dataSource: DataSourceMySQL,
   groupFeed: GroupFeedMySQL,
-  groupMember: GroupMemberMySQL
+  groupMember: GroupMemberMySQL,
+  metrics: MetricsMySQL
 
 ) extends Repository {
 
@@ -38,5 +41,8 @@ class RepositoryMySQL(
     sortBy: GroupMemberResultSortType = GroupMemberResultSortType.NAME,
     sortOrder: ResultSortOrder = ResultSortOrder.ASC
   ): List[GroupMember] = groupMember.read(groupId, page, limit, sortBy, sortOrder)
+
+  def readActivitiesByDate(groupId: String, dateStart: LocalDate, dateEnd: LocalDate): List[MetricType.ActivityByDate] =
+    metrics.readActivitiesByDate(groupId, dateStart, dateEnd)
 
 }
