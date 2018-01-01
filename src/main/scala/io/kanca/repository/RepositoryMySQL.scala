@@ -45,4 +45,7 @@ class RepositoryMySQL(
   def readActivitiesByDate(groupId: String, dateStart: LocalDate, dateEnd: LocalDate): List[MetricType.ActivityByDate] =
     metrics.readActivitiesByDate(groupId, dateStart, dateEnd)
 
+  def readActivitiesByTime(groupId: String, dateStart: LocalDate, dateEnd: LocalDate): List[MetricType.ActivityByTime] =
+    metrics.readActivitiesByTime(groupId, dateStart, dateEnd)
+
 }
