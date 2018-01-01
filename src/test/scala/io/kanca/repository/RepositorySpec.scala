@@ -225,13 +225,20 @@ class RepositorySpec extends IntegrationTest with BeforeAndAfterAll {
     page2.map(_.id).mkString(", ") shouldEqual "12345678900000004, 12345678900000003, 12345678900000002"
   }
 
-  test("test metrics activities by date") {
+  test("Metrics activities by date") {
     val activitiesMyDate = repo.readActivitiesByDate(DUMMY_GROUP, LocalDate.now().minusYears(1), LocalDate.now())
-    println(activitiesMyDate)
     activitiesMyDate.size shouldEqual 2
     activitiesMyDate.head.feedsCount shouldEqual 3
     activitiesMyDate.head.commentsCount shouldEqual 2
     activitiesMyDate.head.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) shouldEqual "2017-01-01"
+  }
+
+  test("Metrics activities by time") {
+    val activitiesMyTime = repo.readActivitiesByTime(DUMMY_GROUP, LocalDate.now().minusYears(1), LocalDate.now())
+    activitiesMyTime.size shouldEqual 4
+    activitiesMyTime.head.feedsCount shouldEqual 1
+    activitiesMyTime.head.commentsCount shouldEqual 0
+    activitiesMyTime.head.time.format(DateTimeFormatter.ofPattern("HH:mm:ss")) shouldEqual "08:00:00"
   }
 
 }
