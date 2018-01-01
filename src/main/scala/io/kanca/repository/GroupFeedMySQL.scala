@@ -63,8 +63,10 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
       val preparedStatement: PreparedStatement = connection.prepareStatement(sql)
 
       feedPool.foreach(feed => {
+        val groupId = feed.id.split("_")(0)
+
         preparedStatement.setString(1, feed.id)
-        preparedStatement.setString(2, feed.id.split("_")(0))
+        preparedStatement.setString(2, groupId)
         preparedStatement.setString(3, feed.caption.orNull)
         preparedStatement.setTimestamp(4, Timestamp.valueOf(feed.createdTime))
         preparedStatement.setString(5, feed.description.orNull)
@@ -119,7 +121,8 @@ class GroupFeedMySQL @Inject()(dataSource: DataSourceMySQL, groupCommentMySQL: G
 
     debug(s"MySQL inject group feeds injected all feeds: ${elapsed().inMilliseconds} ms, total feeds: ${groupFeeds.size}, speed: ${elapsed().inMilliseconds / groupFeeds.size} ms per feed")
     if (comments.size > 0) {
-      groupCommentMySQL.insert(comments.toList, groupFeeds.head.id)
+      val groupId = groupFeeds.head.id.split("_")(0)
+      groupCommentMySQL.insert(comments.toList, groupId)
       debug(s"MySQL group comments injected from all feeds: ${elapsed().inMilliseconds} ms, total feeds: ${comments.size}, speed: ${elapsed().inMilliseconds / groupFeeds.size} ms per comment")
     }
 
