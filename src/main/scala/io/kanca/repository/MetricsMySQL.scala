@@ -36,6 +36,25 @@ class MetricsMySQL @Inject()(dataSource: DataSourceMySQL, conf: ConfigurationMyS
          |) as comment
          |ON feed.date = comment.date
          |
+         |UNION
+         |
+         |SELECT feed.count as feed_count, comment.count as comment_count, feed.date as date
+         |FROM
+         |(
+         |	SELECT count(*) as count, date(created_time) as date
+         |    FROM group_feed
+         |	WHERE group_id = '$groupId'
+         |	GROUP BY date
+         |) as feed
+         |LEFT JOIN
+         |(
+         |	SELECT count(*) as count, date(created_time) as date
+         |	FROM group_comment
+         |	WHERE group_id = '$groupId'
+         |	GROUP BY date
+         |) as comment
+         |ON feed.date = comment.date
+         |
          |WHERE feed.date BETWEEN "${dateStart format (DateTimeFormatter ofPattern DATE_FORMATTER)}"
          | AND "${dateEnd format (DateTimeFormatter ofPattern DATE_FORMATTER)}"
          |ORDER BY date
