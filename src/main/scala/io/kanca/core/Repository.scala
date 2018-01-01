@@ -3,7 +3,7 @@ package io.kanca.core
 import java.time.LocalDate
 
 import io.kanca.core.FBGraphType.{GroupFeed, GroupMember}
-import io.kanca.core.MetricType.ActivityByDate
+import io.kanca.core.MetricType.{ActivityByDate, ActivityByTime}
 import io.kanca.core.ResultType.GroupFeedResultSortType.GroupFeedResultSortType
 import io.kanca.core.ResultType.GroupMemberResultSortType.GroupMemberResultSortType
 import io.kanca.core.ResultType.ResultSortOrder.ResultSortOrder
@@ -35,5 +35,7 @@ abstract class Repository {
   ): List[GroupMember]
 
   def readActivitiesByDate(groupId: String, dateStart: LocalDate, dateEnd: LocalDate): List[ActivityByDate]
+
+  def readActivitiesByTime(groupId: String, dateStart: LocalDate, dateEnd: LocalDate): List[ActivityByTime]
 
 }
