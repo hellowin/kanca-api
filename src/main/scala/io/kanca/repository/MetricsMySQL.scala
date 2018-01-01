@@ -27,26 +27,7 @@ class MetricsMySQL @Inject()(dataSource: DataSourceMySQL, conf: ConfigurationMyS
          |	WHERE group_id = '$groupId'
          |	GROUP BY date
          |) as feed
-         |LEFT JOIN
-         |(
-         |	SELECT count(*) as count, date(created_time) as date
-         |	FROM group_comment
-         |	WHERE group_id = '$groupId'
-         |	GROUP BY date
-         |) as comment
-         |ON feed.date = comment.date
-         |
-         |UNION
-         |
-         |SELECT feed.count as feed_count, comment.count as comment_count, feed.date as date
-         |FROM
-         |(
-         |	SELECT count(*) as count, date(created_time) as date
-         |    FROM group_feed
-         |	WHERE group_id = '$groupId'
-         |	GROUP BY date
-         |) as feed
-         |LEFT JOIN
+         |LEFT OUTER JOIN
          |(
          |	SELECT count(*) as count, date(created_time) as date
          |	FROM group_comment
