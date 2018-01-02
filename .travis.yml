@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 
 cache:
   directories:
@@ -19,6 +19,7 @@ services:
   - mysql
 
 before_install:
+  - bash .travis.install-mysql-5.7.sh
   - mysql -e 'CREATE DATABASE IF NOT EXISTS kanca_api_dev CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 
 install:
