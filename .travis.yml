@@ -1,0 +1,35 @@
+sudo: true
+
+cache:
+  directories:
+    - $HOME/.m2/repository
+    - $HOME/.sbt
+    - $HOME/.ivy2
+
+language: scala
+
+scala:
+   - 2.12.4
+
+jdk:
+  - oraclejdk8
+  - openjdk8
+
+services:
+  - mysql
+
+before_install:
+  - bash .travis.install-mysql-5.7.sh
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS kanca_api_dev CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+
+install:
+  - export FB_GRAPH_VERSION=2.11
+  - export FB_GRAPH_VERSION_OLD=2.8
+  - export DEFAULT_PAGE_LIMIT=3
+  - export DEFAULT_REQUEST_LIMIT=5
+  - export READ_LIMIT=100
+  - export MYSQL_HOST=127.0.0.1
+  - export MYSQL_PORT=3306
+  - export MYSQL_DATABASE=kanca_api_dev
+  - export MYSQL_USERNAME=root
+  - export MYSQL_PASSWORD=
