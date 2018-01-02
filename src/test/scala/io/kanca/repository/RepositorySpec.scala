@@ -1,7 +1,7 @@
 package io.kanca.repository
 
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.{DayOfWeek, LocalDate}
 
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.{Injector, IntegrationTest}
@@ -225,20 +225,33 @@ class RepositorySpec extends IntegrationTest with BeforeAndAfterAll {
     page2.map(_.id).mkString(", ") shouldEqual "12345678900000004, 12345678900000003, 12345678900000002"
   }
 
+  val DATE_FORMATTER = "yyyy-MM-dd"
+
   test("Metrics activities by date") {
-    val activitiesMyDate = repo.readActivitiesByDate(DUMMY_GROUP, LocalDate.now().minusYears(1), LocalDate.now())
-    activitiesMyDate.size shouldEqual 2
-    activitiesMyDate.head.feedsCount shouldEqual 3
-    activitiesMyDate.head.commentsCount shouldEqual 2
-    activitiesMyDate.head.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) shouldEqual "2017-01-01"
+    val activitiesByDate = repo.readActivitiesByDate(DUMMY_GROUP, LocalDate.parse("2016-01-01", DateTimeFormatter.ofPattern(DATE_FORMATTER)), LocalDate.parse("2018-01-01", DateTimeFormatter.ofPattern(DATE_FORMATTER)))
+    activitiesByDate.size shouldEqual 2
+    activitiesByDate.head.feedsCount shouldEqual 3
+    activitiesByDate.head.commentsCount shouldEqual 2
+    activitiesByDate.head.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) shouldEqual "2017-01-01"
   }
 
   test("Metrics activities by time") {
-    val activitiesMyTime = repo.readActivitiesByTime(DUMMY_GROUP, LocalDate.now().minusYears(1), LocalDate.now())
-    activitiesMyTime.size shouldEqual 4
-    activitiesMyTime.head.feedsCount shouldEqual 1
-    activitiesMyTime.head.commentsCount shouldEqual 0
-    activitiesMyTime.head.time.format(DateTimeFormatter.ofPattern("HH:mm:ss")) shouldEqual "08:00:00"
+    val activitiesByTime = repo.readActivitiesByTime(DUMMY_GROUP, LocalDate.parse("2016-01-01", DateTimeFormatter.ofPattern(DATE_FORMATTER)), LocalDate.parse("2018-01-01", DateTimeFormatter.ofPattern(DATE_FORMATTER)))
+    activitiesByTime.size shouldEqual 4
+    activitiesByTime.head.feedsCount shouldEqual 1
+    activitiesByTime.head.commentsCount shouldEqual 0
+    activitiesByTime.head.time.format(DateTimeFormatter.ofPattern("HH:mm:ss")) shouldEqual "08:00:00"
+  }
+
+  test("Metrics activities by dayname (day of week)") {
+    val activitiesDayOfWeek = repo.readActivitiesByDayOfWeek(DUMMY_GROUP, LocalDate.parse("2016-01-01", DateTimeFormatter.ofPattern(DATE_FORMATTER)), LocalDate.parse("2018-01-01", DateTimeFormatter.ofPattern(DATE_FORMATTER)))
+    activitiesDayOfWeek.size shouldEqual 2
+    activitiesDayOfWeek.head.feedsCount shouldEqual 1
+    activitiesDayOfWeek.head.commentsCount shouldEqual 0
+    activitiesDayOfWeek.head.dayOfWeek shouldEqual DayOfWeek.MONDAY
+    activitiesDayOfWeek(1).feedsCount shouldEqual 3
+    activitiesDayOfWeek(1).commentsCount shouldEqual 2
+    activitiesDayOfWeek(1).dayOfWeek shouldEqual DayOfWeek.SUNDAY
   }
 
 }
