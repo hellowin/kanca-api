@@ -48,4 +48,7 @@ class RepositoryMySQL(
   def readActivitiesByTime(groupId: String, dateStart: LocalDate, dateEnd: LocalDate): List[MetricType.ActivityByTime] =
     metrics.readActivitiesByTime(groupId, dateStart, dateEnd)
 
+  def readActivitiesByDayOfWeek(groupId: String, dateStart: LocalDate, dateEnd: LocalDate): List[MetricType.ActivityByDayOfWeek] =
+    metrics.readActivitiesByDayOfWeek(groupId, dateStart, dateEnd)
+
 }
