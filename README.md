@@ -1,1 +1,2 @@
 [![Build Status](https://www.travis-ci.org/hellowin/kanca-api.svg?branch=master)](https://www.travis-ci.org/hellowin/kanca-api)
+[![codecov](https://codecov.io/gh/hellowin/kanca-api/branch/master/graph/badge.svg)](https://codecov.io/gh/hellowin/kanca-api)
