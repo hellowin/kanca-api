@@ -8,10 +8,15 @@
 1. Java 8
 1. Docker
 
+## Setup Configuration
+
+1. Copy `.env.template` to `.env` on project root.
+1. Setup necessary config for testing like FB Token, DB config, etc. Some of it needed for integration tests.
+
 ## Start and Stop Dependencies
 
 This project needs some dependencies like MySQL to manage data persistence,
-so we need to start its container before developing on local environment.
+so we need to start its container before developing on local environment. 
 
 ### Start Dependencies
 
