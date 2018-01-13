@@ -1,5 +1,7 @@
 import Dependencies._
 
+import scala.sys.process._
+
 val versions = new {
   val twitter = "17.12.0"
   val mockito = "1.9.5"
@@ -11,6 +13,21 @@ val versions = new {
   val scalajHttp = "2.3.0"
   val HikariCP = "2.7.4"
 }
+
+
+// Docker tasks for building dependencies using sbt command
+val startDependencies = taskKey[Unit]("Start docker dependencies.")
+val stopDependencies = taskKey[Unit]("Stop docker dependencies.")
+startDependencies := Seq(
+  "docker pull mysql:5.7" !,
+  "docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7" !,
+  Thread.sleep(20000L),
+  "docker exec mysql sh -c \"exec mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS kanca_api_dev CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'\"" !
+)
+stopDependencies := Seq(
+  "docker stop mysql" !,
+  "docker rm mysql" !,
+)
 
 lazy val root = (project in file(".")).
   settings(
@@ -49,7 +66,7 @@ lazy val root = (project in file(".")).
       "com.zaxxer" % "HikariCP" % versions.HikariCP
     ),
     assemblyMergeStrategy in assembly := {
-      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case PathList("META-INF", xs@_*) => MergeStrategy.discard
       case x => MergeStrategy.first
     }
   )

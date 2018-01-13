@@ -1,6 +1,6 @@
 package io.kanca.repository
 
-import java.sql.{Connection, DriverManager, Statement}
+import java.sql.{Connection, Statement}
 
 import com.google.inject.{Inject, Singleton}
 import com.twitter.inject.Logging
@@ -55,26 +55,8 @@ class DataSourceMySQL @Inject()(
     val GROUP_MEMBER_MEMBERSHIP_TABLE = "group_member_membership"
 
     val elapsed: () => Duration = Stopwatch.start()
-    val URL = s"jdbc:mysql://${conf.host}:${conf.port}?useSSL=${if (conf.useSSL) "true" else "false"}"
 
-    // make the connection
-    val connection = DriverManager.getConnection(URL, conf.username, conf.password)
-
-    // create the statement, and run the select query
-    val preStatement = connection.createStatement()
-    // utf8mb4 is necessary because existence of emotikon on some post's message
-    preStatement.execute(
-      s"""
-         |CREATE DATABASE IF NOT EXISTS ${conf.database}
-         |  CHARACTER SET utf8mb4
-         |  COLLATE utf8mb4_unicode_ci
-    """.stripMargin
-    )
-
-    connection.setCatalog(conf.database)
-    preStatement.close()
-
-    val statement = connection.createStatement()
+    val statement = ds.getConnection.createStatement()
 
     statement.execute(
       s"""

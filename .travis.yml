@@ -35,7 +35,7 @@ install:
   - export MYSQL_PASSWORD=
 
 script:
-- sbt clean coverage test coverageReport
+- sbt clean coverage test coverageReport codacyCoverage
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
