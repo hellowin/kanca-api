@@ -80,11 +80,6 @@ class RepositoryMySQLSpec extends IntegrationTest with BeforeAndAfterAll {
     connection.isInstanceOf[Connection] shouldEqual true
   }
 
-  test("able to setup tables, multiple times") {
-    dataSource.setup() shouldEqual true
-    dataSource.setup() shouldEqual true
-  }
-
   test("GroupFeedRepo should able to insert group feeds batch, multiple times") {
     val groupFeeds: List[GroupFeed] = graph.getGroupFeeds(USER_TOKEN, GROUP_ID, DEFAULT_PAGE_LIMIT, DEFAULT_REQUEST_LIMIT).data
     groupFeeds.size should be >= 400
