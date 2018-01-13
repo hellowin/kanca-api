@@ -22,4 +22,4 @@ Or simply run `$ sbt startDependencies` (but you will exited from `sbt shell`).
 
 ### Stop Dependencies
 
-1. Run `stopDependencies` inside `sbt shell`.
+1. Run `stopDependencies` inside `sbt shell`, it will stop and destroy any dependencies remains.
