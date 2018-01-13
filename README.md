@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a213c1b1dac049a18f0e089649606c0d)](https://www.codacy.com/app/hellowin/kanca-api?utm_source=github.com&utm_medium=referral&utm_content=hellowin/kanca-api&utm_campaign=badger)
 [![Build Status](https://www.travis-ci.org/hellowin/kanca-api.svg?branch=master)](https://www.travis-ci.org/hellowin/kanca-api)
 [![codecov](https://codecov.io/gh/hellowin/kanca-api/branch/master/graph/badge.svg)](https://codecov.io/gh/hellowin/kanca-api)
 
