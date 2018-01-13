@@ -1,6 +1,7 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a213c1b1dac049a18f0e089649606c0d)](https://www.codacy.com/app/hellowin/kanca-api?utm_source=github.com&utm_medium=referral&utm_content=hellowin/kanca-api&utm_campaign=badger)
 [![Build Status](https://www.travis-ci.org/hellowin/kanca-api.svg?branch=master)](https://www.travis-ci.org/hellowin/kanca-api)
 [![codecov](https://codecov.io/gh/hellowin/kanca-api/branch/master/graph/badge.svg)](https://codecov.io/gh/hellowin/kanca-api)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a213c1b1dac049a18f0e089649606c0d)](https://www.codacy.com/app/hellowin/kanca-api?utm_source=github.com&utm_medium=referral&utm_content=hellowin/kanca-api&utm_campaign=badger)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/9e20f10f09ba4c21a73b17d1e7fccbe3)](https://www.codacy.com/app/hellowin/kanca-api?utm_source=github.com&utm_medium=referral&utm_content=hellowin/kanca-api&utm_campaign=Badge_Coverage)
 
 # Development
 
