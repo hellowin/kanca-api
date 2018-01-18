@@ -14,7 +14,6 @@ val versions = new {
   val HikariCP = "2.7.4"
 }
 
-
 // Docker tasks for building dependencies using sbt command
 val startDependencies = taskKey[Unit]("Start docker dependencies.")
 val stopDependencies = taskKey[Unit]("Stop docker dependencies.")
