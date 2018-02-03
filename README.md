@@ -30,3 +30,7 @@ Or simply run `$ sbt startDependencies` (but you will exited from `sbt shell`).
 ### Stop Dependencies
 
 1. Run `stopDependencies` inside `sbt shell`, it will stop and destroy any dependencies remains.
+
+### Notes
+
+1. Error starting MySQL with code `Error starting userland proxy: ... input/output error.` see [this reference](https://github.com/docker/for-win/issues/573). TLDR disable `experiment` feature on Windows.
